@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace Akordion
 {
     public partial class Akordion : Form
-    {
+    {//                             0    1      2    3      4    5    6      7    8      9    10     11       
         readonly String[] Tone = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
         readonly String[] Toneb = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "Bb", "H" };
         readonly byte[] Dur = { 2, 2, 1, 2, 2, 2, 1 };
@@ -26,42 +26,48 @@ namespace Akordion
 
         public void Visskala()
         {
-            byte[] skala;
-            System.Windows.Forms.Label[] labels = new System.Windows.Forms.Label[15];
-            labels[0]  = label1;
-            labels[1]  = label2;
-            labels[2]  = label3;
-            labels[3]  = label4;
-            labels[4]  = label5;
-            labels[5]  = label6;
-            labels[6]  = label7;
-            labels[7]  = label8;
-            labels[8]  = label9;
-            labels[9]  = label10;
-            labels[10] = label11;
-            labels[11] = label12;
-            labels[12] = label13;
-            labels[13] = label14;
-            labels[14] = label15;
-            if (Skalatype.SelectedIndex == 0)
-                skala = Dur;
-            else
-                skala = Mol;
+            byte[] skala = (Skalatype.SelectedIndex == 0) ? Dur : Mol;
 
-            int tpos = 0 + Toneart.SelectedIndex;
-            for (int j = 0; j < 2 * heltoner + 1; j++)
+            int tpos = Toneart.SelectedIndex;
+
+            if (
+                (Skalatype.SelectedIndex == 0 && 
+                (tpos == 0 || tpos == 2 || tpos == 4 || tpos == 7 || tpos == 9 || tpos == 11))
+                ||
+                (Skalatype.SelectedIndex == 1 && 
+                (tpos == 1 || tpos == 3 || tpos == 4 || tpos == 6 || tpos == 8 || tpos == 9 || tpos == 11))
+               )
+                sharpToner = true;
+            else
+                sharpToner = false;
+
+            String[] tone = (sharpToner) ? Tone : Toneb;
+
+            System.Windows.Forms.Label[] labels = new System.Windows.Forms.Label[15];
+            labels[0] = label1; labels[1] = label2; labels[2] = label3;
+            labels[3] = label4; labels[4] = label5; labels[5] = label6;
+            labels[6] = label7; 
+
+            for (int j = 0; j < heltoner; j++)
             {
-                if (sharpToner.Checked)
-                    labels[j].Text = Tone[tpos];
-                else
-                    labels[j].Text = Toneb[tpos];
+                labels[j].Text = tone[tpos];
                 tpos += skala[j % heltoner];
-                tpos = tpos % halvtoner;
+                tpos %= halvtoner;
             }
-        }
-        private void Danskala_Click(object sender, EventArgs e)
-        {
-            Visskala();
+
+            String pToneType;
+            if (Skalatype.SelectedIndex == 0)
+            {
+                tpos = (9 + Toneart.SelectedIndex) % halvtoner;
+                pToneType = "mol";
+            }
+            else
+            {
+                tpos = (3 + Toneart.SelectedIndex) % halvtoner;
+                pToneType = "dur";
+            };
+
+            paralelltoneart.Text = "Paraleltoneart: " + tone[tpos] + " " + pToneType;
         }
 
         private void Akordion_Load(object sender, EventArgs e)
@@ -74,18 +80,22 @@ namespace Akordion
 
         private void sharpBox_CheckboxCanged(object sender, EventArgs e)
         {
-            Danskala_Click(null, null);
+            // Danskala_Click(null, null);
         }
 
         private void Toneart_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Danskala_Click(null, null);
+            Visskala();
         }
 
         private void Skalatype_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Danskala_Click(null, null);
+            Visskala();
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
