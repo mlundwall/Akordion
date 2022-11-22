@@ -39,6 +39,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.paralelltoneart = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Tone1 = new System.Windows.Forms.ComboBox();
+            this.Tone2 = new System.Windows.Forms.ComboBox();
+            this.Tone3 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,21 +160,63 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Akordion.Properties.Resources.Gnøgle1;
+            this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(123, 9);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.Size = new System.Drawing.Size(119, 64);
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // Tone1
+            // 
+            this.Tone1.FormattingEnabled = true;
+            this.Tone1.Location = new System.Drawing.Point(18, 121);
+            this.Tone1.Name = "Tone1";
+            this.Tone1.Size = new System.Drawing.Size(43, 21);
+            this.Tone1.TabIndex = 25;
+            this.Tone1.Text = "C";
+            this.Tone1.SelectedIndexChanged += new System.EventHandler(this.Tone1_SelectedIndexChanged);
+            // 
+            // Tone2
+            // 
+            this.Tone2.FormattingEnabled = true;
+            this.Tone2.Location = new System.Drawing.Point(67, 121);
+            this.Tone2.Name = "Tone2";
+            this.Tone2.Size = new System.Drawing.Size(43, 21);
+            this.Tone2.TabIndex = 26;
+            this.Tone2.Text = "E";
+            this.Tone2.SelectedIndexChanged += new System.EventHandler(this.Tone2_SelectedIndexChanged);
+            // 
+            // Tone3
+            // 
+            this.Tone3.FormattingEnabled = true;
+            this.Tone3.Location = new System.Drawing.Point(117, 121);
+            this.Tone3.Name = "Tone3";
+            this.Tone3.Size = new System.Drawing.Size(43, 21);
+            this.Tone3.TabIndex = 27;
+            this.Tone3.Text = "G";
+            this.Tone3.SelectedIndexChanged += new System.EventHandler(this.Tone3_SelectedIndexChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(170, 121);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(95, 21);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Cdur / Amol";
             // 
             // Akordion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(470, 181);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.Tone3);
+            this.Controls.Add(this.Tone2);
+            this.Controls.Add(this.Tone1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.paralelltoneart);
             this.Controls.Add(this.label5);
@@ -203,6 +249,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label paralelltoneart;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox Tone1;
+        private System.Windows.Forms.ComboBox Tone2;
+        private System.Windows.Forms.ComboBox Tone3;
+        private System.Windows.Forms.Label label8;
     }
 }
 

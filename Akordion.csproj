@@ -59,14 +59,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -81,10 +75,30 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Gnøgle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Gnøgle1.png" />
+    <None Include="Billeder\C-dur.png" />
+    <None Include="Billeder\D-dur.png" />
+    <None Include="Billeder\Des-dur.png" />
+    <None Include="Billeder\E-dur.png" />
+    <None Include="Billeder\Es-dur.png" />
+    <None Include="Billeder\F-dur.png" />
+    <None Include="Billeder\Fis-dur.png" />
+    <None Include="Billeder\G-dur.png" />
+    <None Include="Billeder\H-Dur.png" />
+    <Content Include="Billeder\A-dur.png" />
+    <Content Include="Billeder\As-dur.png" />
+    <Content Include="Billeder\Hes-dur.png" />
+    <Content Include="Resources\A-dur.png" />
+    <Content Include="Resources\As-dur.png" />
+    <Content Include="Resources\C-dur.png" />
+    <Content Include="Resources\D-dur.png" />
+    <Content Include="Resources\Des-dur.png" />
+    <Content Include="Resources\E-dur.png" />
+    <Content Include="Resources\Es-dur.png" />
+    <Content Include="Resources\F-dur.png" />
+    <Content Include="Resources\Fis-dur.png" />
+    <Content Include="Resources\G-dur.png" />
+    <Content Include="Resources\H-Dur.png" />
+    <Content Include="Resources\Hes-dur.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
