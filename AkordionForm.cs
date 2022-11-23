@@ -119,20 +119,29 @@ namespace Akordion
             paralelltoneart.Text = "Paraleltoneart: " + tone[tpos] + " " + pToneType;
         }
 
+        public void Fyld123(int start)
+        {
+            Tone2.Items.Clear();
+            Tone3.Items.Clear();
+            for (int i = start; i < start+halvtoner; i++)
+            {
+                Tone2.Items.Add(Tones[(i+1) % halvtoner]);
+                Tone3.Items.Add(Tones[(i+2) % halvtoner]);
+            }
+            Tone2.SelectedIndex = 3;
+            Tone3.SelectedIndex = 5;
+        }
         private void Akordion_Load(object sender, EventArgs e)
         {
             Skalatype.SelectedIndex = 0;
             for (int i = 0; i < halvtoner; i++)
-            {
                 Toneart.Items.Add(Tones[i]);
-                Tone1.Items.Add(Tones[i]);
-                Tone2.Items.Add(Tones[i]);
-                Tone3.Items.Add(Tones[i]);
-            }
             Toneart.SelectedIndex = 0;
+
+            for (int i = 0; i < halvtoner; i++)
+                Tone1.Items.Add(Tones[i]);
+
             Tone1.SelectedIndex = 0;
-            Tone2.SelectedIndex = 2;
-            Tone3.SelectedIndex = 4;
         }
 
         private void sharpBox_CheckboxCanged(object sender, EventArgs e)
@@ -152,16 +161,17 @@ namespace Akordion
 
         private void Tone1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Fyld123(Tone1.SelectedIndex);
         }
 
         private void Tone2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+//            Tone3.SelectedIndex = Tone2.SelectedIndex + 1;
         }
 
         private void Tone3_SelectedIndexChanged(object sender, EventArgs e)
         {
+//            Tone2.SelectedIndex = Tone1.SelectedIndex + 1;
 
         }
     }
