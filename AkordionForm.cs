@@ -15,6 +15,7 @@ namespace Akordion
         readonly String[] Tones = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
         readonly String[] Toneb = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "Bb", "H" };
         readonly byte[] Dur = { 2, 2, 1, 2, 2, 2, 1 };
+        List<int> dur = new List<int>();
         readonly byte[] Mol = { 2, 1, 2, 2, 1, 2, 2 };
         readonly byte halvtoner = 12;
         readonly byte heltoner = 7;
@@ -22,6 +23,8 @@ namespace Akordion
         public Akordion()
         {
             InitializeComponent();
+            for (int n = 0; n < heltoner; n++)
+                dur.Add(Dur[n]);
         }
 
         public void LavToneart
@@ -161,7 +164,15 @@ namespace Akordion
 
         private void Tone1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            List<int> Tonerække = new List<int>();
             Fyld123(Tone1.SelectedIndex);
+            Tonerække.Clear();
+            Tonerække.Add(Tone1.SelectedIndex);
+            Tonerække.Add(Tone2.SelectedIndex);
+            Tonerække.Add(Tone3.SelectedIndex);
+            Tonerække.Sort();
+            //Tonerække.
+
         }
 
         private void Tone2_SelectedIndexChanged(object sender, EventArgs e)
