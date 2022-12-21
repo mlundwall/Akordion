@@ -125,11 +125,13 @@ namespace Akordion
         public void Fyld123(int start)
         {
             Tone2.Items.Clear();
+            Tone2.Items.Add("-");
             Tone3.Items.Clear();
-            for (int i = start; i < start+halvtoner; i++)
+            Tone3.Items.Add("-");
+            for (int i = start; i < start + halvtoner; i++)
             {
-                Tone2.Items.Add(Tones[(i+1) % halvtoner]);
-                Tone3.Items.Add(Tones[(i+2) % halvtoner]);
+                Tone2.Items.Add(Tones[(i + 1) % halvtoner]);
+                Tone3.Items.Add(Tones[(i + 2) % halvtoner]);
             }
             Tone2.SelectedIndex = 3;
             Tone3.SelectedIndex = 5;
@@ -141,6 +143,7 @@ namespace Akordion
                 Toneart.Items.Add(Tones[i]);
             Toneart.SelectedIndex = 0;
 
+            Tone1.Items.Add("-");
             for (int i = 0; i < halvtoner; i++)
                 Tone1.Items.Add(Tones[i]);
 
@@ -165,24 +168,29 @@ namespace Akordion
         private void Tone1_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<int> Tonerække = new List<int>();
+            int[] T;
             Fyld123(Tone1.SelectedIndex);
             Tonerække.Clear();
             Tonerække.Add(Tone1.SelectedIndex);
             Tonerække.Add(Tone2.SelectedIndex);
             Tonerække.Add(Tone3.SelectedIndex);
             Tonerække.Sort();
-            //Tonerække.
+            while (Tonerække.ElementAt(0) == 0)
+                Tonerække.RemoveAt(0);
+            T = new int[Tonerække.Count-1];
+            for (int i = 1; i < Tonerække.Count; i++)
+                T[i - 1] = Tonerække.ElementAt(i) - Tonerække.ElementAt(i - 1);
 
         }
 
         private void Tone2_SelectedIndexChanged(object sender, EventArgs e)
         {
-//            Tone3.SelectedIndex = Tone2.SelectedIndex + 1;
+            // Tone3.SelectedIndex = Tone2.SelectedIndex + 1;
         }
 
         private void Tone3_SelectedIndexChanged(object sender, EventArgs e)
         {
-//            Tone2.SelectedIndex = Tone1.SelectedIndex + 1;
+            //            Tone2.SelectedIndex = Tone1.SelectedIndex + 1;
 
         }
     }
