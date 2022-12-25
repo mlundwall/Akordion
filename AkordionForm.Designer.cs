@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("C Dur / A Mol");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Der er TODO-kommentarer");
             this.Toneart = new System.Windows.Forms.ComboBox();
             this.Skalatype = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -203,11 +202,10 @@
             // 
             this.Resultatliste.HideSelection = false;
             this.Resultatliste.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
-            this.Resultatliste.Location = new System.Drawing.Point(343, 86);
+            listViewItem1});
+            this.Resultatliste.Location = new System.Drawing.Point(343, 121);
             this.Resultatliste.Name = "Resultatliste";
-            this.Resultatliste.Size = new System.Drawing.Size(114, 96);
+            this.Resultatliste.Size = new System.Drawing.Size(114, 56);
             this.Resultatliste.TabIndex = 28;
             this.Resultatliste.UseCompatibleStateImageBehavior = false;
             this.Resultatliste.SelectedIndexChanged += new System.EventHandler(this.Resultatliste_SelectedIndexChanged);
