@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
+//Todo: Tone1 - Tone3 udvides til fem toner, og boksen skal udfyldes med den / de tonearter, der indeholder disse toner
+//Todo: Billeder af tonearternes kryds/b-er indsættes i "Nodebillede"
 
 namespace Akordion
 {
@@ -30,96 +28,73 @@ namespace Akordion
         public void LavToneart
           (
             in int skalatype,             // 0 Dur eller 1 Mol
-            int tpos,                     // Starttone 0-11
-            out String[] tone,            // De 7 toner
-            out string parallelToneArt    // Parraleltonearten
+            int tpos,                     // Starttone 0-11 = C-H
+            out bool kryds,               // Om det er b eller kryds
+            out String[] tone,            // De 7 toner i tonearten
+            out string parallelToneArt    // Parraleltoneartens navn
           )
         {
-            bool sharpToner;              // Om det er sharp eller flat
-            byte[] skala = (skalatype == 0) ? Dur : Mol;
-            tone = new String[7];
+            byte[] skala;                 // Dur eller Mol i antal halvtonetrin
 
-            if (
-                (Skalatype.SelectedIndex == 0 &&
-                (tpos == 0 || tpos == 2 || tpos == 4 || tpos == 7 || tpos == 9 || tpos == 11))
-                ||
-                (Skalatype.SelectedIndex == 1 &&
-                (tpos == 1 || tpos == 3 || tpos == 4 || tpos == 6 || tpos == 8 || tpos == 9 || tpos == 11))
-               )
-                sharpToner = true;
-            else
-                sharpToner = false;
-
-            String[] Tone = (sharpToner) ? Tones : Toneb;
-
-            for (int j = 0; j < heltoner; j++)
-            {
-                tone[j] = Tone[tpos];
-                tpos += skala[j % heltoner];
-                tpos %= halvtoner;
-            }
-
+            skala = (skalatype == 0) ? Dur : Mol;
+            tone = new String[heltoner];
+            String[] Tone = new String[heltoner];
             String pToneType;
-            if (Skalatype.SelectedIndex == 0)
+            int ppos;
+
+            if (skalatype == 0)
             {
-                tpos = (9 + Toneart.SelectedIndex) % halvtoner;
+                ppos = (9 + tpos) % halvtoner;
                 pToneType = "mol";
             }
             else
             {
-                tpos = (3 + Toneart.SelectedIndex) % halvtoner;
+                ppos = (3 + tpos) % halvtoner;
                 pToneType = "dur";
             };
 
-            parallelToneArt = tone[tpos] + " " + pToneType;
+            if (
+                (skalatype == 0 &&
+                (tpos == 0 || tpos == 2 || tpos == 4 || tpos == 7 || tpos == 9 || tpos == 11))
+                ||
+                (skalatype == 1 &&
+                (tpos == 1 || tpos == 3 || tpos == 4 || tpos == 6 || tpos == 8 || tpos == 9 || tpos == 11))
+               )
+                kryds = true;
+            else
+                kryds = false;
+
+            Tone = (kryds) ? Tones : Toneb;
+
+            for (int j = 0; j < heltoner; j++)
+            {
+                tone[j] = Tone[tpos];
+                tpos += skala[j];
+                tpos %= halvtoner;
+            }
+
+            parallelToneArt = Tone[ppos] + " " + pToneType;
         }
 
         public void Visskala()
         {
-            byte[] skala = (Skalatype.SelectedIndex == 0) ? Dur : Mol;
-
             int tpos = Toneart.SelectedIndex;
+            String[] tone = new String[7];
+            String parallelToneArt;
+            bool kryds;
 
-            bool sharpToner;
+            LavToneart(Skalatype.SelectedIndex, tpos, out kryds, out tone, out parallelToneArt);
 
-            if (
-                (Skalatype.SelectedIndex == 0 &&
-                (tpos == 0 || tpos == 2 || tpos == 4 || tpos == 7 || tpos == 9 || tpos == 11))
-                ||
-                (Skalatype.SelectedIndex == 1 &&
-                (tpos == 1 || tpos == 3 || tpos == 4 || tpos == 6 || tpos == 8 || tpos == 9 || tpos == 11))
-               )
-                sharpToner = true;
-            else
-                sharpToner = false;
-
-            String[] tone = (sharpToner) ? Tones : Toneb;
-
-            System.Windows.Forms.Label[] labels = new System.Windows.Forms.Label[15];
+            Label[] labels = new Label[15];
             labels[0] = label1; labels[1] = label2; labels[2] = label3;
             labels[3] = label4; labels[4] = label5; labels[5] = label6;
             labels[6] = label7;
 
             for (int j = 0; j < heltoner; j++)
             {
-                labels[j].Text = tone[tpos];
-                tpos += skala[j % heltoner];
-                tpos %= halvtoner;
+                labels[j].Text = tone[j];
             }
-
-            String pToneType;
-            if (Skalatype.SelectedIndex == 0)
-            {
-                tpos = (9 + Toneart.SelectedIndex) % halvtoner;
-                pToneType = "mol";
-            }
-            else
-            {
-                tpos = (3 + Toneart.SelectedIndex) % halvtoner;
-                pToneType = "dur";
-            };
-
-            paralelltoneart.Text = "Paraleltoneart: " + tone[tpos] + " " + pToneType;
+            paralelltoneart.Text = "Paraleltoneart: " + parallelToneArt;
         }
 
         public void Fyld123(int start)
@@ -147,7 +122,7 @@ namespace Akordion
             for (int i = 0; i < halvtoner; i++)
                 Tone1.Items.Add(Tones[i]);
 
-            Tone1.SelectedIndex = 0;
+            Tone1.SelectedIndex = 1;
         }
 
         private void sharpBox_CheckboxCanged(object sender, EventArgs e)
@@ -190,7 +165,12 @@ namespace Akordion
 
         private void Tone3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //            Tone2.SelectedIndex = Tone1.SelectedIndex + 1;
+            // Tone2.SelectedIndex = Tone1.SelectedIndex + 1;
+
+        }
+
+        private void Resultatliste_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }
