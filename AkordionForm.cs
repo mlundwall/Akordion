@@ -13,46 +13,53 @@ namespace Akordion
         readonly String[] Tones = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
         readonly String[] Toneb = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "Bb", "H" };
         readonly byte[] Dur = { 2, 2, 1, 2, 2, 2, 1 };
-        List<int> dur = new List<int>();
         readonly byte[] Mol = { 2, 1, 2, 2, 1, 2, 2 };
         readonly byte halvtoner = 12;
         readonly byte heltoner = 7;
+        ComboBox[] ABox = new ComboBox[5];
 
         public Akordion()
         {
             InitializeComponent();
-            for (int n = 0; n < heltoner; n++)
-                dur.Add(Dur[n]);
         }
 
         public void LavToneart
-          (
-            in int skalatype,             // 0 Dur eller 1 Mol
-            int tpos,                     // Starttone 0-11 = C-H
-            out bool kryds,               // Om det er b eller kryds
-            out String[] tone,            // De 7 toner i tonearten
-            out string parallelToneArt    // Parraleltoneartens navn
-          )
+        /*
+           Laver skala ud fra om det skal være dur eller mol og hvilket havltone-trin skalaen skal starte på
+        */
+        (
+            in int skalatype,               // 0 Dur eller 1 Mol
+            int tpos,                       // Starttone 0-11 = C-H
+            out String[] skala,             // De 7 toner i tonearten
+            out bool kryds,                 // Om det er b eller kryds
+            out string toneArt,             // Toneartens navn
+            out string parallelToneArt      // Parraleltoneartens navn
+        )
         {
-            byte[] skala;                 // Dur eller Mol i antal halvtonetrin
+            skala = new String[heltoner];   // Her ligger vi skalaen
+            String[] Tone =                 // Her henter vi tone-navne fra
+                new String[heltoner];
+            String toneType;                // Om tonearten er dur eller mol
+            String pToneType;               // Om paralelltonearten er dur eller mol
+            int ppos;                       // Starttone for parraleltonearten
+            byte[] tonalitet =              // Dur eller Mol i antal halvtonetrin
+                (skalatype == 0) ? Dur : Mol;
 
-            skala = (skalatype == 0) ? Dur : Mol;
-            tone = new String[heltoner];
-            String[] Tone = new String[heltoner];
-            String pToneType;
-            int ppos;
-
+            // Angiver dur/mol som string, og beregner paralelltoneartens placering            
             if (skalatype == 0)
             {
-                ppos = (9 + tpos) % halvtoner;
+                ppos = (tpos + halvtoner - 3) % halvtoner;
+                toneType = "dur";
                 pToneType = "mol";
             }
             else
             {
-                ppos = (3 + tpos) % halvtoner;
+                ppos = (tpos + 3) % halvtoner;
+                toneType = "mol";
                 pToneType = "dur";
             };
 
+            // Finder ud af om der skal krydser eller b'er for
             if (
                 (skalatype == 0 &&
                 (tpos == 0 || tpos == 2 || tpos == 4 || tpos == 7 || tpos == 9 || tpos == 11))
@@ -64,26 +71,31 @@ namespace Akordion
             else
                 kryds = false;
 
+            // Finder tonenavne ud fra om der skulle krydser eller b'er for
             Tone = (kryds) ? Tones : Toneb;
 
-            for (int j = 0; j < heltoner; j++)
+            for (int j = 0, t = tpos; j < heltoner; j++)
             {
-                tone[j] = Tone[tpos];
-                tpos += skala[j];
-                tpos %= halvtoner;
+                skala[j] = Tone[t];
+                t += tonalitet[j];
+                t %= halvtoner;
             }
 
+            // Danner tonearten og paralelltoneartens betegnelser
+            toneArt = Tone[tpos] + " " + toneType;
             parallelToneArt = Tone[ppos] + " " + pToneType;
         }
 
         public void Visskala()
         {
-            int tpos = Toneart.SelectedIndex;
-            String[] tone = new String[7];
-            String parallelToneArt;
+            int tpos;
+            String[] skala = new String[7];
             bool kryds;
+            String toneArt;
+            String parallelToneArt;
 
-            LavToneart(Skalatype.SelectedIndex, tpos, out kryds, out tone, out parallelToneArt);
+            tpos = Toneart.SelectedIndex;
+            LavToneart(Skalatype.SelectedIndex, tpos, out skala, out kryds, out toneArt, out parallelToneArt);
 
             Label[] labels = new Label[15];
             labels[0] = label1; labels[1] = label2; labels[2] = label3;
@@ -92,42 +104,42 @@ namespace Akordion
 
             for (int j = 0; j < heltoner; j++)
             {
-                labels[j].Text = tone[j];
+                labels[j].Text = skala[j];
             }
             paralelltoneart.Text = "Paraleltoneart: " + parallelToneArt;
         }
 
-        public void Fyld123(int start)
+        public void FyldAkordlister()
         {
-            Tone2.Items.Clear();
-            Tone2.Items.Add("-");
-            Tone3.Items.Clear();
-            Tone3.Items.Add("-");
-            for (int i = start; i < start + halvtoner; i++)
+            for (int i = 0; i < 5; i++)
             {
-                Tone2.Items.Add(Tones[(i + 1) % halvtoner]);
-                Tone3.Items.Add(Tones[(i + 2) % halvtoner]);
+                ABox[i].Items.Clear();
+                ABox[i].Items.Add("-");
+                for (int j = 0; j < halvtoner; j++)
+                {
+                    ABox[i].Items.Add(Tones[j]);
+                }
+                ABox[i].SelectedIndex = 0;
+
+                ABox[i].SelectedIndexChanged += new System.EventHandler(Akord_SelectedIndexChanged);
+
             }
-            Tone2.SelectedIndex = 3;
-            Tone3.SelectedIndex = 5;
         }
         private void Akordion_Load(object sender, EventArgs e)
         {
-            Skalatype.SelectedIndex = 0;
+            Skalatype.SelectedIndex = 0; // Dur
+            // Toneliste fyldes
             for (int i = 0; i < halvtoner; i++)
                 Toneart.Items.Add(Tones[i]);
             Toneart.SelectedIndex = 0;
 
-            Tone1.Items.Add("-");
-            for (int i = 0; i < halvtoner; i++)
-                Tone1.Items.Add(Tones[i]);
-
-            Tone1.SelectedIndex = 1;
-        }
-
-        private void sharpBox_CheckboxCanged(object sender, EventArgs e)
-        {
-            // Danskala_Click(null, null);
+            // Fylder akkord-lister
+            ABox[0] = Akord1;
+            ABox[1] = Akord2;
+            ABox[2] = Akord3;
+            ABox[3] = Akord4;
+            ABox[4] = Akord5;
+            FyldAkordlister();
         }
 
         private void Toneart_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,33 +152,63 @@ namespace Akordion
             Visskala();
         }
 
-        private void Tone1_SelectedIndexChanged(object sender, EventArgs e)
+        private bool Match(byte[] T, byte[] D, byte starti)
         {
-            List<int> Tonerække = new List<int>();
-            int[] T;
-            Fyld123(Tone1.SelectedIndex);
+            byte[] DD = new byte[heltoner];
+            byte Dsum = starti;
+            // Initierer DD udfra D: intervaller til positioner
+            for (byte i = 0; i < heltoner; i++)
+            {
+                DD[i] = Convert.ToByte(Dsum % halvtoner);
+                Dsum += Convert.ToByte(D[Convert.ToByte(i % heltoner)]);
+            }
+            // Tjekker at alle T'er har tilhørende positioner
+            bool match = true;
+            for (int i = 0; (i < T.Length) && match; i++)
+            { // Tjek alle T'er
+                bool fundet = false;
+                for (int j = 0; (j < heltoner) && !fundet; j++)
+                { // Tjek at de findes i DD
+                    if (T[i] == DD[j])
+                        fundet = true;
+                }
+                if (!fundet)
+                    match = false;
+            }
+            return (match);
+        }
+
+        private void Akord_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<byte> Tonerække = new List<byte>();
+            byte[] T;
+
+            Resultatliste.Clear();
             Tonerække.Clear();
-            Tonerække.Add(Tone1.SelectedIndex);
-            Tonerække.Add(Tone2.SelectedIndex);
-            Tonerække.Add(Tone3.SelectedIndex);
+            for (int j = 0; j < 5; j++)
+                if (ABox[j].SelectedIndex > 0)
+                    Tonerække.Add(Convert.ToByte(ABox[j].SelectedIndex - 1));
+
             Tonerække.Sort();
-            while (Tonerække.ElementAt(0) == 0)
-                Tonerække.RemoveAt(0);
-            T = new int[Tonerække.Count-1];
-            for (int i = 1; i < Tonerække.Count; i++)
-                T[i - 1] = Tonerække.ElementAt(i) - Tonerække.ElementAt(i - 1);
 
-        }
 
-        private void Tone2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Tone3.SelectedIndex = Tone2.SelectedIndex + 1;
-        }
+            if (Tonerække.Count > 2)
+            {
+                T = new byte[Convert.ToByte(Tonerække.Count)];
+                for (byte i = 0; i < Tonerække.Count; i++)
+                {
+                    T[i] = Convert.ToByte(Tonerække.ElementAt(i));
+                    // T[i - 1] = Convert.ToByte(Tonerække.ElementAt(i) - Tonerække.ElementAt(i - 1));
+                }
 
-        private void Tone3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Tone2.SelectedIndex = Tone1.SelectedIndex + 1;
-
+                // T indeholder nu tonespringene i Akorden i halvtoner
+                // Vi prøver med forskellige tonearter, først dur:
+                for (byte tpos = 0; tpos < halvtoner; tpos++)
+                {
+                    if (Match(T, Dur, tpos)) // der er et match
+                        Resultatliste.Items.Add(Tones[tpos] + " dur / " + Tones[(tpos + halvtoner - 3) % halvtoner] + " mol");
+                }
+            }
         }
 
         private void Resultatliste_SelectedIndexChanged(object sender, EventArgs e)
