@@ -174,7 +174,7 @@
             // Akord1
             // 
             this.Akord1.FormattingEnabled = true;
-            this.Akord1.Location = new System.Drawing.Point(14, 112);
+            this.Akord1.Location = new System.Drawing.Point(12, 112);
             this.Akord1.Name = "Akord1";
             this.Akord1.Size = new System.Drawing.Size(43, 21);
             this.Akord1.TabIndex = 25;
@@ -183,7 +183,7 @@
             // Akord2
             // 
             this.Akord2.FormattingEnabled = true;
-            this.Akord2.Location = new System.Drawing.Point(65, 112);
+            this.Akord2.Location = new System.Drawing.Point(63, 112);
             this.Akord2.Name = "Akord2";
             this.Akord2.Size = new System.Drawing.Size(43, 21);
             this.Akord2.TabIndex = 26;
@@ -192,7 +192,7 @@
             // Akord3
             // 
             this.Akord3.FormattingEnabled = true;
-            this.Akord3.Location = new System.Drawing.Point(115, 112);
+            this.Akord3.Location = new System.Drawing.Point(113, 112);
             this.Akord3.Name = "Akord3";
             this.Akord3.Size = new System.Drawing.Size(43, 21);
             this.Akord3.TabIndex = 27;
@@ -201,7 +201,7 @@
             // Akord4
             // 
             this.Akord4.FormattingEnabled = true;
-            this.Akord4.Location = new System.Drawing.Point(166, 112);
+            this.Akord4.Location = new System.Drawing.Point(164, 112);
             this.Akord4.Name = "Akord4";
             this.Akord4.Size = new System.Drawing.Size(43, 21);
             this.Akord4.TabIndex = 29;
@@ -210,7 +210,7 @@
             // Akord5
             // 
             this.Akord5.FormattingEnabled = true;
-            this.Akord5.Location = new System.Drawing.Point(217, 112);
+            this.Akord5.Location = new System.Drawing.Point(215, 112);
             this.Akord5.Name = "Akord5";
             this.Akord5.Size = new System.Drawing.Size(43, 21);
             this.Akord5.TabIndex = 30;
@@ -227,7 +227,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(15, 89);
+            this.label8.Location = new System.Drawing.Point(9, 89);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 13);
             this.label8.TabIndex = 32;

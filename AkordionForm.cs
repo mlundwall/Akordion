@@ -3,8 +3,8 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-//Todo: Tone1 - Tone3 udvides til fem toner, og boksen skal udfyldes med den / de tonearter, der indeholder disse toner
 //Todo: Billeder af tonearternes kryds/b-er indsættes i "Nodebillede"
+//Todo: Flere kommentarer
 
 namespace Akordion
 {
