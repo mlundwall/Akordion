@@ -11,12 +11,15 @@ namespace Akordion
     public partial class Akordion : Form
     {//                             0    1      2    3      4    5    6      7    8      9    10     11       
         readonly String[] Tones = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
-        readonly String[] Toneb = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "Bb", "H" };
+        readonly String[] Toneb = { "C", "Des", "D", "Es",  "E", "F", "Ges", "G", "As",  "A", "Bb",  "H" };
         readonly byte[] Dur = { 2, 2, 1, 2, 2, 2, 1 };
         readonly byte[] Mol = { 2, 1, 2, 2, 1, 2, 2 };
         readonly byte halvtoner = 12;
         readonly byte heltoner = 7;
-        ComboBox[] ABox = new ComboBox[5];
+        // Antal akordbokse
+        readonly static int ABoxe = 5;
+        ComboBox[] ABox = new ComboBox[ABoxe];
+        List<int> Resultater = new List<int>();
 
         public Akordion()
         {
@@ -111,7 +114,7 @@ namespace Akordion
 
         public void FyldAkordlister()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < ABoxe; i++)
             {
                 ABox[i].Items.Clear();
                 ABox[i].Items.Add("-");
@@ -183,14 +186,26 @@ namespace Akordion
             List<byte> Tonerække = new List<byte>();
             byte[] T;
 
-            Resultatliste.Clear();
+            Resultatliste.Items.Clear();
+            Resultater.Clear();
             Tonerække.Clear();
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < ABoxe; j++)
                 if (ABox[j].SelectedIndex > 0)
-                    Tonerække.Add(Convert.ToByte(ABox[j].SelectedIndex - 1));
+                    if (!Tonerække.Contains(Convert.ToByte(ABox[j].SelectedIndex - 1)))
+                        Tonerække.Add(Convert.ToByte(ABox[j].SelectedIndex - 1));
 
             Tonerække.Sort();
 
+            // Putter dem i selecterne i rigtig rækkefølge
+            for (int i = 0; i < ABoxe; i++)
+            {
+                ABox[i].SelectedIndexChanged -= Akord_SelectedIndexChanged;
+                if (i < Tonerække.Count)
+                    ABox[i].SelectedIndex = Tonerække.ElementAt(i) + 1;
+                else
+                    ABox[i].SelectedIndex = 0;
+                ABox[i].SelectedIndexChanged += new System.EventHandler(Akord_SelectedIndexChanged);
+            }
 
             if (Tonerække.Count > 2)
             {
@@ -198,7 +213,6 @@ namespace Akordion
                 for (byte i = 0; i < Tonerække.Count; i++)
                 {
                     T[i] = Convert.ToByte(Tonerække.ElementAt(i));
-                    // T[i - 1] = Convert.ToByte(Tonerække.ElementAt(i) - Tonerække.ElementAt(i - 1));
                 }
 
                 // T indeholder nu tonespringene i Akorden i halvtoner
@@ -206,14 +220,12 @@ namespace Akordion
                 for (byte tpos = 0; tpos < halvtoner; tpos++)
                 {
                     if (Match(T, Dur, tpos)) // der er et match
+                    {
                         Resultatliste.Items.Add(Tones[tpos] + " dur / " + Tones[(tpos + halvtoner - 3) % halvtoner] + " mol");
+                        Resultater.Add(Resultatliste.Items.Count - 1);
+                    }
                 }
             }
-        }
-
-        private void Resultatliste_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

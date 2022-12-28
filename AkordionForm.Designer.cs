@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("C Dur / A Mol");
             this.Toneart = new System.Windows.Forms.ComboBox();
             this.Skalatype = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,10 +42,11 @@
             this.Akord1 = new System.Windows.Forms.ComboBox();
             this.Akord2 = new System.Windows.Forms.ComboBox();
             this.Akord3 = new System.Windows.Forms.ComboBox();
-            this.Resultatliste = new System.Windows.Forms.ListView();
             this.Akord4 = new System.Windows.Forms.ComboBox();
             this.Akord5 = new System.Windows.Forms.ComboBox();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Resultatliste = new System.Windows.Forms.ListBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Nodebillede)).BeginInit();
             this.SuspendLayout();
             // 
@@ -174,7 +174,7 @@
             // Akord1
             // 
             this.Akord1.FormattingEnabled = true;
-            this.Akord1.Location = new System.Drawing.Point(14, 121);
+            this.Akord1.Location = new System.Drawing.Point(14, 112);
             this.Akord1.Name = "Akord1";
             this.Akord1.Size = new System.Drawing.Size(43, 21);
             this.Akord1.TabIndex = 25;
@@ -183,7 +183,7 @@
             // Akord2
             // 
             this.Akord2.FormattingEnabled = true;
-            this.Akord2.Location = new System.Drawing.Point(65, 121);
+            this.Akord2.Location = new System.Drawing.Point(65, 112);
             this.Akord2.Name = "Akord2";
             this.Akord2.Size = new System.Drawing.Size(43, 21);
             this.Akord2.TabIndex = 26;
@@ -192,31 +192,16 @@
             // Akord3
             // 
             this.Akord3.FormattingEnabled = true;
-            this.Akord3.Location = new System.Drawing.Point(115, 121);
+            this.Akord3.Location = new System.Drawing.Point(115, 112);
             this.Akord3.Name = "Akord3";
             this.Akord3.Size = new System.Drawing.Size(43, 21);
             this.Akord3.TabIndex = 27;
             this.Akord3.Text = "G";
             // 
-            // Resultatliste
-            // 
-            this.Resultatliste.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.Resultatliste.HideSelection = false;
-            this.Resultatliste.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.Resultatliste.Location = new System.Drawing.Point(343, 121);
-            this.Resultatliste.Name = "Resultatliste";
-            this.Resultatliste.Size = new System.Drawing.Size(114, 88);
-            this.Resultatliste.TabIndex = 28;
-            this.Resultatliste.UseCompatibleStateImageBehavior = false;
-            this.Resultatliste.View = System.Windows.Forms.View.List;
-            this.Resultatliste.SelectedIndexChanged += new System.EventHandler(this.Resultatliste_SelectedIndexChanged);
-            // 
             // Akord4
             // 
             this.Akord4.FormattingEnabled = true;
-            this.Akord4.Location = new System.Drawing.Point(166, 121);
+            this.Akord4.Location = new System.Drawing.Point(166, 112);
             this.Akord4.Name = "Akord4";
             this.Akord4.Size = new System.Drawing.Size(43, 21);
             this.Akord4.TabIndex = 29;
@@ -225,20 +210,48 @@
             // Akord5
             // 
             this.Akord5.FormattingEnabled = true;
-            this.Akord5.Location = new System.Drawing.Point(217, 121);
+            this.Akord5.Location = new System.Drawing.Point(217, 112);
             this.Akord5.Name = "Akord5";
             this.Akord5.Size = new System.Drawing.Size(43, 21);
             this.Akord5.TabIndex = 30;
             this.Akord5.Text = "G";
             // 
+            // Resultatliste
+            // 
+            this.Resultatliste.FormattingEnabled = true;
+            this.Resultatliste.Location = new System.Drawing.Point(343, 110);
+            this.Resultatliste.Name = "Resultatliste";
+            this.Resultatliste.Size = new System.Drawing.Size(116, 56);
+            this.Resultatliste.TabIndex = 31;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(15, 79);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 13);
+            this.label8.TabIndex = 32;
+            this.label8.Text = "Toneliste";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(345, 83);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(61, 13);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "I tonearten ";
+            // 
             // Akordion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(469, 221);
+            this.ClientSize = new System.Drawing.Size(469, 179);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.Resultatliste);
             this.Controls.Add(this.Akord5);
             this.Controls.Add(this.Akord4);
-            this.Controls.Add(this.Resultatliste);
             this.Controls.Add(this.Akord3);
             this.Controls.Add(this.Akord2);
             this.Controls.Add(this.Akord1);
@@ -277,10 +290,11 @@
         private System.Windows.Forms.ComboBox Akord1;
         private System.Windows.Forms.ComboBox Akord2;
         private System.Windows.Forms.ComboBox Akord3;
-        private System.Windows.Forms.ListView Resultatliste;
         private System.Windows.Forms.ComboBox Akord4;
         private System.Windows.Forms.ComboBox Akord5;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ListBox Resultatliste;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }
 
