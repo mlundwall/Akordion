@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Akordion")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DFH")]
+[assembly: AssemblyCompany("ML")]
 [assembly: AssemblyProduct("Akordion")]
-[assembly: AssemblyCopyright("Copyright © DFH 2022")]
+[assembly: AssemblyCopyright("Copyright © ML 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -2,8 +2,10 @@
 using System.Linq;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 
 //Todo: Billeder af tonearternes kryds/b-er indsættes i "Nodebillede"
+//Todo: Icon indsættes
 //Todo: Flere kommentarer
 
 namespace Akordion
@@ -110,6 +112,8 @@ namespace Akordion
                 labels[j].Text = skala[j];
             }
             paralelltoneart.Text = "Paraleltoneart: " + parallelToneArt;
+            // Nodebillede.Image = Akordion.Properties.Resources.C_dur;
+
         }
 
         public void FyldAkordlister()
@@ -222,10 +226,26 @@ namespace Akordion
                     if (Match(T, Dur, tpos)) // der er et match
                     {
                         Resultatliste.Items.Add(Tones[tpos] + " dur / " + Tones[(tpos + halvtoner - 3) % halvtoner] + " mol");
-                        Resultater.Add(Resultatliste.Items.Count - 1);
+                        Resultater.Add(tpos);
                     }
+                }
+                if (Resultater.Count > 0)
+                {
+                    Resultatliste.SelectedIndex = 0;
+                    Resultatliste_Click(null, null);
                 }
             }
         }
+
+        private void Resultatliste_Click(object sender, EventArgs e)
+        {
+            if (Resultater.Count > 0)
+            {
+                Skalatype.SelectedIndex = 0;
+                Toneart.SelectedIndex = Resultater.ElementAt(Resultatliste.SelectedIndex);
+                Visskala();
+            }
+        }
+
     }
 }

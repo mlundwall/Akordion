@@ -168,6 +168,7 @@
             this.Nodebillede.Margin = new System.Windows.Forms.Padding(0);
             this.Nodebillede.Name = "Nodebillede";
             this.Nodebillede.Size = new System.Drawing.Size(119, 64);
+            this.Nodebillede.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Nodebillede.TabIndex = 24;
             this.Nodebillede.TabStop = false;
             // 
@@ -223,6 +224,7 @@
             this.Resultatliste.Name = "Resultatliste";
             this.Resultatliste.Size = new System.Drawing.Size(116, 56);
             this.Resultatliste.TabIndex = 31;
+            this.Resultatliste.Click += new System.EventHandler(this.Resultatliste_Click);
             // 
             // label8
             // 
@@ -266,6 +268,8 @@
             this.Controls.Add(this.Skalatype);
             this.Controls.Add(this.Toneart);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "Akordion";
             this.Text = "Akordion";
             this.Load += new System.EventHandler(this.Akordion_Load);
