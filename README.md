@@ -1,8 +1,8 @@
 # Akordion
-Musik-app
-So far basic use for scale.
-Later for recognicing the tonality based on notes used.
+### Music-app
+### C# - Visual Studio application
 
-Later again it is should be able to transpose starting for sax and clarinette: Bb and Es
-
-Later alle transposes.
+Generate scales from scale-names\
+Generate scales that contains a specified set of notes\
+Later should be able to transpose starting for sax and clarinette: Bb and Es\
+Later all transposes
