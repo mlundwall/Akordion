@@ -4,7 +4,7 @@ using Akordion.Properties;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-//Todo: Billeder af tonearternes kryds/b-er indsættes i "Nodebillede"
+//Done: Billeder af tonearternes kryds/b-er indsættes i "Nodebillede"
 //Todo: Icon indsættes
 //Todo: Flere kommentarer
 

@@ -105,8 +105,6 @@
     <Content Include="Resources\Hes-dur.png" />
     <Content Include="node.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Billeder\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
