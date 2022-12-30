@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
+using Akordion.Properties;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using System.Runtime.Versioning;
 
 //Todo: Billeder af tonearternes kryds/b-er indsættes i "Nodebillede"
 //Todo: Icon indsættes
@@ -13,7 +13,7 @@ namespace Akordion
     public partial class Akordion : Form
     {//                             0    1      2    3      4    5    6      7    8      9    10     11       
         readonly String[] Tones = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
-        readonly String[] Toneb = { "C", "Des", "D", "Es",  "E", "F", "Ges", "G", "As",  "A", "Bb",  "H" };
+        readonly String[] Toneb = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "Bb", "H" };
         readonly byte[] Dur = { 2, 2, 1, 2, 2, 2, 1 };
         readonly byte[] Mol = { 2, 1, 2, 2, 1, 2, 2 };
         readonly byte halvtoner = 12;
@@ -91,6 +91,27 @@ namespace Akordion
             parallelToneArt = Tone[ppos] + " " + pToneType;
         }
 
+        public void PutBillede(int t)
+        {
+            switch (t)
+            {
+                case 0: { Nodebillede.Image = (System.Drawing.Image)(Resources.C_dur); break; }
+                case 1: { Nodebillede.Image = (System.Drawing.Image)(Resources.Des_dur); break; }
+                case 2: { Nodebillede.Image = (System.Drawing.Image)(Resources.D_dur); break; }
+                case 3: { Nodebillede.Image = (System.Drawing.Image)(Resources.Es_dur); break; }
+                case 4: { Nodebillede.Image = (System.Drawing.Image)(Resources.E_dur); break; }
+                case 5: { Nodebillede.Image = (System.Drawing.Image)(Resources.F_dur); break; }
+                case 6: { Nodebillede.Image = (System.Drawing.Image)(Resources.Fis_dur); break; }
+                case 7: { Nodebillede.Image = (System.Drawing.Image)(Resources.G_dur); break; }
+                case 8: { Nodebillede.Image = (System.Drawing.Image)(Resources.As_dur); break; }
+                case 9: { Nodebillede.Image = (System.Drawing.Image)(Resources.A_dur); break; }
+                case 10: { Nodebillede.Image = (System.Drawing.Image)(Resources.Hes_dur); break; }
+                case 11: { Nodebillede.Image = (System.Drawing.Image)(Resources.H_Dur); break; }
+                default: { Nodebillede.Image = (System.Drawing.Image)(Resources.C_dur); break; }
+            }
+
+        }
+
         public void Visskala()
         {
             int tpos;
@@ -112,8 +133,11 @@ namespace Akordion
                 labels[j].Text = skala[j];
             }
             paralelltoneart.Text = "Paraleltoneart: " + parallelToneArt;
-            // Nodebillede.Image = Akordion.Properties.Resources.C_dur;
 
+            if (Skalatype.SelectedIndex == 0)
+                PutBillede(tpos);
+            else // Hvis det er mol, vælger vi paralleltoneartens billede
+                PutBillede((tpos + 3) % halvtoner);
         }
 
         public void FyldAkordlister()

@@ -63,9 +63,9 @@ namespace Akordion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Gnøgle {
+        internal static System.Drawing.Bitmap A_dur {
             get {
-                object obj = ResourceManager.GetObject("Gnøgle", resourceCulture);
+                object obj = ResourceManager.GetObject("A-dur", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,109 @@ namespace Akordion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Gnøgle1 {
+        internal static System.Drawing.Bitmap As_dur {
             get {
-                object obj = ResourceManager.GetObject("Gnøgle1", resourceCulture);
+                object obj = ResourceManager.GetObject("As-dur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap C_dur {
+            get {
+                object obj = ResourceManager.GetObject("C-dur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap D_dur {
+            get {
+                object obj = ResourceManager.GetObject("D-dur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Des_dur {
+            get {
+                object obj = ResourceManager.GetObject("Des-dur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap E_dur {
+            get {
+                object obj = ResourceManager.GetObject("E-dur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Es_dur {
+            get {
+                object obj = ResourceManager.GetObject("Es-dur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap F_dur {
+            get {
+                object obj = ResourceManager.GetObject("F-dur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fis_dur {
+            get {
+                object obj = ResourceManager.GetObject("Fis-dur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap G_dur {
+            get {
+                object obj = ResourceManager.GetObject("G-dur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap H_Dur {
+            get {
+                object obj = ResourceManager.GetObject("H-Dur", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hes_dur {
+            get {
+                object obj = ResourceManager.GetObject("Hes-dur", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

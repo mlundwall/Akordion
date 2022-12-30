@@ -164,10 +164,12 @@
             // 
             // Nodebillede
             // 
-            this.Nodebillede.Location = new System.Drawing.Point(343, 14);
+            this.Nodebillede.Image = global::Akordion.Properties.Resources.C_dur;
+            this.Nodebillede.InitialImage = global::Akordion.Properties.Resources.C_dur;
+            this.Nodebillede.Location = new System.Drawing.Point(340, 4);
             this.Nodebillede.Margin = new System.Windows.Forms.Padding(0);
             this.Nodebillede.Name = "Nodebillede";
-            this.Nodebillede.Size = new System.Drawing.Size(119, 64);
+            this.Nodebillede.Size = new System.Drawing.Size(119, 74);
             this.Nodebillede.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Nodebillede.TabIndex = 24;
             this.Nodebillede.TabStop = false;

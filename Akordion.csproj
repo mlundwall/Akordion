@@ -70,11 +70,17 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -85,31 +91,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Billeder\C-dur.png" />
-    <None Include="Billeder\D-dur.png" />
-    <None Include="Billeder\Des-dur.png" />
-    <None Include="Billeder\E-dur.png" />
-    <None Include="Billeder\Es-dur.png" />
-    <None Include="Billeder\F-dur.png" />
-    <None Include="Billeder\Fis-dur.png" />
-    <None Include="Billeder\G-dur.png" />
-    <None Include="Billeder\H-Dur.png" />
-    <Content Include="Billeder\A-dur.png" />
-    <Content Include="Billeder\As-dur.png" />
-    <Content Include="Billeder\Hes-dur.png" />
-    <Content Include="node.ico" />
+    <None Include="Resources\C-dur.png" />
+    <None Include="Resources\D-dur.png" />
+    <None Include="Resources\Des-dur.png" />
+    <None Include="Resources\E-dur.png" />
+    <None Include="Resources\Es-dur.png" />
+    <None Include="Resources\F-dur.png" />
+    <None Include="Resources\Fis-dur.png" />
+    <None Include="Resources\G-dur.png" />
+    <None Include="Resources\H-Dur.png" />
     <Content Include="Resources\A-dur.png" />
     <Content Include="Resources\As-dur.png" />
-    <Content Include="Resources\C-dur.png" />
-    <Content Include="Resources\D-dur.png" />
-    <Content Include="Resources\Des-dur.png" />
-    <Content Include="Resources\E-dur.png" />
-    <Content Include="Resources\Es-dur.png" />
-    <Content Include="Resources\F-dur.png" />
-    <Content Include="Resources\Fis-dur.png" />
-    <Content Include="Resources\G-dur.png" />
-    <Content Include="Resources\H-Dur.png" />
     <Content Include="Resources\Hes-dur.png" />
+    <Content Include="node.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Billeder\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
