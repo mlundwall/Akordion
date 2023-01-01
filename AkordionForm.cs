@@ -13,7 +13,7 @@ namespace Akordion
     public partial class Akordion : Form
     {//                             0    1      2    3      4    5    6      7    8      9    10     11       
         readonly String[] Tones = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
-        readonly String[] Toneb = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "Bb", "H" };
+        readonly String[] Toneb = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "bB", "H" };
         readonly byte[] Dur = { 2, 2, 1, 2, 2, 2, 1 };
         readonly byte[] Mol = { 2, 1, 2, 2, 1, 2, 2 };
         readonly byte halvtoner = 12;
@@ -33,8 +33,8 @@ namespace Akordion
            Laver skala ud fra om det skal være dur eller mol og hvilket havltone-trin skalaen skal starte på
         */
         (
-            in int skalatype,               // 0 Dur eller 1 Mol
             int tpos,                       // Starttone 0-11 = C-H
+            in int skalatype,               // 0 Dur eller 1 Mol
             out String[] skala,             // De 7 toner i tonearten
             out bool kryds,                 // Om det er b eller kryds
             out string toneArt,             // Toneartens navn
@@ -112,21 +112,19 @@ namespace Akordion
 
         }
 
-        public void Visskala()
+        public void Visskala(int tpos, int skalatype, Label l1, Label l2, Label l3, Label l4, Label l5, Label l6, Label l7)
         {
-            int tpos;
             String[] skala = new String[7];
             bool kryds;
             String toneArt;
             String parallelToneArt;
 
-            tpos = Toneart.SelectedIndex;
-            LavToneart(Skalatype.SelectedIndex, tpos, out skala, out kryds, out toneArt, out parallelToneArt);
+            LavToneart(tpos, skalatype, out skala, out kryds, out toneArt, out parallelToneArt);
 
-            Label[] labels = new Label[15];
-            labels[0] = label1; labels[1] = label2; labels[2] = label3;
-            labels[3] = label4; labels[4] = label5; labels[5] = label6;
-            labels[6] = label7;
+            Label[] labels = new Label[7];
+            labels[0] = l1; labels[1] = l2; labels[2] = l3;
+            labels[3] = l4; labels[4] = l5; labels[5] = l6;
+            labels[6] = l7;
 
             for (int j = 0; j < heltoner; j++)
             {
@@ -153,16 +151,20 @@ namespace Akordion
                 ABox[i].SelectedIndex = 0;
 
                 ABox[i].SelectedIndexChanged += new System.EventHandler(Akord_SelectedIndexChanged);
-
             }
         }
         private void Akordion_Load(object sender, EventArgs e)
         {
             Skalatype.SelectedIndex = 0; // Dur
-            // Toneliste fyldes
+            // Tonelister fyldes
             for (int i = 0; i < halvtoner; i++)
                 Toneart.Items.Add(Tones[i]);
+            for (int i = 0; i < halvtoner; i++)
+                ToneartT.Items.Add(Toneb[i]);
+            // Lister initieres
             Toneart.SelectedIndex = 0;
+            ToneartT.SelectedIndex = 0;
+            TransBox.SelectedIndex = 1;
 
             // Fylder akkord-lister
             ABox[0] = Akord1;
@@ -175,12 +177,12 @@ namespace Akordion
 
         private void Toneart_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Visskala();
+            Visskala(Toneart.SelectedIndex, Skalatype.SelectedIndex, label1, label2, label3, label4, label5, label6, label7);
         }
 
         private void Skalatype_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Visskala();
+            Visskala(Toneart.SelectedIndex, Skalatype.SelectedIndex, label1, label2, label3, label4, label5, label6, label7);
         }
 
         private bool Match(byte[] T, byte[] D, byte starti)
@@ -267,9 +269,45 @@ namespace Akordion
             {
                 Skalatype.SelectedIndex = 0;
                 Toneart.SelectedIndex = Resultater.ElementAt(Resultatliste.SelectedIndex);
-                Visskala();
+                Visskala(Toneart.SelectedIndex, Skalatype.SelectedIndex, label1, label2, label3, label4, label5, label6, label7);
             }
         }
 
+        private void VisskalaT()
+        {
+            int tposT;
+            int Es;
+            int bB;
+
+            if (TilGreb.Checked) { Es = 3; bB = 12-2; } else { Es = 12-3; bB = 2; };
+            switch (TransBox.SelectedIndex)
+            {
+                case (1): tposT = (ToneartT.SelectedIndex + Es) % halvtoner; break;// Sopraksax Es
+                case (2): tposT = (ToneartT.SelectedIndex + bB) % halvtoner; break;// Klarinet  bB
+                default: tposT = ToneartT.SelectedIndex; break;  // Lige over
+            };
+            Visskala(tposT, SkalatypeT.SelectedIndex, labelT1, labelT2, labelT3, labelT4, labelT5, labelT6, labelT7);
+        }
+
+        private void ToneartT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VisskalaT();
+        }
+
+        private void SkalatypeT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VisskalaT();
+        }
+
+        private void TransBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VisskalaT();
+        }
+
+        private void TilGreb_CheckedChanged(object sender, EventArgs e)
+        {
+            if (TilGreb.Checked) TilGreb.Text = "Til greb"; else TilGreb.Text = "Til noder";
+                VisskalaT();
+        }
     }
 }
