@@ -3,15 +3,21 @@ using System.Linq;
 using Akordion.Properties;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 //Done: Billeder af tonearternes kryds/b-er indsættes i "Nodebillede"
-//Todo: Icon indsættes
+//Done: Icon indsættes
+//Todo: Tonefølge bør være stigende
+//Todo: Tonerækker skal pakkes i objekter
 //Todo: Flere kommentarer
 
 namespace Akordion
 {
     public partial class Akordion : Form
     {//                             0    1      2    3      4    5    6      7    8      9    10     11       
+        [DllImport("kernel32.dll", SetLastError = true)]
+        static extern bool Beep(uint dwFreq, uint dwDuration);
+
         readonly String[] Tones = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
         readonly String[] Toneb = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "bB", "H" };
         readonly byte[] Dur = { 2, 2, 1, 2, 2, 2, 1 };
@@ -22,10 +28,60 @@ namespace Akordion
         readonly static int ABoxe = 5;
         ComboBox[] ABox = new ComboBox[ABoxe];
         List<int> Resultater = new List<int>();
+        Label[] label = new Label[7];
+        Label[] labelT = new Label[7];
+
 
         public Akordion()
         {
             InitializeComponent();
+        }
+
+        public void FyldAkordlister()
+        {
+            for (int i = 0; i < ABoxe; i++)
+            {
+                ABox[i].Items.Clear();
+                ABox[i].Items.Add("-");
+                for (int j = 0; j < halvtoner; j++)
+                {
+                    ABox[i].Items.Add(Tones[j]);
+                }
+                ABox[i].SelectedIndex = 0;
+
+                ABox[i].SelectedIndexChanged += new System.EventHandler(Akord_SelectedIndexChanged);
+            }
+        }
+        private void Akordion_Load(object sender, EventArgs e)
+        {
+            Skalatype.SelectedIndex = 0; // Dur
+
+            // Labels fyldes
+            label[0] = label1; label[1] = label2; label[2] = label3;
+            label[3] = label4; label[4] = label5; label[5] = label6;
+            label[6] = label7;
+
+            labelT[0] = labelT1; labelT[1] = labelT2; labelT[2] = labelT3;
+            labelT[3] = labelT4; labelT[4] = labelT5; labelT[5] = labelT6;
+            labelT[6] = labelT7;
+
+            // Tonelister fyldes
+            for (int i = 0; i < halvtoner; i++)
+                Toneart.Items.Add(Tones[i]);
+            for (int i = 0; i < halvtoner; i++)
+                ToneartT.Items.Add(Toneb[i]);
+            // Lister initieres
+            Toneart.SelectedIndex = 0;
+            ToneartT.SelectedIndex = 0;
+            TransBox.SelectedIndex = 1;
+
+            // Fylder akkord-lister
+            ABox[0] = Akord1;
+            ABox[1] = Akord2;
+            ABox[2] = Akord3;
+            ABox[3] = Akord4;
+            ABox[4] = Akord5;
+            FyldAkordlister();
         }
 
         public void LavToneart
@@ -112,19 +168,14 @@ namespace Akordion
 
         }
 
-        public void Visskala(int tpos, int skalatype, Label l1, Label l2, Label l3, Label l4, Label l5, Label l6, Label l7)
+        public void Visskala(int tpos, int skalatype, ref Label[] labels)
         {
-            String[] skala = new String[7];
             bool kryds;
             String toneArt;
             String parallelToneArt;
+            String[] skala = new string[heltoner];
 
             LavToneart(tpos, skalatype, out skala, out kryds, out toneArt, out parallelToneArt);
-
-            Label[] labels = new Label[7];
-            labels[0] = l1; labels[1] = l2; labels[2] = l3;
-            labels[3] = l4; labels[4] = l5; labels[5] = l6;
-            labels[6] = l7;
 
             for (int j = 0; j < heltoner; j++)
             {
@@ -132,57 +183,40 @@ namespace Akordion
             }
             paralelltoneart.Text = "Paraleltoneart: " + parallelToneArt;
 
-            if (Skalatype.SelectedIndex == 0)
-                PutBillede(tpos);
-            else // Hvis det er mol, vælger vi paralleltoneartens billede
-                PutBillede((tpos + 3) % halvtoner);
+            if (labels[0] == label[0]) // Vi fylder i hovedskalaen
+                if (Skalatype.SelectedIndex == 0)
+                    PutBillede(tpos);
+                else // Hvis det er mol, vælger vi paralleltoneartens billede
+                    PutBillede((tpos + 3) % halvtoner);
+            this.Update();
+            if (Lyde.Checked)
+                Spilskala();
         }
 
-        public void FyldAkordlister()
+        private void VisskalaT()
         {
-            for (int i = 0; i < ABoxe; i++)
+            int tposT;
+            int Es;
+            int bB;
+
+            if (TilGreb.Checked) { Es = 3; bB = 12 - 2; } else { Es = 12 - 3; bB = 2; };
+            switch (TransBox.SelectedIndex)
             {
-                ABox[i].Items.Clear();
-                ABox[i].Items.Add("-");
-                for (int j = 0; j < halvtoner; j++)
-                {
-                    ABox[i].Items.Add(Tones[j]);
-                }
-                ABox[i].SelectedIndex = 0;
-
-                ABox[i].SelectedIndexChanged += new System.EventHandler(Akord_SelectedIndexChanged);
-            }
-        }
-        private void Akordion_Load(object sender, EventArgs e)
-        {
-            Skalatype.SelectedIndex = 0; // Dur
-            // Tonelister fyldes
-            for (int i = 0; i < halvtoner; i++)
-                Toneart.Items.Add(Tones[i]);
-            for (int i = 0; i < halvtoner; i++)
-                ToneartT.Items.Add(Toneb[i]);
-            // Lister initieres
-            Toneart.SelectedIndex = 0;
-            ToneartT.SelectedIndex = 0;
-            TransBox.SelectedIndex = 1;
-
-            // Fylder akkord-lister
-            ABox[0] = Akord1;
-            ABox[1] = Akord2;
-            ABox[2] = Akord3;
-            ABox[3] = Akord4;
-            ABox[4] = Akord5;
-            FyldAkordlister();
+                case (1): tposT = (ToneartT.SelectedIndex + Es) % halvtoner; break;// Sopraksax Es
+                case (2): tposT = (ToneartT.SelectedIndex + bB) % halvtoner; break;// Klarinet  bB
+                default: tposT = ToneartT.SelectedIndex; break;  // Lige over
+            };
+            Visskala(tposT, SkalatypeT.SelectedIndex, ref labelT);
         }
 
         private void Toneart_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Visskala(Toneart.SelectedIndex, Skalatype.SelectedIndex, label1, label2, label3, label4, label5, label6, label7);
+            Visskala(Toneart.SelectedIndex, Skalatype.SelectedIndex, ref label);
         }
 
         private void Skalatype_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Visskala(Toneart.SelectedIndex, Skalatype.SelectedIndex, label1, label2, label3, label4, label5, label6, label7);
+            Visskala(Toneart.SelectedIndex, Skalatype.SelectedIndex, ref label);
         }
 
         private bool Match(byte[] T, byte[] D, byte starti)
@@ -269,24 +303,8 @@ namespace Akordion
             {
                 Skalatype.SelectedIndex = 0;
                 Toneart.SelectedIndex = Resultater.ElementAt(Resultatliste.SelectedIndex);
-                Visskala(Toneart.SelectedIndex, Skalatype.SelectedIndex, label1, label2, label3, label4, label5, label6, label7);
+                Visskala(Toneart.SelectedIndex, Skalatype.SelectedIndex, ref label);
             }
-        }
-
-        private void VisskalaT()
-        {
-            int tposT;
-            int Es;
-            int bB;
-
-            if (TilGreb.Checked) { Es = 3; bB = 12-2; } else { Es = 12-3; bB = 2; };
-            switch (TransBox.SelectedIndex)
-            {
-                case (1): tposT = (ToneartT.SelectedIndex + Es) % halvtoner; break;// Sopraksax Es
-                case (2): tposT = (ToneartT.SelectedIndex + bB) % halvtoner; break;// Klarinet  bB
-                default: tposT = ToneartT.SelectedIndex; break;  // Lige over
-            };
-            Visskala(tposT, SkalatypeT.SelectedIndex, labelT1, labelT2, labelT3, labelT4, labelT5, labelT6, labelT7);
         }
 
         private void ToneartT_SelectedIndexChanged(object sender, EventArgs e)
@@ -307,7 +325,48 @@ namespace Akordion
         private void TilGreb_CheckedChanged(object sender, EventArgs e)
         {
             if (TilGreb.Checked) TilGreb.Text = "Til greb"; else TilGreb.Text = "Til noder";
-                VisskalaT();
+            VisskalaT();
+        }
+
+        private void Spil(String s)
+        {
+            int tpos = 0;
+            for (int t = 0; t < halvtoner; t++)
+                if (s == Tones[t] || s == Toneb[t])
+                    tpos = t;
+            // Log10 440 = 2,64355 - Log10 880 = 2,9445 - Interval (dif/12 = 0.02508583)
+            int hz = Convert.ToInt32(Math.Round(Math.Pow(10, 2.64355 + (0.02508583 * tpos))));
+            Console.Beep(hz, 300);
+        }
+
+        private void Spilskala()
+        {
+            for (int i = 0; i < heltoner; i++)
+                Spil(label[i].Text);
+        }
+        private void SpilskalaT()
+        {
+            for (int i = 0; i < heltoner; i++)
+                Spil(labelT[i].Text);
+        }
+
+        private void Spiltone(object sender, EventArgs e)
+        {
+            if (Lyde.Checked)
+            {
+                Label l;
+                l = (Label)sender;
+                Spil(l.Text);
+            }
+        }
+
+        private void Lyde_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Lyde.Checked)
+                if (Tabsider.SelectedIndex == 0)
+                    Spilskala();
+                else
+                    SpilskalaT();
         }
     }
 }

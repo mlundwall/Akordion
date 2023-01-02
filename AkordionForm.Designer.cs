@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Akordion));
             this.Tabsider = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Lyde = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.Resultatliste = new System.Windows.Forms.ListBox();
@@ -51,6 +51,9 @@
             this.Skalatype = new System.Windows.Forms.ComboBox();
             this.Toneart = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.TilGreb = new System.Windows.Forms.CheckBox();
+            this.TransBox = new System.Windows.Forms.ComboBox();
             this.labelT5 = new System.Windows.Forms.Label();
             this.labelT6 = new System.Windows.Forms.Label();
             this.labelT7 = new System.Windows.Forms.Label();
@@ -60,12 +63,10 @@
             this.SkalatypeT = new System.Windows.Forms.ComboBox();
             this.ToneartT = new System.Windows.Forms.ComboBox();
             this.labelT1 = new System.Windows.Forms.Label();
-            this.TransBox = new System.Windows.Forms.ComboBox();
-            this.TilGreb = new System.Windows.Forms.CheckBox();
             this.Tabsider.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nodebillede)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Tabsider
@@ -81,6 +82,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.Lyde);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.Resultatliste);
@@ -108,26 +110,16 @@
             this.tabPage1.Text = "Basis";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // Lyde
             // 
-            this.tabPage2.Controls.Add(this.TilGreb);
-            this.tabPage2.Controls.Add(this.TransBox);
-            this.tabPage2.Controls.Add(this.labelT5);
-            this.tabPage2.Controls.Add(this.labelT6);
-            this.tabPage2.Controls.Add(this.labelT7);
-            this.tabPage2.Controls.Add(this.labelT3);
-            this.tabPage2.Controls.Add(this.labelT4);
-            this.tabPage2.Controls.Add(this.labelT2);
-            this.tabPage2.Controls.Add(this.SkalatypeT);
-            this.tabPage2.Controls.Add(this.ToneartT);
-            this.tabPage2.Controls.Add(this.labelT1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(461, 189);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Transponering";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.Lyde.AutoSize = true;
+            this.Lyde.Location = new System.Drawing.Point(154, 21);
+            this.Lyde.Name = "Lyde";
+            this.Lyde.Size = new System.Drawing.Size(43, 17);
+            this.Lyde.TabIndex = 53;
+            this.Lyde.Text = "Lyd";
+            this.Lyde.UseVisualStyleBackColor = true;
+            this.Lyde.CheckedChanged += new System.EventHandler(this.Lyde_CheckedChanged);
             // 
             // label9
             // 
@@ -232,6 +224,7 @@
             this.label5.Size = new System.Drawing.Size(18, 18);
             this.label5.TabIndex = 42;
             this.label5.Text = "-";
+            this.label5.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // label6
             // 
@@ -243,6 +236,7 @@
             this.label6.Size = new System.Drawing.Size(18, 18);
             this.label6.TabIndex = 41;
             this.label6.Text = "-";
+            this.label6.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // label7
             // 
@@ -254,6 +248,7 @@
             this.label7.Size = new System.Drawing.Size(18, 18);
             this.label7.TabIndex = 40;
             this.label7.Text = "-";
+            this.label7.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // label3
             // 
@@ -265,6 +260,7 @@
             this.label3.Size = new System.Drawing.Size(18, 18);
             this.label3.TabIndex = 39;
             this.label3.Text = "-";
+            this.label3.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // label4
             // 
@@ -277,6 +273,7 @@
             this.label4.Size = new System.Drawing.Size(18, 18);
             this.label4.TabIndex = 38;
             this.label4.Text = "-";
+            this.label4.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // label2
             // 
@@ -288,6 +285,7 @@
             this.label2.Size = new System.Drawing.Size(18, 18);
             this.label2.TabIndex = 37;
             this.label2.Text = "-";
+            this.label2.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // Skalatype
             // 
@@ -323,6 +321,55 @@
             this.label1.Size = new System.Drawing.Size(18, 18);
             this.label1.TabIndex = 34;
             this.label1.Text = "-";
+            this.label1.MouseHover += new System.EventHandler(this.Spiltone);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.TilGreb);
+            this.tabPage2.Controls.Add(this.TransBox);
+            this.tabPage2.Controls.Add(this.labelT5);
+            this.tabPage2.Controls.Add(this.labelT6);
+            this.tabPage2.Controls.Add(this.labelT7);
+            this.tabPage2.Controls.Add(this.labelT3);
+            this.tabPage2.Controls.Add(this.labelT4);
+            this.tabPage2.Controls.Add(this.labelT2);
+            this.tabPage2.Controls.Add(this.SkalatypeT);
+            this.tabPage2.Controls.Add(this.ToneartT);
+            this.tabPage2.Controls.Add(this.labelT1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(461, 189);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Transponering";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // TilGreb
+            // 
+            this.TilGreb.AutoSize = true;
+            this.TilGreb.Checked = true;
+            this.TilGreb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.TilGreb.Location = new System.Drawing.Point(279, 21);
+            this.TilGreb.Name = "TilGreb";
+            this.TilGreb.Size = new System.Drawing.Size(61, 17);
+            this.TilGreb.TabIndex = 54;
+            this.TilGreb.Text = "Til greb";
+            this.TilGreb.UseVisualStyleBackColor = true;
+            this.TilGreb.CheckedChanged += new System.EventHandler(this.TilGreb_CheckedChanged);
+            // 
+            // TransBox
+            // 
+            this.TransBox.FormattingEnabled = true;
+            this.TransBox.Items.AddRange(new object[] {
+            "C   - Lige over",
+            "Es  - Sopransax",
+            "bB - Klarinet"});
+            this.TransBox.Location = new System.Drawing.Point(144, 19);
+            this.TransBox.Name = "TransBox";
+            this.TransBox.Size = new System.Drawing.Size(102, 21);
+            this.TransBox.TabIndex = 53;
+            this.TransBox.Text = "Es  - Sopransax";
+            this.TransBox.SelectedIndexChanged += new System.EventHandler(this.TransBox_SelectedIndexChanged);
             // 
             // labelT5
             // 
@@ -335,6 +382,7 @@
             this.labelT5.Size = new System.Drawing.Size(18, 18);
             this.labelT5.TabIndex = 52;
             this.labelT5.Text = "-";
+            this.labelT5.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // labelT6
             // 
@@ -346,6 +394,7 @@
             this.labelT6.Size = new System.Drawing.Size(18, 18);
             this.labelT6.TabIndex = 51;
             this.labelT6.Text = "-";
+            this.labelT6.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // labelT7
             // 
@@ -357,6 +406,7 @@
             this.labelT7.Size = new System.Drawing.Size(18, 18);
             this.labelT7.TabIndex = 50;
             this.labelT7.Text = "-";
+            this.labelT7.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // labelT3
             // 
@@ -368,6 +418,7 @@
             this.labelT3.Size = new System.Drawing.Size(18, 18);
             this.labelT3.TabIndex = 49;
             this.labelT3.Text = "-";
+            this.labelT3.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // labelT4
             // 
@@ -380,6 +431,7 @@
             this.labelT4.Size = new System.Drawing.Size(18, 18);
             this.labelT4.TabIndex = 48;
             this.labelT4.Text = "-";
+            this.labelT4.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // labelT2
             // 
@@ -391,6 +443,7 @@
             this.labelT2.Size = new System.Drawing.Size(18, 18);
             this.labelT2.TabIndex = 47;
             this.labelT2.Text = "-";
+            this.labelT2.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // SkalatypeT
             // 
@@ -426,33 +479,7 @@
             this.labelT1.Size = new System.Drawing.Size(18, 18);
             this.labelT1.TabIndex = 44;
             this.labelT1.Text = "-";
-            // 
-            // TransBox
-            // 
-            this.TransBox.FormattingEnabled = true;
-            this.TransBox.Items.AddRange(new object[] {
-            "C   - Lige over",
-            "Es  - Sopransax",
-            "bB - Klarinet"});
-            this.TransBox.Location = new System.Drawing.Point(144, 19);
-            this.TransBox.Name = "TransBox";
-            this.TransBox.Size = new System.Drawing.Size(102, 21);
-            this.TransBox.TabIndex = 53;
-            this.TransBox.Text = "Es  - Sopransax";
-            this.TransBox.SelectedIndexChanged += new System.EventHandler(this.TransBox_SelectedIndexChanged);
-            // 
-            // TilGreb
-            // 
-            this.TilGreb.AutoSize = true;
-            this.TilGreb.Checked = true;
-            this.TilGreb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.TilGreb.Location = new System.Drawing.Point(279, 21);
-            this.TilGreb.Name = "TilGreb";
-            this.TilGreb.Size = new System.Drawing.Size(61, 17);
-            this.TilGreb.TabIndex = 54;
-            this.TilGreb.Text = "Til greb";
-            this.TilGreb.UseVisualStyleBackColor = true;
-            this.TilGreb.CheckedChanged += new System.EventHandler(this.TilGreb_CheckedChanged);
+            this.labelT1.MouseHover += new System.EventHandler(this.Spiltone);
             // 
             // Akordion
             // 
@@ -469,9 +496,9 @@
             this.Tabsider.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Nodebillede)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Nodebillede)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -511,6 +538,7 @@
         private System.Windows.Forms.Label labelT1;
         private System.Windows.Forms.ComboBox TransBox;
         private System.Windows.Forms.CheckBox TilGreb;
+        private System.Windows.Forms.CheckBox Lyde;
     }
 }
 
