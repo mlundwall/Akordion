@@ -146,6 +146,7 @@
             this.Resultatliste.Name = "Resultatliste";
             this.Resultatliste.Size = new System.Drawing.Size(117, 56);
             this.Resultatliste.TabIndex = 50;
+            this.Resultatliste.SelectedIndexChanged += new System.EventHandler(this.Resultatliste_Click);
             // 
             // Akord5
             // 
