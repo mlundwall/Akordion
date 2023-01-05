@@ -1,6 +1,8 @@
+namespace Akordion
+{
     public class Spilledåse
     {
-        [DllImport("kernel32.dll", SetLastError = true)] 
+        [DllImport("kernel32.dll", SetLastError = true)]
         static extern bool Beep(uint dwFreq, uint dwDuration);
 
         readonly String[] Tones = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
@@ -355,3 +357,5 @@
         }
 
     } // Slut på Spilledåse class
+
+} // Tilføjet til namespace Akkordion
