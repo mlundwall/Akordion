@@ -1,6 +1,37 @@
+/*
+  Særlige
+Hovedside-version
+Parametre:
+PictureBox pNodebillede,
+ListBox pResultatliste
+
+Label paralellToneart;
+ListBox Resultatliste;
+Og:
+List<int> Resultater = new List<int>();
+--
+Resultatliste = pResultatliste;
+Nodebillede = pNodebillede;
+
+
+Tranpose-version
+----------------
+Parametre:
+CheckBox pTilGreb,
+ComboBox pTransBox,
+
+Lokale:
+PictureBox Nodebillede;
+CheckBox TilGreb;
+ComboBox TransBox;
+--
+TilGreb = pTilGreb;
+TransBox = pTransBox;
+*/
+
 namespace Akordion
 {
-    public class Spilledåse
+    public class SpilledåseRod
     {
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern bool Beep(uint dwFreq, uint dwDuration);
@@ -11,29 +42,16 @@ namespace Akordion
         readonly byte[] Mol = { 2, 1, 2, 2, 1, 2, 2 };
         readonly byte halvtoner = 12;
         readonly byte heltoner = 7;
-        PictureBox Nodebillede;
-        // Antal akordbokse
-        readonly static int ABoxe = 5;
-        ComboBox[] ABox = new ComboBox[ABoxe];
-        List<int> Resultater = new List<int>();
         Label[] label = new Label[7];
-        Label paralellToneart;
         ComboBox ToneArt;
         ComboBox Skalatype;
-        CheckBox TilGreb;
-        ComboBox TransBox;
-        ListBox Resultatliste;
 
-        public Spilledåse(
+        public SpilledåseRod(
             Label l1, Label l2, Label l3, Label l4, Label l5, Label l6, Label l7,
-            PictureBox pNodebillede,
-            ComboBox pAkord1, ComboBox pAkord2, ComboBox pAkord3,
-            ComboBox pAkord4, ComboBox pAkord5,
             ComboBox pToneArt,
             ComboBox pSkalatype,
-            CheckBox pTilGreb,
-            ComboBox pTransBox,
-            ListBox pResultatliste
+            ComboBox pAkord1, ComboBox pAkord2, ComboBox pAkord3,
+            ComboBox pAkord4, ComboBox pAkord5,
             )
         {
             // tildeler lokale variable
@@ -43,10 +61,9 @@ namespace Akordion
             label[6] = l7;
             ToneArt = pToneArt;
             Skalatype = pSkalatype;
-            TilGreb = pTilGreb;
-            TransBox = pTransBox;
-            Resultatliste = pResultatliste;
-            Nodebillede = pNodebillede;
+            // Antal akordbokse
+            readonly static int ABoxe = 5;
+            ComboBox[] ABox = new ComboBox[ABoxe];
             for (int i = 0; i < ABoxe; i++)
             {
                 ABox[i].Items.Clear();
