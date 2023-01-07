@@ -204,6 +204,7 @@
             this.Nodebillede.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Nodebillede.TabIndex = 44;
             this.Nodebillede.TabStop = false;
+            this.Nodebillede.Click += new System.EventHandler(this.Nodebillede_Click);
             // 
             // paralelltoneart
             // 

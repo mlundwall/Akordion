@@ -82,7 +82,6 @@ namespace Akordion
             ABox[4] = Akord5;
             FyldAkordlister();
         }
-
         public void LavToneart
         /*
            Laver skala ud fra om det skal være dur eller mol og hvilket havltone-trin skalaen skal starte på
@@ -368,6 +367,10 @@ namespace Akordion
                     SpilskalaT();
         }
 
+        private void Nodebillede_Click(object sender, EventArgs e)
+        {
+
+        }
     } // Slut på Akordion class
 
 } // Slut på Namespace
