@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Akordion));
             this.Tabsider = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.BasisSide = new System.Windows.Forms.TabPage();
             this.Lyde = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             this.Skalatype = new System.Windows.Forms.ComboBox();
             this.Toneart = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.TansSide = new System.Windows.Forms.TabPage();
             this.TilGreb = new System.Windows.Forms.CheckBox();
             this.TransBox = new System.Windows.Forms.ComboBox();
             this.labelT5 = new System.Windows.Forms.Label();
@@ -63,52 +63,66 @@
             this.SkalatypeT = new System.Windows.Forms.ComboBox();
             this.ToneartT = new System.Windows.Forms.ComboBox();
             this.labelT1 = new System.Windows.Forms.Label();
+            this.TestTab = new System.Windows.Forms.TabPage();
+            this.TestLyd = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.TestLabel5 = new System.Windows.Forms.Label();
+            this.TestLabel6 = new System.Windows.Forms.Label();
+            this.TestLabel7 = new System.Windows.Forms.Label();
+            this.TestLabel3 = new System.Windows.Forms.Label();
+            this.TestLabel4 = new System.Windows.Forms.Label();
+            this.TestLabel2 = new System.Windows.Forms.Label();
+            this.TestSkalatype = new System.Windows.Forms.ComboBox();
+            this.TestToneart = new System.Windows.Forms.ComboBox();
+            this.TestLabel1 = new System.Windows.Forms.Label();
             this.Tabsider.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.BasisSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nodebillede)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.TansSide.SuspendLayout();
+            this.TestTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // Tabsider
             // 
-            this.Tabsider.Controls.Add(this.tabPage1);
-            this.Tabsider.Controls.Add(this.tabPage2);
+            this.Tabsider.Controls.Add(this.BasisSide);
+            this.Tabsider.Controls.Add(this.TansSide);
+            this.Tabsider.Controls.Add(this.TestTab);
             this.Tabsider.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Tabsider.Location = new System.Drawing.Point(0, 0);
             this.Tabsider.Name = "Tabsider";
             this.Tabsider.SelectedIndex = 0;
-            this.Tabsider.Size = new System.Drawing.Size(469, 215);
+            this.Tabsider.Size = new System.Drawing.Size(469, 211);
             this.Tabsider.TabIndex = 34;
             // 
-            // tabPage1
+            // BasisSide
             // 
-            this.tabPage1.Controls.Add(this.Lyde);
-            this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.Resultatliste);
-            this.tabPage1.Controls.Add(this.Akord5);
-            this.tabPage1.Controls.Add(this.Akord4);
-            this.tabPage1.Controls.Add(this.Akord3);
-            this.tabPage1.Controls.Add(this.Akord2);
-            this.tabPage1.Controls.Add(this.Akord1);
-            this.tabPage1.Controls.Add(this.Nodebillede);
-            this.tabPage1.Controls.Add(this.paralelltoneart);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.label7);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.Skalatype);
-            this.tabPage1.Controls.Add(this.Toneart);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(461, 189);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Basis";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.BasisSide.Controls.Add(this.Lyde);
+            this.BasisSide.Controls.Add(this.label9);
+            this.BasisSide.Controls.Add(this.label8);
+            this.BasisSide.Controls.Add(this.Resultatliste);
+            this.BasisSide.Controls.Add(this.Akord5);
+            this.BasisSide.Controls.Add(this.Akord4);
+            this.BasisSide.Controls.Add(this.Akord3);
+            this.BasisSide.Controls.Add(this.Akord2);
+            this.BasisSide.Controls.Add(this.Akord1);
+            this.BasisSide.Controls.Add(this.Nodebillede);
+            this.BasisSide.Controls.Add(this.paralelltoneart);
+            this.BasisSide.Controls.Add(this.label5);
+            this.BasisSide.Controls.Add(this.label6);
+            this.BasisSide.Controls.Add(this.label7);
+            this.BasisSide.Controls.Add(this.label3);
+            this.BasisSide.Controls.Add(this.label4);
+            this.BasisSide.Controls.Add(this.label2);
+            this.BasisSide.Controls.Add(this.Skalatype);
+            this.BasisSide.Controls.Add(this.Toneart);
+            this.BasisSide.Controls.Add(this.label1);
+            this.BasisSide.Location = new System.Drawing.Point(4, 22);
+            this.BasisSide.Name = "BasisSide";
+            this.BasisSide.Padding = new System.Windows.Forms.Padding(3);
+            this.BasisSide.Size = new System.Drawing.Size(461, 185);
+            this.BasisSide.TabIndex = 0;
+            this.BasisSide.Text = "Basis";
+            this.BasisSide.UseVisualStyleBackColor = true;
             // 
             // Lyde
             // 
@@ -325,26 +339,26 @@
             this.label1.Text = "-";
             this.label1.MouseHover += new System.EventHandler(this.Spiltone);
             // 
-            // tabPage2
+            // TansSide
             // 
-            this.tabPage2.Controls.Add(this.TilGreb);
-            this.tabPage2.Controls.Add(this.TransBox);
-            this.tabPage2.Controls.Add(this.labelT5);
-            this.tabPage2.Controls.Add(this.labelT6);
-            this.tabPage2.Controls.Add(this.labelT7);
-            this.tabPage2.Controls.Add(this.labelT3);
-            this.tabPage2.Controls.Add(this.labelT4);
-            this.tabPage2.Controls.Add(this.labelT2);
-            this.tabPage2.Controls.Add(this.SkalatypeT);
-            this.tabPage2.Controls.Add(this.ToneartT);
-            this.tabPage2.Controls.Add(this.labelT1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(461, 189);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Transponering";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.TansSide.Controls.Add(this.TilGreb);
+            this.TansSide.Controls.Add(this.TransBox);
+            this.TansSide.Controls.Add(this.labelT5);
+            this.TansSide.Controls.Add(this.labelT6);
+            this.TansSide.Controls.Add(this.labelT7);
+            this.TansSide.Controls.Add(this.labelT3);
+            this.TansSide.Controls.Add(this.labelT4);
+            this.TansSide.Controls.Add(this.labelT2);
+            this.TansSide.Controls.Add(this.SkalatypeT);
+            this.TansSide.Controls.Add(this.ToneartT);
+            this.TansSide.Controls.Add(this.labelT1);
+            this.TansSide.Location = new System.Drawing.Point(4, 22);
+            this.TansSide.Name = "TansSide";
+            this.TansSide.Padding = new System.Windows.Forms.Padding(3);
+            this.TansSide.Size = new System.Drawing.Size(461, 185);
+            this.TansSide.TabIndex = 1;
+            this.TansSide.Text = "Transponering";
+            this.TansSide.UseVisualStyleBackColor = true;
             // 
             // TilGreb
             // 
@@ -483,11 +497,152 @@
             this.labelT1.Text = "-";
             this.labelT1.MouseHover += new System.EventHandler(this.Spiltone);
             // 
+            // TestTab
+            // 
+            this.TestTab.Controls.Add(this.TestLyd);
+            this.TestTab.Controls.Add(this.label10);
+            this.TestTab.Controls.Add(this.TestLabel5);
+            this.TestTab.Controls.Add(this.TestLabel6);
+            this.TestTab.Controls.Add(this.TestLabel7);
+            this.TestTab.Controls.Add(this.TestLabel3);
+            this.TestTab.Controls.Add(this.TestLabel4);
+            this.TestTab.Controls.Add(this.TestLabel2);
+            this.TestTab.Controls.Add(this.TestSkalatype);
+            this.TestTab.Controls.Add(this.TestToneart);
+            this.TestTab.Controls.Add(this.TestLabel1);
+            this.TestTab.Location = new System.Drawing.Point(4, 22);
+            this.TestTab.Name = "TestTab";
+            this.TestTab.Padding = new System.Windows.Forms.Padding(3);
+            this.TestTab.Size = new System.Drawing.Size(461, 185);
+            this.TestTab.TabIndex = 2;
+            this.TestTab.Text = "TestTab";
+            this.TestTab.UseVisualStyleBackColor = true;
+            // 
+            // TestLyd
+            // 
+            this.TestLyd.AutoSize = true;
+            this.TestLyd.Location = new System.Drawing.Point(147, 8);
+            this.TestLyd.Name = "TestLyd";
+            this.TestLyd.Size = new System.Drawing.Size(43, 17);
+            this.TestLyd.TabIndex = 64;
+            this.TestLyd.Text = "Lyd";
+            this.TestLyd.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 13);
+            this.label10.TabIndex = 63;
+            this.label10.Text = "Paralleltoneart: ";
+            // 
+            // TestLabel5
+            // 
+            this.TestLabel5.AutoSize = true;
+            this.TestLabel5.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TestLabel5.ForeColor = System.Drawing.Color.Crimson;
+            this.TestLabel5.Location = new System.Drawing.Point(165, 52);
+            this.TestLabel5.Margin = new System.Windows.Forms.Padding(0);
+            this.TestLabel5.Name = "TestLabel5";
+            this.TestLabel5.Size = new System.Drawing.Size(18, 18);
+            this.TestLabel5.TabIndex = 62;
+            this.TestLabel5.Text = "-";
+            // 
+            // TestLabel6
+            // 
+            this.TestLabel6.AutoSize = true;
+            this.TestLabel6.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TestLabel6.Location = new System.Drawing.Point(203, 52);
+            this.TestLabel6.Margin = new System.Windows.Forms.Padding(0);
+            this.TestLabel6.Name = "TestLabel6";
+            this.TestLabel6.Size = new System.Drawing.Size(18, 18);
+            this.TestLabel6.TabIndex = 61;
+            this.TestLabel6.Text = "-";
+            // 
+            // TestLabel7
+            // 
+            this.TestLabel7.AutoSize = true;
+            this.TestLabel7.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TestLabel7.Location = new System.Drawing.Point(242, 52);
+            this.TestLabel7.Margin = new System.Windows.Forms.Padding(0);
+            this.TestLabel7.Name = "TestLabel7";
+            this.TestLabel7.Size = new System.Drawing.Size(18, 18);
+            this.TestLabel7.TabIndex = 60;
+            this.TestLabel7.Text = "-";
+            // 
+            // TestLabel3
+            // 
+            this.TestLabel3.AutoSize = true;
+            this.TestLabel3.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TestLabel3.Location = new System.Drawing.Point(88, 52);
+            this.TestLabel3.Margin = new System.Windows.Forms.Padding(0);
+            this.TestLabel3.Name = "TestLabel3";
+            this.TestLabel3.Size = new System.Drawing.Size(18, 18);
+            this.TestLabel3.TabIndex = 59;
+            this.TestLabel3.Text = "-";
+            // 
+            // TestLabel4
+            // 
+            this.TestLabel4.AutoSize = true;
+            this.TestLabel4.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TestLabel4.ForeColor = System.Drawing.Color.Crimson;
+            this.TestLabel4.Location = new System.Drawing.Point(126, 52);
+            this.TestLabel4.Margin = new System.Windows.Forms.Padding(0);
+            this.TestLabel4.Name = "TestLabel4";
+            this.TestLabel4.Size = new System.Drawing.Size(18, 18);
+            this.TestLabel4.TabIndex = 58;
+            this.TestLabel4.Text = "-";
+            // 
+            // TestLabel2
+            // 
+            this.TestLabel2.AutoSize = true;
+            this.TestLabel2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TestLabel2.Location = new System.Drawing.Point(50, 52);
+            this.TestLabel2.Margin = new System.Windows.Forms.Padding(0);
+            this.TestLabel2.Name = "TestLabel2";
+            this.TestLabel2.Size = new System.Drawing.Size(18, 18);
+            this.TestLabel2.TabIndex = 57;
+            this.TestLabel2.Text = "-";
+            // 
+            // TestSkalatype
+            // 
+            this.TestSkalatype.FormattingEnabled = true;
+            this.TestSkalatype.Items.AddRange(new object[] {
+            "Dur",
+            "Mol"});
+            this.TestSkalatype.Location = new System.Drawing.Point(55, 6);
+            this.TestSkalatype.Name = "TestSkalatype";
+            this.TestSkalatype.Size = new System.Drawing.Size(42, 21);
+            this.TestSkalatype.TabIndex = 56;
+            this.TestSkalatype.Text = "Dur";
+            // 
+            // TestToneart
+            // 
+            this.TestToneart.FormattingEnabled = true;
+            this.TestToneart.Location = new System.Drawing.Point(8, 6);
+            this.TestToneart.Name = "TestToneart";
+            this.TestToneart.Size = new System.Drawing.Size(43, 21);
+            this.TestToneart.TabIndex = 55;
+            this.TestToneart.Text = "C";
+            // 
+            // TestLabel1
+            // 
+            this.TestLabel1.AutoSize = true;
+            this.TestLabel1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TestLabel1.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.TestLabel1.Location = new System.Drawing.Point(12, 52);
+            this.TestLabel1.Margin = new System.Windows.Forms.Padding(0);
+            this.TestLabel1.Name = "TestLabel1";
+            this.TestLabel1.Size = new System.Drawing.Size(18, 18);
+            this.TestLabel1.TabIndex = 54;
+            this.TestLabel1.Text = "-";
+            // 
             // Akordion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(469, 215);
+            this.ClientSize = new System.Drawing.Size(469, 211);
             this.Controls.Add(this.Tabsider);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -496,11 +651,13 @@
             this.Text = "Akordion";
             this.Load += new System.EventHandler(this.Akordion_Load);
             this.Tabsider.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.BasisSide.ResumeLayout(false);
+            this.BasisSide.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nodebillede)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.TansSide.ResumeLayout(false);
+            this.TansSide.PerformLayout();
+            this.TestTab.ResumeLayout(false);
+            this.TestTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -508,7 +665,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl Tabsider;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage BasisSide;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox Resultatliste;
@@ -528,7 +685,7 @@
         private System.Windows.Forms.ComboBox Skalatype;
         private System.Windows.Forms.ComboBox Toneart;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage TansSide;
         private System.Windows.Forms.Label labelT5;
         private System.Windows.Forms.Label labelT6;
         private System.Windows.Forms.Label labelT7;
@@ -541,6 +698,18 @@
         private System.Windows.Forms.ComboBox TransBox;
         private System.Windows.Forms.CheckBox TilGreb;
         private System.Windows.Forms.CheckBox Lyde;
+        private System.Windows.Forms.TabPage TestTab;
+        private System.Windows.Forms.CheckBox TestLyd;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label TestLabel5;
+        private System.Windows.Forms.Label TestLabel6;
+        private System.Windows.Forms.Label TestLabel7;
+        private System.Windows.Forms.Label TestLabel3;
+        private System.Windows.Forms.Label TestLabel4;
+        private System.Windows.Forms.Label TestLabel2;
+        private System.Windows.Forms.ComboBox TestSkalatype;
+        private System.Windows.Forms.ComboBox TestToneart;
+        private System.Windows.Forms.Label TestLabel1;
     }
 }
 
