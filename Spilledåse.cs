@@ -3,8 +3,8 @@
 SpilledåseRod
 
 Variable
-    readonly String[] Tones = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
-    readonly String[] Toneb = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "bB", "H" };
+    readonly String[] toneS = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
+    readonly String[] toneB = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "bB", "H" };
     readonly byte[] Dur = { 2, 2, 1, 2, 2, 2, 1 };
     readonly byte[] Mol = { 2, 1, 2, 2, 1, 2, 2 };
     readonly byte halvtoner = 12;
@@ -12,7 +12,7 @@ Variable
 
     Label[] Label = new Label[7];
     ComboBox ToneArt;
-    ComboBox Skalatype;
+    ComboBox SkalaType;
     CheckBox Lyde
     String = "Paraleltoneart: " + SParallelToneArt;
 
@@ -27,7 +27,7 @@ Tildeling
     NodeLabel[3] = pL4; NodeLabel[4] = pL5; NodeLabel[5] = pL6;
     NodeLabel[6] = pL7;
     ToneArt = pToneArt;
-    Skalatype = pSkalatype;
+    SkalaType = pSkalatype;
     Lyde = pLyde;
 
 
@@ -58,7 +58,7 @@ for (int i = 0; i < ABoxe; i++)
     ABox[i].Items.Add("-");
     for (int j = 0; j < halvtoner; j++)
     {
-        ABox[i].Items.Add(Tones[j]);
+        ABox[i].Items.Add(toneS[j]);
     }
     ABox[i].SelectedIndex = 0;
 
@@ -106,7 +106,7 @@ private void Akord_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Match(T, Dur, tpos)) // der er et match
             {
-                Resultatliste.Items.Add(Tones[tpos] + " dur / " + Tones[(tpos + halvtoner - 3) % halvtoner] + " mol");
+                Resultatliste.Items.Add(toneS[tpos] + " dur / " + toneS[(tpos + halvtoner - 3) % halvtoner] + " mol");
                 Resultater.Add(tpos);
             }
         }
@@ -122,13 +122,13 @@ private void Resultatliste_Click(object sender, EventArgs e)
 {
     if (Resultater.Count > 0)
     {
-        Skalatype.SelectedIndex = 0;
+        SkalaType.SelectedIndex = 0;
         Toneart.SelectedIndex = Resultater.ElementAt(Resultatliste.SelectedIndex);
-        Visskala(Toneart.SelectedIndex, Skalatype.SelectedIndex, ref NodeLabel);
+        Visskala(Toneart.SelectedIndex, SkalaType.SelectedIndex, ref NodeLabel);
     }
 }
 
-public void PutBillede(int t)
+protected void PutBillede(int t)
 {
     switch (t)
     {
@@ -174,8 +174,9 @@ Kode:
 */
 
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Akordion
 {
@@ -184,22 +185,22 @@ namespace Akordion
     *            ---         *
     **************************/
 
-    public class SpilledåseRod
+    class SpilledåseRod
     {
         [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
         static extern bool Beep(uint dwFreq, uint dwDuration);
 
-        public readonly String[] Tones = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
-        public readonly String[] Toneb = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "bB", "H" };
-        public readonly byte[] Dur = { 2, 2, 1, 2, 2, 2, 1 };
-        public readonly byte[] Mol = { 2, 1, 2, 2, 1, 2, 2 };
-        public readonly byte halvtoner = 12;
-        public readonly byte heltoner = 7;
-        public Label[] NodeLabel = new Label[7];
-        public ComboBox ToneArt;
-        public ComboBox Skalatype;
-        public CheckBox Lyde;
-        public String SParalellToneart;
+        protected readonly String[] toneS = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
+        protected readonly String[] toneB = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "bB", "H" };
+        protected readonly byte[] Dur = { 2, 2, 1, 2, 2, 2, 1 };
+        protected readonly byte[] Mol = { 2, 1, 2, 2, 1, 2, 2 };
+        protected readonly byte halvtoner = 12;
+        protected readonly byte heltoner = 7;
+        protected Label[] NodeLabel = new Label[7];
+        protected ComboBox ToneArt;
+        protected ComboBox SkalaType;
+        protected CheckBox Lyde;
+        protected String SParalellToneart;
 
         public SpilledåseRod(
             Label pL1, Label pL2, Label pL3, Label pL4, Label pL5, Label pL6, Label pL7,
@@ -214,19 +215,20 @@ namespace Akordion
             NodeLabel[3] = pL4; NodeLabel[4] = pL5; NodeLabel[5] = pL6;
             NodeLabel[6] = pL7;
             ToneArt = pToneArt;
-            Skalatype = pSkalatype;
+            SkalaType = pSkalatype;
             Lyde = pLyde;
-            Skalatype.SelectedIndex = 0; // Dur
+            SkalaType.SelectedIndex = 0; // Dur
 
             // Tonelister fyldes
             for (int i = 0; i < halvtoner; i++)
-                ToneArt.Items.Add(Tones[i]);
+                ToneArt.Items.Add(toneS[i]);
             // Lister initieres
+            ToneArt.SelectedIndexChanged += new System.EventHandler(ToneArt_SelectedIndexChanged);
+            SkalaType.SelectedIndexChanged += new System.EventHandler(Skalatype_SelectedIndexChanged);
             ToneArt.SelectedIndex = 0;
-
         } // Slut på Construktor for Spilledåse
 
-        public void LavToneart
+        protected void LavToneart
         /*
            Laver skala ud fra om det skal være dur eller mol og hvilket havltone-trin skalaen skal starte på
         */
@@ -235,15 +237,15 @@ namespace Akordion
             in int skalatype,               // 0 Dur eller 1 Mol
             out String[] skala,             // De 7 toner i tonearten
             out bool kryds,                 // Om det er b eller kryds
-            out string toneArt,             // Toneartens navn
+            out string toneart,             // Toneartens navn
             out string paralelltoneart      // Parraleltoneartens navn
         )
         {
             skala = new String[heltoner];   // Her ligger vi skalaen
             String[] Tone =                 // Her henter vi tone-navne fra
                 new String[heltoner];
-            String toneType;                // Om tonearten er dur eller mol
-            String pToneType;               // Om paralelltonearten er dur eller mol
+            String tonetype;                // Om tonearten er dur eller mol
+            String ptonetype;               // Om paralelltonearten er dur eller mol
             int ppos;                       // Starttone for parraleltonearten
             byte[] tonalitet =              // Dur eller Mol i antal halvtonetrin
                 (skalatype == 0) ? Dur : Mol;
@@ -252,14 +254,14 @@ namespace Akordion
             if (skalatype == 0)
             {
                 ppos = (tpos + halvtoner - 3) % halvtoner;
-                toneType = "dur";
-                pToneType = "mol";
+                tonetype = "dur";
+                ptonetype = "mol";
             }
             else
             {
                 ppos = (tpos + 3) % halvtoner;
-                toneType = "mol";
-                pToneType = "dur";
+                tonetype = "mol";
+                ptonetype = "dur";
             };
 
             // Finder ud af om der skal krydser eller b'er for
@@ -275,7 +277,7 @@ namespace Akordion
                 kryds = false;
 
             // Finder tonenavne ud fra om der skulle krydser eller b'er for
-            Tone = (kryds) ? Tones : Toneb;
+            Tone = (kryds) ? toneS : toneB;
 
             for (int j = 0, t = tpos; j < heltoner; j++)
             {
@@ -285,18 +287,17 @@ namespace Akordion
             }
 
             // Danner tonearten og paralelltoneartens betegnelser
-            toneArt = Tone[tpos] + " " + toneType;
-            paralelltoneart = Tone[ppos] + " " + pToneType;
+            toneart = Tone[tpos] + " " + tonetype;
+            paralelltoneart = Tone[ppos] + " " + ptonetype;
         }
 
-
-        public void Visskala(int tpos, int skalatype, ref Label[] labels)
+        protected void Visskala(int tpos, int skalatype, ref Label[] labels)
         {
             bool kryds;
-            String toneArt;
+            String toneart;
             String[] skala = new string[heltoner];
 
-            LavToneart(tpos, skalatype, out skala, out kryds, out toneArt, out SParalellToneart);
+            LavToneart(tpos, skalatype, out skala, out kryds, out toneart, out SParalellToneart);
 
             for (int j = 0; j < heltoner; j++)
             {
@@ -307,11 +308,46 @@ namespace Akordion
                 Spilskala();
         }
 
+        protected void ToneArt_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Visskala(ToneArt.SelectedIndex, SkalaType.SelectedIndex, ref NodeLabel);
+        }
+
+        protected void Skalatype_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Visskala(ToneArt.SelectedIndex, SkalaType.SelectedIndex, ref NodeLabel);
+        }
+
+        protected bool Match(byte[] T, byte[] D, byte starti)
+        {
+            byte[] DD = new byte[heltoner];
+            byte Dsum = starti;
+            // Initierer DD udfra D: intervaller til positioner
+            for (byte i = 0; i < heltoner; i++)
+            {
+                DD[i] = Convert.ToByte(Dsum % halvtoner);
+                Dsum += Convert.ToByte(D[Convert.ToByte(i % heltoner)]);
+            }
+            // Tjekker at alle T'er har tilhørende positioner
+            bool match = true;
+            for (int i = 0; (i < T.Length) && match; i++)
+            { // Tjek alle T'er
+                bool fundet = false;
+                for (int j = 0; (j < heltoner) && !fundet; j++)
+                { // Tjek at de findes i DD
+                    if (T[i] == DD[j])
+                        fundet = true;
+                }
+                if (!fundet)
+                    match = false;
+            }
+            return (match);
+        }
         private void Spil(String s)
         {
             int tpos = 0;
             for (int t = 0; t < halvtoner; t++)
-                if (s == Tones[t] || s == Toneb[t])
+                if (s == toneS[t] || s == toneB[t])
                     tpos = t;
             // Log10 440 = 2,64355 - Log10 880 = 2,9445 - Interval (dif/12 = 0.02508583)
             int hz = Convert.ToInt32(Math.Round(Math.Pow(10, 2.64355 + (0.02508583 * tpos))));
@@ -346,15 +382,15 @@ namespace Akordion
     *          -----         *
     *************************/
 
-    public class SpilledåseHoved : SpilledåseRod
-
+    class SpilledåseHoved : SpilledåseRod
     { // Start SpilledåseHoved class
 
         Label paralellToneart;
         ListBox Resultatliste;
         PictureBox Nodebillede;
         List<int> Resultater = new List<int>();
-        ComboBox[] ABox = new ComboBox[5];
+        static int ABoxe = 5;
+        ComboBox[] ABox = new ComboBox[ABoxe];
 
         public SpilledåseHoved(Label pL1, Label pL2, Label pL3, Label pL4, Label pL5, Label pL6, Label pL7,
             ComboBox pToneArt,
@@ -372,7 +408,6 @@ namespace Akordion
             paralellToneart = pparalellToneart;
             Nodebillede = pNodebillede;
             Resultatliste = pResultatliste;
-            int ABoxe = 5;
             // Antal akordbokse
             for (int i = 0; i < ABoxe; i++)
             {
@@ -380,7 +415,7 @@ namespace Akordion
                 ABox[i].Items.Add("-");
                 for (int j = 0; j < halvtoner; j++)
                 {
-                    ABox[i].Items.Add(Tones[j]);
+                    ABox[i].Items.Add(toneS[j]);
                 }
                 ABox[i].SelectedIndex = 0;
 
@@ -388,42 +423,67 @@ namespace Akordion
             }
         }
 
-        private void Toneart_SelectedIndexChanged(object sender, EventArgs e)
+        private void Akord_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Visskala(ToneArt.SelectedIndex, Skalatype.SelectedIndex, ref NodeLabel);
-        }
+            List<byte> Tonerække = new List<byte>();
+            byte[] T;
 
-        private void Skalatype_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Visskala(ToneArt.SelectedIndex, Skalatype.SelectedIndex, ref NodeLabel);
-        }
+            Resultatliste.Items.Clear();
+            Resultater.Clear();
+            Tonerække.Clear();
+            for (int j = 0; j < ABoxe; j++)
+                if (ABox[j].SelectedIndex > 0)
+                    if (!Tonerække.Contains(Convert.ToByte(ABox[j].SelectedIndex - 1)))
+                        Tonerække.Add(Convert.ToByte(ABox[j].SelectedIndex - 1));
 
-        private bool Match(byte[] T, byte[] D, byte starti)
-        {
-            byte[] DD = new byte[heltoner];
-            byte Dsum = starti;
-            // Initierer DD udfra D: intervaller til positioner
-            for (byte i = 0; i < heltoner; i++)
+            Tonerække.Sort();
+
+            // Putter dem i selecterne i rigtig rækkefølge
+            for (int i = 0; i < ABoxe; i++)
             {
-                DD[i] = Convert.ToByte(Dsum % halvtoner);
-                Dsum += Convert.ToByte(D[Convert.ToByte(i % heltoner)]);
+                ABox[i].SelectedIndexChanged -= Akord_SelectedIndexChanged;
+                if (i < Tonerække.Count)
+                    ABox[i].SelectedIndex = Tonerække.ElementAt(i) + 1;
+                else
+                    ABox[i].SelectedIndex = 0;
+                ABox[i].SelectedIndexChanged += new System.EventHandler(Akord_SelectedIndexChanged);
             }
-            // Tjekker at alle T'er har tilhørende positioner
-            bool match = true;
-            for (int i = 0; (i < T.Length) && match; i++)
-            { // Tjek alle T'er
-                bool fundet = false;
-                for (int j = 0; (j < heltoner) && !fundet; j++)
-                { // Tjek at de findes i DD
-                    if (T[i] == DD[j])
-                        fundet = true;
+
+            if (Tonerække.Count > 2)
+            {
+                T = new byte[Convert.ToByte(Tonerække.Count)];
+                for (byte i = 0; i < Tonerække.Count; i++)
+                {
+                    T[i] = Convert.ToByte(Tonerække.ElementAt(i));
                 }
-                if (!fundet)
-                    match = false;
+
+                // T indeholder nu tonespringene i Akorden i halvtoner
+                // Vi prøver med forskellige tonearter, først dur:
+                for (byte tpos = 0; tpos < halvtoner; tpos++)
+                {
+                    if (Match(T, Dur, tpos)) // der er et match
+                    {
+                        Resultatliste.Items.Add(toneS[tpos] + " dur / " + toneS[(tpos + halvtoner - 3) % halvtoner] + " mol");
+                        Resultater.Add(tpos);
+                    }
+                }
+                if (Resultater.Count > 0)
+                {
+                    Resultatliste.SelectedIndex = 0;
+                    Resultatliste_Click(null, null);
+                }
             }
-            return (match);
         }
 
+        private void Resultatliste_Click(object sender, EventArgs e)
+        {
+            if (Resultater.Count > 0)
+            {
+                SkalaType.SelectedIndex = 0;
+                ToneArt.SelectedIndex = Resultater.ElementAt(Resultatliste.SelectedIndex);
+                Visskala(ToneArt.SelectedIndex, SkalaType.SelectedIndex, ref NodeLabel);
+            }
+        }
 
     } // Slut SpilledåseHoved class
 
@@ -432,10 +492,10 @@ namespace Akordion
     *          -----         *
     *************************/
 
-    public class SpilledåseTrans : SpilledåseRod
+    class SpilledåseTrans : SpilledåseRod
     { // Start SpilledåseTrans class
 
-        public SpilledåseTrans(Label pL1, Label pL2, Label pL3, Label pL4, Label pL5, Label pL6, Label pL7,
+        protected SpilledåseTrans(Label pL1, Label pL2, Label pL3, Label pL4, Label pL5, Label pL6, Label pL7,
             ComboBox pToneArt,
             ComboBox pSkalatype,
             CheckBox pLyde) :
