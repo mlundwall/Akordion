@@ -174,6 +174,7 @@ Kode:
 */
 
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Akordion
@@ -349,13 +350,42 @@ namespace Akordion
 
     { // Start SpilledåseHoved class
 
+        Label paralellToneart;
+        ListBox Resultatliste;
+        PictureBox Nodebillede;
+        List<int> Resultater = new List<int>();
+        ComboBox[] ABox = new ComboBox[5];
+
         public SpilledåseHoved(Label pL1, Label pL2, Label pL3, Label pL4, Label pL5, Label pL6, Label pL7,
             ComboBox pToneArt,
             ComboBox pSkalatype,
-            CheckBox pLyde) :
-        base(pL1, pL2, pL3, pL4, pL5, pL6, pL7, pToneArt, pSkalatype, pLyde)
+            CheckBox pLyde,
+            ComboBox pAkord1, ComboBox pAkord2, ComboBox pAkord3,
+            ComboBox pAkord4, ComboBox pAkord5,
+            Label pparalellToneart,
+            PictureBox pNodebillede,
+            ListBox pResultatliste
+            ) :
+            base(pL1, pL2, pL3, pL4, pL5, pL6, pL7, pToneArt, pSkalatype, pLyde)
         {
 
+            paralellToneart = pparalellToneart;
+            Nodebillede = pNodebillede;
+            Resultatliste = pResultatliste;
+            int ABoxe = 5;
+            // Antal akordbokse
+            for (int i = 0; i < ABoxe; i++)
+            {
+                ABox[i].Items.Clear();
+                ABox[i].Items.Add("-");
+                for (int j = 0; j < halvtoner; j++)
+                {
+                    ABox[i].Items.Add(Tones[j]);
+                }
+                ABox[i].SelectedIndex = 0;
+
+                ABox[i].SelectedIndexChanged += new System.EventHandler(Akord_SelectedIndexChanged);
+            }
         }
 
         private void Toneart_SelectedIndexChanged(object sender, EventArgs e)
@@ -398,7 +428,7 @@ namespace Akordion
     } // Slut SpilledåseHoved class
 
     /*************************
-    *          HOVED         *
+    *          TRANS         *
     *          -----         *
     *************************/
 
