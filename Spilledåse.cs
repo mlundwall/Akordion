@@ -196,11 +196,11 @@ namespace Akordion
         protected readonly byte[] Mol = { 2, 1, 2, 2, 1, 2, 2 };
         protected readonly byte halvtoner = 12;
         protected readonly byte heltoner = 7;
+        protected String sparalelltoneart;
         protected Label[] NodeLabel = new Label[7];
         protected ComboBox ToneArt;
         protected ComboBox SkalaType;
         protected CheckBox Lyde;
-        protected String SParalellToneart;
 
         public SpilledåseRod(
             Label pL1, Label pL2, Label pL3, Label pL4, Label pL5, Label pL6, Label pL7,
@@ -217,15 +217,16 @@ namespace Akordion
             ToneArt = pToneArt;
             SkalaType = pSkalatype;
             Lyde = pLyde;
-            SkalaType.SelectedIndex = 0; // Dur
 
             // Tonelister fyldes
             for (int i = 0; i < halvtoner; i++)
                 ToneArt.Items.Add(toneS[i]);
-            // Lister initieres
-            ToneArt.SelectedIndexChanged += new System.EventHandler(ToneArt_SelectedIndexChanged);
-            SkalaType.SelectedIndexChanged += new System.EventHandler(Skalatype_SelectedIndexChanged);
+            
+            ToneArt.SelectedIndexChanged += new EventHandler(ToneArt_SelectedIndexChanged);
             ToneArt.SelectedIndex = 0;
+
+            SkalaType.SelectedIndexChanged += new EventHandler(Skalatype_SelectedIndexChanged);
+            SkalaType.SelectedIndex = 0; // Dur
         } // Slut på Construktor for Spilledåse
 
         protected void LavToneart
@@ -291,19 +292,19 @@ namespace Akordion
             paralelltoneart = Tone[ppos] + " " + ptonetype;
         }
 
-        protected void Visskala(int tpos, int skalatype, ref Label[] labels)
+        protected virtual void Visskala(int tpos, int skalatype, ref Label[] labels)
         {
             bool kryds;
             String toneart;
             String[] skala = new string[heltoner];
 
-            LavToneart(tpos, skalatype, out skala, out kryds, out toneart, out SParalellToneart);
+            LavToneart(tpos, skalatype, out skala, out kryds, out toneart, out sparalelltoneart);
 
             for (int j = 0; j < heltoner; j++)
             {
                 labels[j].Text = skala[j];
+                labels[j].MouseHover += new System.EventHandler(Spiltone);
             }
-
             if (Lyde.Checked)
                 Spilskala();
         }
@@ -392,7 +393,8 @@ namespace Akordion
         static int ABoxe = 5;
         ComboBox[] ABox = new ComboBox[ABoxe];
 
-        public SpilledåseHoved(Label pL1, Label pL2, Label pL3, Label pL4, Label pL5, Label pL6, Label pL7,
+        public SpilledåseHoved(
+            Label pL1, Label pL2, Label pL3, Label pL4, Label pL5, Label pL6, Label pL7,
             ComboBox pToneArt,
             ComboBox pSkalatype,
             CheckBox pLyde,
@@ -404,11 +406,15 @@ namespace Akordion
             ) :
             base(pL1, pL2, pL3, pL4, pL5, pL6, pL7, pToneArt, pSkalatype, pLyde)
         {
-
             paralellToneart = pparalellToneart;
             Nodebillede = pNodebillede;
             Resultatliste = pResultatliste;
             // Antal akordbokse
+            ABox[0] = pAkord1;
+            ABox[1] = pAkord2;
+            ABox[2] = pAkord3;
+            ABox[3] = pAkord4;
+            ABox[4] = pAkord5;
             for (int i = 0; i < ABoxe; i++)
             {
                 ABox[i].Items.Clear();
@@ -422,6 +428,13 @@ namespace Akordion
                 ABox[i].SelectedIndexChanged += new System.EventHandler(Akord_SelectedIndexChanged);
             }
         }
+
+        protected override void Visskala(int tpos, int skalatype, ref Label[] labels)
+        {
+            base.Visskala(tpos, skalatype, ref labels);
+            paralellToneart.Text = sparalelltoneart;
+        }
+
 
         private void Akord_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -504,6 +517,10 @@ namespace Akordion
 
         }
 
+        protected override void Visskala(int tpos, int skalatype, ref Label[] labels)
+        {
+            base.Visskala(tpos, skalatype, ref labels);
+        }
     } // Slut SpilledåseTrans class
 
 } // Tilføjet til namespace Akkordion

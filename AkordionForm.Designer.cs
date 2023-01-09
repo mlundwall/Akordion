@@ -75,11 +75,21 @@
             this.TestSkalatype = new System.Windows.Forms.ComboBox();
             this.TestToneart = new System.Windows.Forms.ComboBox();
             this.TestLabel1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.TestAk1 = new System.Windows.Forms.ComboBox();
+            this.TestAk2 = new System.Windows.Forms.ComboBox();
+            this.TestAk3 = new System.Windows.Forms.ComboBox();
+            this.TestAk4 = new System.Windows.Forms.ComboBox();
+            this.TestAk5 = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.ParLabel = new System.Windows.Forms.Label();
             this.Tabsider.SuspendLayout();
             this.BasisSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nodebillede)).BeginInit();
             this.TansSide.SuspendLayout();
             this.TestTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Tabsider
@@ -218,7 +228,6 @@
             this.Nodebillede.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Nodebillede.TabIndex = 44;
             this.Nodebillede.TabStop = false;
-            this.Nodebillede.Click += new System.EventHandler(this.Nodebillede_Click);
             // 
             // paralelltoneart
             // 
@@ -499,6 +508,15 @@
             // 
             // TestTab
             // 
+            this.TestTab.Controls.Add(this.ParLabel);
+            this.TestTab.Controls.Add(this.listBox1);
+            this.TestTab.Controls.Add(this.pictureBox1);
+            this.TestTab.Controls.Add(this.TestAk5);
+            this.TestTab.Controls.Add(this.TestAk4);
+            this.TestTab.Controls.Add(this.TestAk3);
+            this.TestTab.Controls.Add(this.TestAk2);
+            this.TestTab.Controls.Add(this.TestAk1);
+            this.TestTab.Controls.Add(this.button1);
             this.TestTab.Controls.Add(this.TestLyd);
             this.TestTab.Controls.Add(this.label10);
             this.TestTab.Controls.Add(this.TestLabel5);
@@ -531,7 +549,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 30);
+            this.label10.Location = new System.Drawing.Point(6, 33);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(80, 13);
             this.label10.TabIndex = 63;
@@ -638,6 +656,81 @@
             this.TestLabel1.TabIndex = 54;
             this.TestLabel1.Text = "-";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(11, 144);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 65;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // TestAk1
+            // 
+            this.TestAk1.FormattingEnabled = true;
+            this.TestAk1.Location = new System.Drawing.Point(11, 82);
+            this.TestAk1.Name = "TestAk1";
+            this.TestAk1.Size = new System.Drawing.Size(40, 21);
+            this.TestAk1.TabIndex = 66;
+            // 
+            // TestAk2
+            // 
+            this.TestAk2.FormattingEnabled = true;
+            this.TestAk2.Location = new System.Drawing.Point(57, 82);
+            this.TestAk2.Name = "TestAk2";
+            this.TestAk2.Size = new System.Drawing.Size(40, 21);
+            this.TestAk2.TabIndex = 67;
+            // 
+            // TestAk3
+            // 
+            this.TestAk3.FormattingEnabled = true;
+            this.TestAk3.Location = new System.Drawing.Point(103, 82);
+            this.TestAk3.Name = "TestAk3";
+            this.TestAk3.Size = new System.Drawing.Size(40, 21);
+            this.TestAk3.TabIndex = 68;
+            // 
+            // TestAk4
+            // 
+            this.TestAk4.FormattingEnabled = true;
+            this.TestAk4.Location = new System.Drawing.Point(150, 82);
+            this.TestAk4.Name = "TestAk4";
+            this.TestAk4.Size = new System.Drawing.Size(40, 21);
+            this.TestAk4.TabIndex = 69;
+            // 
+            // TestAk5
+            // 
+            this.TestAk5.FormattingEnabled = true;
+            this.TestAk5.Location = new System.Drawing.Point(196, 82);
+            this.TestAk5.Name = "TestAk5";
+            this.TestAk5.Size = new System.Drawing.Size(40, 21);
+            this.TestAk5.TabIndex = 70;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(313, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 71;
+            this.pictureBox1.TabStop = false;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(313, 87);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 82);
+            this.listBox1.TabIndex = 72;
+            // 
+            // ParLabel
+            // 
+            this.ParLabel.AutoSize = true;
+            this.ParLabel.Location = new System.Drawing.Point(91, 32);
+            this.ParLabel.Name = "ParLabel";
+            this.ParLabel.Size = new System.Drawing.Size(41, 13);
+            this.ParLabel.TabIndex = 73;
+            this.ParLabel.Text = "label11";
+            // 
             // Akordion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -658,6 +751,7 @@
             this.TansSide.PerformLayout();
             this.TestTab.ResumeLayout(false);
             this.TestTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -710,6 +804,15 @@
         private System.Windows.Forms.ComboBox TestSkalatype;
         private System.Windows.Forms.ComboBox TestToneart;
         private System.Windows.Forms.Label TestLabel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox TestAk5;
+        private System.Windows.Forms.ComboBox TestAk4;
+        private System.Windows.Forms.ComboBox TestAk3;
+        private System.Windows.Forms.ComboBox TestAk2;
+        private System.Windows.Forms.ComboBox TestAk1;
+        private System.Windows.Forms.Label ParLabel;
     }
 }
 
