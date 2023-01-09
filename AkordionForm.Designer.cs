@@ -64,6 +64,15 @@
             this.ToneartT = new System.Windows.Forms.ComboBox();
             this.labelT1 = new System.Windows.Forms.Label();
             this.TestTab = new System.Windows.Forms.TabPage();
+            this.ParLabel = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.TestAk5 = new System.Windows.Forms.ComboBox();
+            this.TestAk4 = new System.Windows.Forms.ComboBox();
+            this.TestAk3 = new System.Windows.Forms.ComboBox();
+            this.TestAk2 = new System.Windows.Forms.ComboBox();
+            this.TestAk1 = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.TestLyd = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.TestLabel5 = new System.Windows.Forms.Label();
@@ -75,15 +84,6 @@
             this.TestSkalatype = new System.Windows.Forms.ComboBox();
             this.TestToneart = new System.Windows.Forms.ComboBox();
             this.TestLabel1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.TestAk1 = new System.Windows.Forms.ComboBox();
-            this.TestAk2 = new System.Windows.Forms.ComboBox();
-            this.TestAk3 = new System.Windows.Forms.ComboBox();
-            this.TestAk4 = new System.Windows.Forms.ComboBox();
-            this.TestAk5 = new System.Windows.Forms.ComboBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.ParLabel = new System.Windows.Forms.Label();
             this.Tabsider.SuspendLayout();
             this.BasisSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nodebillede)).BeginInit();
@@ -536,6 +536,82 @@
             this.TestTab.Text = "TestTab";
             this.TestTab.UseVisualStyleBackColor = true;
             // 
+            // ParLabel
+            // 
+            this.ParLabel.AutoSize = true;
+            this.ParLabel.Location = new System.Drawing.Point(91, 32);
+            this.ParLabel.Name = "ParLabel";
+            this.ParLabel.Size = new System.Drawing.Size(41, 13);
+            this.ParLabel.TabIndex = 73;
+            this.ParLabel.Text = "label11";
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(313, 87);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 82);
+            this.listBox1.TabIndex = 72;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(313, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(120, 74);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 71;
+            this.pictureBox1.TabStop = false;
+            // 
+            // TestAk5
+            // 
+            this.TestAk5.FormattingEnabled = true;
+            this.TestAk5.Location = new System.Drawing.Point(196, 82);
+            this.TestAk5.Name = "TestAk5";
+            this.TestAk5.Size = new System.Drawing.Size(40, 21);
+            this.TestAk5.TabIndex = 70;
+            // 
+            // TestAk4
+            // 
+            this.TestAk4.FormattingEnabled = true;
+            this.TestAk4.Location = new System.Drawing.Point(150, 82);
+            this.TestAk4.Name = "TestAk4";
+            this.TestAk4.Size = new System.Drawing.Size(40, 21);
+            this.TestAk4.TabIndex = 69;
+            // 
+            // TestAk3
+            // 
+            this.TestAk3.FormattingEnabled = true;
+            this.TestAk3.Location = new System.Drawing.Point(103, 82);
+            this.TestAk3.Name = "TestAk3";
+            this.TestAk3.Size = new System.Drawing.Size(40, 21);
+            this.TestAk3.TabIndex = 68;
+            // 
+            // TestAk2
+            // 
+            this.TestAk2.FormattingEnabled = true;
+            this.TestAk2.Location = new System.Drawing.Point(57, 82);
+            this.TestAk2.Name = "TestAk2";
+            this.TestAk2.Size = new System.Drawing.Size(40, 21);
+            this.TestAk2.TabIndex = 67;
+            // 
+            // TestAk1
+            // 
+            this.TestAk1.FormattingEnabled = true;
+            this.TestAk1.Location = new System.Drawing.Point(11, 82);
+            this.TestAk1.Name = "TestAk1";
+            this.TestAk1.Size = new System.Drawing.Size(40, 21);
+            this.TestAk1.TabIndex = 66;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(11, 144);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 65;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // TestLyd
             // 
             this.TestLyd.AutoSize = true;
@@ -655,81 +731,6 @@
             this.TestLabel1.Size = new System.Drawing.Size(18, 18);
             this.TestLabel1.TabIndex = 54;
             this.TestLabel1.Text = "-";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(11, 144);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 65;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // TestAk1
-            // 
-            this.TestAk1.FormattingEnabled = true;
-            this.TestAk1.Location = new System.Drawing.Point(11, 82);
-            this.TestAk1.Name = "TestAk1";
-            this.TestAk1.Size = new System.Drawing.Size(40, 21);
-            this.TestAk1.TabIndex = 66;
-            // 
-            // TestAk2
-            // 
-            this.TestAk2.FormattingEnabled = true;
-            this.TestAk2.Location = new System.Drawing.Point(57, 82);
-            this.TestAk2.Name = "TestAk2";
-            this.TestAk2.Size = new System.Drawing.Size(40, 21);
-            this.TestAk2.TabIndex = 67;
-            // 
-            // TestAk3
-            // 
-            this.TestAk3.FormattingEnabled = true;
-            this.TestAk3.Location = new System.Drawing.Point(103, 82);
-            this.TestAk3.Name = "TestAk3";
-            this.TestAk3.Size = new System.Drawing.Size(40, 21);
-            this.TestAk3.TabIndex = 68;
-            // 
-            // TestAk4
-            // 
-            this.TestAk4.FormattingEnabled = true;
-            this.TestAk4.Location = new System.Drawing.Point(150, 82);
-            this.TestAk4.Name = "TestAk4";
-            this.TestAk4.Size = new System.Drawing.Size(40, 21);
-            this.TestAk4.TabIndex = 69;
-            // 
-            // TestAk5
-            // 
-            this.TestAk5.FormattingEnabled = true;
-            this.TestAk5.Location = new System.Drawing.Point(196, 82);
-            this.TestAk5.Name = "TestAk5";
-            this.TestAk5.Size = new System.Drawing.Size(40, 21);
-            this.TestAk5.TabIndex = 70;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(313, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 71;
-            this.pictureBox1.TabStop = false;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(313, 87);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 82);
-            this.listBox1.TabIndex = 72;
-            // 
-            // ParLabel
-            // 
-            this.ParLabel.AutoSize = true;
-            this.ParLabel.Location = new System.Drawing.Point(91, 32);
-            this.ParLabel.Name = "ParLabel";
-            this.ParLabel.Size = new System.Drawing.Size(41, 13);
-            this.ParLabel.TabIndex = 73;
-            this.ParLabel.Text = "label11";
             // 
             // Akordion
             // 

@@ -175,6 +175,7 @@ Kode:
 
 using System;
 using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
@@ -221,12 +222,9 @@ namespace Akordion
             // Tonelister fyldes
             for (int i = 0; i < halvtoner; i++)
                 ToneArt.Items.Add(toneS[i]);
-            
-            ToneArt.SelectedIndexChanged += new EventHandler(ToneArt_SelectedIndexChanged);
-            ToneArt.SelectedIndex = 0;
 
+            ToneArt.SelectedIndexChanged += new EventHandler(ToneArt_SelectedIndexChanged);
             SkalaType.SelectedIndexChanged += new EventHandler(Skalatype_SelectedIndexChanged);
-            SkalaType.SelectedIndex = 0; // Dur
         } // Slut på Construktor for Spilledåse
 
         protected void LavToneart
@@ -309,12 +307,12 @@ namespace Akordion
                 Spilskala();
         }
 
-        protected void ToneArt_SelectedIndexChanged(object sender, EventArgs e)
+        protected virtual void ToneArt_SelectedIndexChanged(object sender, EventArgs e)
         {
             Visskala(ToneArt.SelectedIndex, SkalaType.SelectedIndex, ref NodeLabel);
         }
 
-        protected void Skalatype_SelectedIndexChanged(object sender, EventArgs e)
+        protected virtual void Skalatype_SelectedIndexChanged(object sender, EventArgs e)
         {
             Visskala(ToneArt.SelectedIndex, SkalaType.SelectedIndex, ref NodeLabel);
         }
@@ -355,7 +353,7 @@ namespace Akordion
             Console.Beep(hz, 300);
         }
 
-        private void Spilskala()
+        protected virtual void Spilskala()
         {
             for (int i = 0; i < heltoner; i++)
                 Spil(NodeLabel[i].Text);
@@ -392,8 +390,10 @@ namespace Akordion
         List<int> Resultater = new List<int>();
         static int ABoxe = 5;
         ComboBox[] ABox = new ComboBox[ABoxe];
+        protected Form parentForm;
 
         public SpilledåseHoved(
+            Form pparentForm,
             Label pL1, Label pL2, Label pL3, Label pL4, Label pL5, Label pL6, Label pL7,
             ComboBox pToneArt,
             ComboBox pSkalatype,
@@ -406,6 +406,7 @@ namespace Akordion
             ) :
             base(pL1, pL2, pL3, pL4, pL5, pL6, pL7, pToneArt, pSkalatype, pLyde)
         {
+            parentForm = pparentForm;
             paralellToneart = pparalellToneart;
             Nodebillede = pNodebillede;
             Resultatliste = pResultatliste;
@@ -427,12 +428,36 @@ namespace Akordion
 
                 ABox[i].SelectedIndexChanged += new System.EventHandler(Akord_SelectedIndexChanged);
             }
+            ToneArt.SelectedIndex = 0;
+            SkalaType.SelectedIndex = 0;
         }
 
+        protected void PutBillede(int t)
+        {
+            string s = System.Reflection.Assembly.GetExecutingAssembly().Location;            
+            s = System.IO.Path.GetDirectoryName(s) + "\\..\\..\\Resources\\";
+            switch (t)
+            {
+                case 0: { Nodebillede.Image= Image.FromFile(s + "C-dur.png"); break; }
+                case 1: { Nodebillede.Image = Image.FromFile(s + "Des-dur.png"); break; }
+                case 2: { Nodebillede.Image = Image.FromFile(s + "D-dur.png"); break; }
+                case 3: { Nodebillede.Image = Image.FromFile(s + "Es-dur.png"); break; }
+                case 4: { Nodebillede.Image = Image.FromFile(s + "E-dur.png"); break; }
+                case 5: { Nodebillede.Image = Image.FromFile(s + "F-dur.png"); break; }
+                case 6: { Nodebillede.Image = Image.FromFile(s + "Fis-dur.png"); break; }
+                case 7: { Nodebillede.Image = Image.FromFile(s + "G-dur.png"); break; }
+                case 8: { Nodebillede.Image = Image.FromFile(s + "As-dur.png"); break; }
+                case 9: { Nodebillede.Image = Image.FromFile(s + "A-dur.png"); break; }
+                case 10: { Nodebillede.Image = Image.FromFile(s + "Hes-dur.png"); break; }
+                case 11: { Nodebillede.Image = Image.FromFile(s + "H-Dur.png"); break; }
+                default: { Nodebillede.Image = Image.FromFile(s + "C-dur.png"); break; }
+            }
+        }
         protected override void Visskala(int tpos, int skalatype, ref Label[] labels)
         {
             base.Visskala(tpos, skalatype, ref labels);
             paralellToneart.Text = sparalelltoneart;
+            PutBillede(ToneArt.SelectedIndex);
         }
 
 
@@ -498,14 +523,21 @@ namespace Akordion
             }
         }
 
+        protected override void Spilskala()
+        {
+            parentForm.Update();
+            base.Spilskala();
+        }
+
+
     } // Slut SpilledåseHoved class
 
-    /*************************
-    *          TRANS         *
-    *          -----         *
-    *************************/
+        /*************************
+        *          TRANS         *
+        *          -----         *
+        *************************/
 
-    class SpilledåseTrans : SpilledåseRod
+        class SpilledåseTrans : SpilledåseRod
     { // Start SpilledåseTrans class
 
         protected SpilledåseTrans(Label pL1, Label pL2, Label pL3, Label pL4, Label pL5, Label pL6, Label pL7,
