@@ -369,7 +369,24 @@ namespace Akordion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new SpilledåseHoved(this, TestLabel1, TestLabel2, TestLabel3, TestLabel4, TestLabel5, TestLabel6, TestLabel7, TestToneart, TestSkalatype, TestLyd, TestAk1, TestAk2, TestAk3, TestAk4, TestAk5, ParLabel, pictureBox1, listBox1);
+            new SpilledåseHoved(this, TestLabel1, TestLabel2, TestLabel3, TestLabel4, TestLabel5, TestLabel6, TestLabel7, 
+                TestToneart, 
+                TestSkalatype, 
+                TestLyd, TestAk1, TestAk2, TestAk3, TestAk4, TestAk5, 
+                ParLabel, 
+                pictureBox1, 
+                listBox1);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            new SpilledåseTrans(this, 
+                    TransTestLabel1, TransTestLabel2, TransTestLabel3, TransTestLabel4, TransTestLabel5, TransTestLabel6, TransTestLabel7, 
+                    Test2Toneart, 
+                    Test2Skalatype, 
+                    TestLyd, 
+                    Test2TransBox,
+                    Greb);
         }
     } // Slut på Akordion class
 

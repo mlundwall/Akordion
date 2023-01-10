@@ -84,12 +84,26 @@
             this.TestSkalatype = new System.Windows.Forms.ComboBox();
             this.TestToneart = new System.Windows.Forms.ComboBox();
             this.TestLabel1 = new System.Windows.Forms.Label();
+            this.TestTab2 = new System.Windows.Forms.TabPage();
+            this.Greb = new System.Windows.Forms.CheckBox();
+            this.Test2TransBox = new System.Windows.Forms.ComboBox();
+            this.TransTestLabel5 = new System.Windows.Forms.Label();
+            this.TransTestLabel6 = new System.Windows.Forms.Label();
+            this.TransTestLabel7 = new System.Windows.Forms.Label();
+            this.TransTestLabel3 = new System.Windows.Forms.Label();
+            this.TransTestLabel4 = new System.Windows.Forms.Label();
+            this.TransTestLabel2 = new System.Windows.Forms.Label();
+            this.Test2Skalatype = new System.Windows.Forms.ComboBox();
+            this.Test2Toneart = new System.Windows.Forms.ComboBox();
+            this.TransTestLabel1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.Tabsider.SuspendLayout();
             this.BasisSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nodebillede)).BeginInit();
             this.TansSide.SuspendLayout();
             this.TestTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.TestTab2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Tabsider
@@ -97,11 +111,12 @@
             this.Tabsider.Controls.Add(this.BasisSide);
             this.Tabsider.Controls.Add(this.TansSide);
             this.Tabsider.Controls.Add(this.TestTab);
+            this.Tabsider.Controls.Add(this.TestTab2);
             this.Tabsider.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Tabsider.Location = new System.Drawing.Point(0, 0);
             this.Tabsider.Name = "Tabsider";
             this.Tabsider.SelectedIndex = 0;
-            this.Tabsider.Size = new System.Drawing.Size(469, 211);
+            this.Tabsider.Size = new System.Drawing.Size(469, 210);
             this.Tabsider.TabIndex = 34;
             // 
             // BasisSide
@@ -129,7 +144,7 @@
             this.BasisSide.Location = new System.Drawing.Point(4, 22);
             this.BasisSide.Name = "BasisSide";
             this.BasisSide.Padding = new System.Windows.Forms.Padding(3);
-            this.BasisSide.Size = new System.Drawing.Size(461, 185);
+            this.BasisSide.Size = new System.Drawing.Size(461, 184);
             this.BasisSide.TabIndex = 0;
             this.BasisSide.Text = "Basis";
             this.BasisSide.UseVisualStyleBackColor = true;
@@ -364,7 +379,7 @@
             this.TansSide.Location = new System.Drawing.Point(4, 22);
             this.TansSide.Name = "TansSide";
             this.TansSide.Padding = new System.Windows.Forms.Padding(3);
-            this.TansSide.Size = new System.Drawing.Size(461, 185);
+            this.TansSide.Size = new System.Drawing.Size(461, 184);
             this.TansSide.TabIndex = 1;
             this.TansSide.Text = "Transponering";
             this.TansSide.UseVisualStyleBackColor = true;
@@ -531,7 +546,7 @@
             this.TestTab.Location = new System.Drawing.Point(4, 22);
             this.TestTab.Name = "TestTab";
             this.TestTab.Padding = new System.Windows.Forms.Padding(3);
-            this.TestTab.Size = new System.Drawing.Size(461, 185);
+            this.TestTab.Size = new System.Drawing.Size(461, 184);
             this.TestTab.TabIndex = 2;
             this.TestTab.Text = "TestTab";
             this.TestTab.UseVisualStyleBackColor = true;
@@ -732,11 +747,169 @@
             this.TestLabel1.TabIndex = 54;
             this.TestLabel1.Text = "-";
             // 
+            // TestTab2
+            // 
+            this.TestTab2.Controls.Add(this.button2);
+            this.TestTab2.Controls.Add(this.Greb);
+            this.TestTab2.Controls.Add(this.Test2TransBox);
+            this.TestTab2.Controls.Add(this.TransTestLabel5);
+            this.TestTab2.Controls.Add(this.TransTestLabel6);
+            this.TestTab2.Controls.Add(this.TransTestLabel7);
+            this.TestTab2.Controls.Add(this.TransTestLabel3);
+            this.TestTab2.Controls.Add(this.TransTestLabel4);
+            this.TestTab2.Controls.Add(this.TransTestLabel2);
+            this.TestTab2.Controls.Add(this.Test2Skalatype);
+            this.TestTab2.Controls.Add(this.Test2Toneart);
+            this.TestTab2.Controls.Add(this.TransTestLabel1);
+            this.TestTab2.Location = new System.Drawing.Point(4, 22);
+            this.TestTab2.Name = "TestTab2";
+            this.TestTab2.Padding = new System.Windows.Forms.Padding(3);
+            this.TestTab2.Size = new System.Drawing.Size(461, 184);
+            this.TestTab2.TabIndex = 3;
+            this.TestTab2.Text = "TestTab2";
+            this.TestTab2.UseVisualStyleBackColor = true;
+            // 
+            // Greb
+            // 
+            this.Greb.AutoSize = true;
+            this.Greb.Checked = true;
+            this.Greb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.Greb.Location = new System.Drawing.Point(282, 22);
+            this.Greb.Name = "Greb";
+            this.Greb.Size = new System.Drawing.Size(61, 17);
+            this.Greb.TabIndex = 65;
+            this.Greb.Text = "Til greb";
+            this.Greb.UseVisualStyleBackColor = true;
+            // 
+            // Test2TransBox
+            // 
+            this.Test2TransBox.FormattingEnabled = true;
+            this.Test2TransBox.Items.AddRange(new object[] {
+            "C   - Lige over",
+            "Es  - Sopransax",
+            "bB - Klarinet"});
+            this.Test2TransBox.Location = new System.Drawing.Point(147, 20);
+            this.Test2TransBox.Name = "Test2TransBox";
+            this.Test2TransBox.Size = new System.Drawing.Size(102, 21);
+            this.Test2TransBox.TabIndex = 64;
+            this.Test2TransBox.Text = "Es  - Sopransax";
+            // 
+            // TransTestLabel5
+            // 
+            this.TransTestLabel5.AutoSize = true;
+            this.TransTestLabel5.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransTestLabel5.ForeColor = System.Drawing.Color.Crimson;
+            this.TransTestLabel5.Location = new System.Drawing.Point(175, 66);
+            this.TransTestLabel5.Margin = new System.Windows.Forms.Padding(0);
+            this.TransTestLabel5.Name = "TransTestLabel5";
+            this.TransTestLabel5.Size = new System.Drawing.Size(18, 18);
+            this.TransTestLabel5.TabIndex = 63;
+            this.TransTestLabel5.Text = "-";
+            // 
+            // TransTestLabel6
+            // 
+            this.TransTestLabel6.AutoSize = true;
+            this.TransTestLabel6.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransTestLabel6.Location = new System.Drawing.Point(213, 66);
+            this.TransTestLabel6.Margin = new System.Windows.Forms.Padding(0);
+            this.TransTestLabel6.Name = "TransTestLabel6";
+            this.TransTestLabel6.Size = new System.Drawing.Size(18, 18);
+            this.TransTestLabel6.TabIndex = 62;
+            this.TransTestLabel6.Text = "-";
+            // 
+            // TransTestLabel7
+            // 
+            this.TransTestLabel7.AutoSize = true;
+            this.TransTestLabel7.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransTestLabel7.Location = new System.Drawing.Point(252, 66);
+            this.TransTestLabel7.Margin = new System.Windows.Forms.Padding(0);
+            this.TransTestLabel7.Name = "TransTestLabel7";
+            this.TransTestLabel7.Size = new System.Drawing.Size(18, 18);
+            this.TransTestLabel7.TabIndex = 61;
+            this.TransTestLabel7.Text = "-";
+            // 
+            // TransTestLabel3
+            // 
+            this.TransTestLabel3.AutoSize = true;
+            this.TransTestLabel3.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransTestLabel3.Location = new System.Drawing.Point(98, 66);
+            this.TransTestLabel3.Margin = new System.Windows.Forms.Padding(0);
+            this.TransTestLabel3.Name = "TransTestLabel3";
+            this.TransTestLabel3.Size = new System.Drawing.Size(18, 18);
+            this.TransTestLabel3.TabIndex = 60;
+            this.TransTestLabel3.Text = "-";
+            // 
+            // TransTestLabel4
+            // 
+            this.TransTestLabel4.AutoSize = true;
+            this.TransTestLabel4.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransTestLabel4.ForeColor = System.Drawing.Color.Crimson;
+            this.TransTestLabel4.Location = new System.Drawing.Point(136, 66);
+            this.TransTestLabel4.Margin = new System.Windows.Forms.Padding(0);
+            this.TransTestLabel4.Name = "TransTestLabel4";
+            this.TransTestLabel4.Size = new System.Drawing.Size(18, 18);
+            this.TransTestLabel4.TabIndex = 59;
+            this.TransTestLabel4.Text = "-";
+            // 
+            // TransTestLabel2
+            // 
+            this.TransTestLabel2.AutoSize = true;
+            this.TransTestLabel2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransTestLabel2.Location = new System.Drawing.Point(60, 66);
+            this.TransTestLabel2.Margin = new System.Windows.Forms.Padding(0);
+            this.TransTestLabel2.Name = "TransTestLabel2";
+            this.TransTestLabel2.Size = new System.Drawing.Size(18, 18);
+            this.TransTestLabel2.TabIndex = 58;
+            this.TransTestLabel2.Text = "-";
+            // 
+            // Test2Skalatype
+            // 
+            this.Test2Skalatype.FormattingEnabled = true;
+            this.Test2Skalatype.Items.AddRange(new object[] {
+            "Dur",
+            "Mol"});
+            this.Test2Skalatype.Location = new System.Drawing.Point(65, 20);
+            this.Test2Skalatype.Name = "Test2Skalatype";
+            this.Test2Skalatype.Size = new System.Drawing.Size(42, 21);
+            this.Test2Skalatype.TabIndex = 57;
+            this.Test2Skalatype.Text = "Dur";
+            // 
+            // Test2Toneart
+            // 
+            this.Test2Toneart.FormattingEnabled = true;
+            this.Test2Toneart.Location = new System.Drawing.Point(18, 20);
+            this.Test2Toneart.Name = "Test2Toneart";
+            this.Test2Toneart.Size = new System.Drawing.Size(43, 21);
+            this.Test2Toneart.TabIndex = 56;
+            this.Test2Toneart.Text = "C";
+            // 
+            // TransTestLabel1
+            // 
+            this.TransTestLabel1.AutoSize = true;
+            this.TransTestLabel1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TransTestLabel1.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.TransTestLabel1.Location = new System.Drawing.Point(22, 66);
+            this.TransTestLabel1.Margin = new System.Windows.Forms.Padding(0);
+            this.TransTestLabel1.Name = "TransTestLabel1";
+            this.TransTestLabel1.Size = new System.Drawing.Size(18, 18);
+            this.TransTestLabel1.TabIndex = 55;
+            this.TransTestLabel1.Text = "-";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(25, 121);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(82, 25);
+            this.button2.TabIndex = 66;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Akordion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(469, 211);
+            this.ClientSize = new System.Drawing.Size(586, 263);
             this.Controls.Add(this.Tabsider);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -753,6 +926,8 @@
             this.TestTab.ResumeLayout(false);
             this.TestTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.TestTab2.ResumeLayout(false);
+            this.TestTab2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -814,6 +989,19 @@
         private System.Windows.Forms.ComboBox TestAk2;
         private System.Windows.Forms.ComboBox TestAk1;
         private System.Windows.Forms.Label ParLabel;
+        private System.Windows.Forms.TabPage TestTab2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.CheckBox Greb;
+        private System.Windows.Forms.ComboBox Test2TransBox;
+        private System.Windows.Forms.Label TransTestLabel5;
+        private System.Windows.Forms.Label TransTestLabel6;
+        private System.Windows.Forms.Label TransTestLabel7;
+        private System.Windows.Forms.Label TransTestLabel3;
+        private System.Windows.Forms.Label TransTestLabel4;
+        private System.Windows.Forms.Label TransTestLabel2;
+        private System.Windows.Forms.ComboBox Test2Skalatype;
+        private System.Windows.Forms.ComboBox Test2Toneart;
+        private System.Windows.Forms.Label TransTestLabel1;
     }
 }
 
