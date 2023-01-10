@@ -1,3 +1,6 @@
+//Todo: Hvorfor bliver ToneArt.Selectedindex = -1 ?
+//Todo: Få toner til at spille i korrekt højde (stigende)
+//Todo: Pak spilledåse ind i formen
 using System;
 using System.Linq;
 using System.Drawing;
@@ -8,7 +11,6 @@ namespace Akordion
 {
     /*************************
     *            ROD         *
-    *            ---         *
     **************************/
 
     class SpilledåseRod
@@ -203,7 +205,6 @@ namespace Akordion
 
     /*************************
     *          HOVED         *
-    *          -----         *
     *************************/
 
     class SpilledåseHoved : SpilledåseRod
@@ -285,7 +286,6 @@ namespace Akordion
             PutBillede(ToneArt.SelectedIndex);
         }
 
-
         private void Akord_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<byte> Tonerække = new List<byte>();
@@ -354,12 +354,10 @@ namespace Akordion
             base.Spilskala();
         }
 
-
     } // Slut SpilledåseHoved class
 
         /*************************
         *          TRANS         *
-        *          -----         *
         *************************/
 
     class SpilledåseTrans : SpilledåseRod
@@ -410,7 +408,10 @@ namespace Akordion
 
         private void TilGreb_CheckedChanged(object sender, EventArgs e)
         {
-            if (TilGreb.Checked) TilGreb.Text = "Til greb"; else TilGreb.Text = "Til noder";
+            if (TilGreb.Checked) 
+                TilGreb.Text = "Til greb"; 
+            else 
+                TilGreb.Text = "Til noder";
             Visskala(ToneArt.SelectedIndex, SkalaType.SelectedIndex, ref NodeLabel);
         }
 
