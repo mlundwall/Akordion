@@ -241,7 +241,7 @@
             this.BasisSide.Location = new System.Drawing.Point(4, 22);
             this.BasisSide.Name = "BasisSide";
             this.BasisSide.Padding = new System.Windows.Forms.Padding(3);
-            this.BasisSide.Size = new System.Drawing.Size(467, 237);
+            this.BasisSide.Size = new System.Drawing.Size(456, 184);
             this.BasisSide.TabIndex = 0;
             this.BasisSide.Text = "Basis";
             this.BasisSide.UseVisualStyleBackColor = true;
@@ -457,14 +457,14 @@
             this.Tabsider.Location = new System.Drawing.Point(0, 0);
             this.Tabsider.Name = "Tabsider";
             this.Tabsider.SelectedIndex = 0;
-            this.Tabsider.Size = new System.Drawing.Size(475, 263);
+            this.Tabsider.Size = new System.Drawing.Size(464, 210);
             this.Tabsider.TabIndex = 34;
             // 
             // Akordion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(475, 263);
+            this.ClientSize = new System.Drawing.Size(464, 210);
             this.Controls.Add(this.Tabsider);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
