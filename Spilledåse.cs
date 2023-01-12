@@ -128,7 +128,7 @@ namespace Akordion
             for (int j = 0; j < heltoner; j++)
             {
                 labels[j].Text = skala[j];
-                labels[j].MouseHover += new System.EventHandler(Spiltone);
+                labels[j].Click += new System.EventHandler(Spiltone);
             }
             if (Lyde.Checked)
                 Spilskala();
@@ -283,7 +283,7 @@ namespace Akordion
         {
             base.Visskala(tpos, skalatype, ref labels);
             paralellToneart.Text = sparalelltoneart;
-            PutBillede(ToneArt.SelectedIndex);
+            PutBillede((ToneArt.SelectedIndex+3*SkalaType.SelectedIndex) % halvtoner);
         }
 
         private void Akord_SelectedIndexChanged(object sender, EventArgs e)
@@ -377,9 +377,22 @@ namespace Akordion
             TransBox = pTransBox;
             TilGreb = pTilGreb;
 
-            TransBox.SelectedIndex = 1;
             ToneArt.SelectedIndex = 0;
             SkalaType.SelectedIndex = 0;
+
+            TransBox.Items.Add("C - Lige over");
+            TransBox.Items.Add("Cis");
+            TransBox.Items.Add("D");
+            TransBox.Items.Add("Es  - Sopransax");
+            TransBox.Items.Add("E");
+            TransBox.Items.Add("F");
+            TransBox.Items.Add("Fis");
+            TransBox.Items.Add("G");
+            TransBox.Items.Add("Gis");
+            TransBox.Items.Add("A");
+            TransBox.Items.Add("bB - Klarinet");
+            TransBox.Items.Add("H");
+            TransBox.SelectedIndex = 3;
 
             TransBox.SelectedIndexChanged += new EventHandler(TransBox_SelectedIndexChanged);
             TilGreb.CheckedChanged += new EventHandler(TilGreb_CheckedChanged);
@@ -390,7 +403,8 @@ namespace Akordion
             int Es;
             int bB;
 
-            if (TilGreb.Checked) { Es = 3; bB = 12 - 2; } else { Es = 12 - 3; bB = 2; };
+            if (TilGreb.Checked) { Es = 3; bB = 10; } 
+            else { Es = 12 - 3; bB = 12 - 2; };
             if (ToneArt.SelectedIndex<0)
                 ToneArt.SelectedIndex=0;
             switch (TransBox.SelectedIndex)

@@ -43,8 +43,8 @@
             this.labelT1 = new System.Windows.Forms.Label();
             this.BasisSide = new System.Windows.Forms.TabPage();
             this.Lyde = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.resultatlistelabel = new System.Windows.Forms.Label();
+            this.tonelistelabel = new System.Windows.Forms.Label();
             this.Resultatliste = new System.Windows.Forms.ListBox();
             this.Akord5 = new System.Windows.Forms.ComboBox();
             this.Akord4 = new System.Windows.Forms.ComboBox();
@@ -52,7 +52,7 @@
             this.Akord2 = new System.Windows.Forms.ComboBox();
             this.Akord1 = new System.Windows.Forms.ComboBox();
             this.Nodebillede = new System.Windows.Forms.PictureBox();
-            this.paralelltoneart = new System.Windows.Forms.Label();
+            this.paralelltoneartlabel = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -82,10 +82,10 @@
             this.TansSide.Controls.Add(this.SkalatypeT);
             this.TansSide.Controls.Add(this.ToneartT);
             this.TansSide.Controls.Add(this.labelT1);
-            this.TansSide.Location = new System.Drawing.Point(4, 22);
+            this.TansSide.Location = new System.Drawing.Point(4, 25);
             this.TansSide.Name = "TansSide";
             this.TansSide.Padding = new System.Windows.Forms.Padding(3);
-            this.TansSide.Size = new System.Drawing.Size(467, 237);
+            this.TansSide.Size = new System.Drawing.Size(456, 181);
             this.TansSide.TabIndex = 1;
             this.TansSide.Text = "Transponering";
             this.TansSide.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             this.TilGreb.CheckState = System.Windows.Forms.CheckState.Checked;
             this.TilGreb.Location = new System.Drawing.Point(279, 21);
             this.TilGreb.Name = "TilGreb";
-            this.TilGreb.Size = new System.Drawing.Size(61, 17);
+            this.TilGreb.Size = new System.Drawing.Size(72, 20);
             this.TilGreb.TabIndex = 54;
             this.TilGreb.Text = "Til greb";
             this.TilGreb.UseVisualStyleBackColor = true;
@@ -105,15 +105,11 @@
             // TransBox
             // 
             this.TransBox.FormattingEnabled = true;
-            this.TransBox.Items.AddRange(new object[] {
-            "C   - Lige over",
-            "Es  - Sopransax",
-            "bB - Klarinet"});
             this.TransBox.Location = new System.Drawing.Point(144, 19);
             this.TransBox.Name = "TransBox";
-            this.TransBox.Size = new System.Drawing.Size(102, 21);
+            this.TransBox.Size = new System.Drawing.Size(102, 24);
             this.TransBox.TabIndex = 53;
-            this.TransBox.Text = "Es  - Sopransax";
+            this.TransBox.Text = "C - Lige over";
             // 
             // labelT5
             // 
@@ -191,7 +187,7 @@
             "Mol"});
             this.SkalatypeT.Location = new System.Drawing.Point(62, 19);
             this.SkalatypeT.Name = "SkalatypeT";
-            this.SkalatypeT.Size = new System.Drawing.Size(42, 21);
+            this.SkalatypeT.Size = new System.Drawing.Size(42, 24);
             this.SkalatypeT.TabIndex = 46;
             this.SkalatypeT.Text = "Dur";
             // 
@@ -200,7 +196,7 @@
             this.ToneartT.FormattingEnabled = true;
             this.ToneartT.Location = new System.Drawing.Point(15, 19);
             this.ToneartT.Name = "ToneartT";
-            this.ToneartT.Size = new System.Drawing.Size(43, 21);
+            this.ToneartT.Size = new System.Drawing.Size(43, 24);
             this.ToneartT.TabIndex = 45;
             this.ToneartT.Text = "C";
             // 
@@ -219,8 +215,8 @@
             // BasisSide
             // 
             this.BasisSide.Controls.Add(this.Lyde);
-            this.BasisSide.Controls.Add(this.label9);
-            this.BasisSide.Controls.Add(this.label8);
+            this.BasisSide.Controls.Add(this.resultatlistelabel);
+            this.BasisSide.Controls.Add(this.tonelistelabel);
             this.BasisSide.Controls.Add(this.Resultatliste);
             this.BasisSide.Controls.Add(this.Akord5);
             this.BasisSide.Controls.Add(this.Akord4);
@@ -228,7 +224,7 @@
             this.BasisSide.Controls.Add(this.Akord2);
             this.BasisSide.Controls.Add(this.Akord1);
             this.BasisSide.Controls.Add(this.Nodebillede);
-            this.BasisSide.Controls.Add(this.paralelltoneart);
+            this.BasisSide.Controls.Add(this.paralelltoneartlabel);
             this.BasisSide.Controls.Add(this.label5);
             this.BasisSide.Controls.Add(this.label6);
             this.BasisSide.Controls.Add(this.label7);
@@ -238,10 +234,10 @@
             this.BasisSide.Controls.Add(this.Skalatype);
             this.BasisSide.Controls.Add(this.Toneart);
             this.BasisSide.Controls.Add(this.label1);
-            this.BasisSide.Location = new System.Drawing.Point(4, 22);
+            this.BasisSide.Location = new System.Drawing.Point(4, 25);
             this.BasisSide.Name = "BasisSide";
             this.BasisSide.Padding = new System.Windows.Forms.Padding(3);
-            this.BasisSide.Size = new System.Drawing.Size(456, 184);
+            this.BasisSide.Size = new System.Drawing.Size(456, 181);
             this.BasisSide.TabIndex = 0;
             this.BasisSide.Text = "Basis";
             this.BasisSide.UseVisualStyleBackColor = true;
@@ -251,35 +247,36 @@
             this.Lyde.AutoSize = true;
             this.Lyde.Location = new System.Drawing.Point(154, 21);
             this.Lyde.Name = "Lyde";
-            this.Lyde.Size = new System.Drawing.Size(43, 17);
+            this.Lyde.Size = new System.Drawing.Size(48, 20);
             this.Lyde.TabIndex = 53;
             this.Lyde.Text = "Lyd";
             this.Lyde.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // resultatlistelabel
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(332, 95);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(61, 13);
-            this.label9.TabIndex = 52;
-            this.label9.Text = "I tonearten ";
+            this.resultatlistelabel.AutoSize = true;
+            this.resultatlistelabel.Location = new System.Drawing.Point(332, 95);
+            this.resultatlistelabel.Name = "resultatlistelabel";
+            this.resultatlistelabel.Size = new System.Drawing.Size(72, 16);
+            this.resultatlistelabel.TabIndex = 52;
+            this.resultatlistelabel.Text = "I tonearten ";
             // 
-            // label8
+            // tonelistelabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 94);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(50, 13);
-            this.label8.TabIndex = 51;
-            this.label8.Text = "Toneliste";
+            this.tonelistelabel.AutoSize = true;
+            this.tonelistelabel.Location = new System.Drawing.Point(12, 94);
+            this.tonelistelabel.Name = "tonelistelabel";
+            this.tonelistelabel.Size = new System.Drawing.Size(63, 16);
+            this.tonelistelabel.TabIndex = 51;
+            this.tonelistelabel.Text = "Toneliste";
             // 
             // Resultatliste
             // 
             this.Resultatliste.FormattingEnabled = true;
+            this.Resultatliste.ItemHeight = 16;
             this.Resultatliste.Location = new System.Drawing.Point(330, 115);
             this.Resultatliste.Name = "Resultatliste";
-            this.Resultatliste.Size = new System.Drawing.Size(117, 56);
+            this.Resultatliste.Size = new System.Drawing.Size(117, 52);
             this.Resultatliste.TabIndex = 50;
             // 
             // Akord5
@@ -287,7 +284,7 @@
             this.Akord5.FormattingEnabled = true;
             this.Akord5.Location = new System.Drawing.Point(218, 117);
             this.Akord5.Name = "Akord5";
-            this.Akord5.Size = new System.Drawing.Size(43, 21);
+            this.Akord5.Size = new System.Drawing.Size(43, 24);
             this.Akord5.TabIndex = 49;
             this.Akord5.Text = "G";
             // 
@@ -296,7 +293,7 @@
             this.Akord4.FormattingEnabled = true;
             this.Akord4.Location = new System.Drawing.Point(167, 117);
             this.Akord4.Name = "Akord4";
-            this.Akord4.Size = new System.Drawing.Size(43, 21);
+            this.Akord4.Size = new System.Drawing.Size(43, 24);
             this.Akord4.TabIndex = 48;
             this.Akord4.Text = "G";
             // 
@@ -305,7 +302,7 @@
             this.Akord3.FormattingEnabled = true;
             this.Akord3.Location = new System.Drawing.Point(116, 117);
             this.Akord3.Name = "Akord3";
-            this.Akord3.Size = new System.Drawing.Size(43, 21);
+            this.Akord3.Size = new System.Drawing.Size(43, 24);
             this.Akord3.TabIndex = 47;
             this.Akord3.Text = "G";
             // 
@@ -314,7 +311,7 @@
             this.Akord2.FormattingEnabled = true;
             this.Akord2.Location = new System.Drawing.Point(66, 117);
             this.Akord2.Name = "Akord2";
-            this.Akord2.Size = new System.Drawing.Size(43, 21);
+            this.Akord2.Size = new System.Drawing.Size(43, 24);
             this.Akord2.TabIndex = 46;
             this.Akord2.Text = "E";
             // 
@@ -323,7 +320,7 @@
             this.Akord1.FormattingEnabled = true;
             this.Akord1.Location = new System.Drawing.Point(15, 117);
             this.Akord1.Name = "Akord1";
-            this.Akord1.Size = new System.Drawing.Size(43, 21);
+            this.Akord1.Size = new System.Drawing.Size(43, 24);
             this.Akord1.TabIndex = 45;
             this.Akord1.Text = "C";
             // 
@@ -339,14 +336,14 @@
             this.Nodebillede.TabIndex = 44;
             this.Nodebillede.TabStop = false;
             // 
-            // paralelltoneart
+            // paralelltoneartlabel
             // 
-            this.paralelltoneart.AutoSize = true;
-            this.paralelltoneart.Location = new System.Drawing.Point(13, 43);
-            this.paralelltoneart.Name = "paralelltoneart";
-            this.paralelltoneart.Size = new System.Drawing.Size(80, 13);
-            this.paralelltoneart.TabIndex = 43;
-            this.paralelltoneart.Text = "Paralleltoneart: ";
+            this.paralelltoneartlabel.AutoSize = true;
+            this.paralelltoneartlabel.Location = new System.Drawing.Point(13, 43);
+            this.paralelltoneartlabel.Name = "paralelltoneartlabel";
+            this.paralelltoneartlabel.Size = new System.Drawing.Size(100, 16);
+            this.paralelltoneartlabel.TabIndex = 43;
+            this.paralelltoneartlabel.Text = "Paralleltoneart: ";
             // 
             // label5
             // 
@@ -424,7 +421,7 @@
             "Mol"});
             this.Skalatype.Location = new System.Drawing.Point(62, 19);
             this.Skalatype.Name = "Skalatype";
-            this.Skalatype.Size = new System.Drawing.Size(42, 21);
+            this.Skalatype.Size = new System.Drawing.Size(42, 24);
             this.Skalatype.TabIndex = 36;
             this.Skalatype.Text = "Dur";
             // 
@@ -433,7 +430,7 @@
             this.Toneart.FormattingEnabled = true;
             this.Toneart.Location = new System.Drawing.Point(15, 19);
             this.Toneart.Name = "Toneart";
-            this.Toneart.Size = new System.Drawing.Size(43, 21);
+            this.Toneart.Size = new System.Drawing.Size(43, 24);
             this.Toneart.TabIndex = 35;
             this.Toneart.Text = "C";
             // 
@@ -483,40 +480,40 @@
         }
 
         #endregion
-        private System.Windows.Forms.TabPage TansSide;
-        private System.Windows.Forms.CheckBox TilGreb;
-        private System.Windows.Forms.ComboBox TransBox;
-        private System.Windows.Forms.Label labelT5;
-        private System.Windows.Forms.Label labelT6;
-        private System.Windows.Forms.Label labelT7;
-        private System.Windows.Forms.Label labelT3;
-        private System.Windows.Forms.Label labelT4;
-        private System.Windows.Forms.Label labelT2;
-        private System.Windows.Forms.ComboBox SkalatypeT;
-        private System.Windows.Forms.ComboBox ToneartT;
-        private System.Windows.Forms.Label labelT1;
+        private System.Windows.Forms.TabControl Tabsider;
         private System.Windows.Forms.TabPage BasisSide;
-        private System.Windows.Forms.CheckBox Lyde;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ListBox Resultatliste;
-        private System.Windows.Forms.ComboBox Akord5;
-        private System.Windows.Forms.ComboBox Akord4;
-        private System.Windows.Forms.ComboBox Akord3;
-        private System.Windows.Forms.ComboBox Akord2;
-        private System.Windows.Forms.ComboBox Akord1;
-        private System.Windows.Forms.PictureBox Nodebillede;
-        private System.Windows.Forms.Label paralelltoneart;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox Skalatype;
         private System.Windows.Forms.ComboBox Toneart;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabControl Tabsider;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label paralelltoneartlabel;
+        private System.Windows.Forms.Label tonelistelabel;
+        private System.Windows.Forms.Label resultatlistelabel;
+        private System.Windows.Forms.CheckBox Lyde;
+        private System.Windows.Forms.ListBox Resultatliste;
+        private System.Windows.Forms.ComboBox Akord1;
+        private System.Windows.Forms.ComboBox Akord2;
+        private System.Windows.Forms.ComboBox Akord3;
+        private System.Windows.Forms.ComboBox Akord4;
+        private System.Windows.Forms.ComboBox Akord5;
+        private System.Windows.Forms.PictureBox Nodebillede;
+        private System.Windows.Forms.TabPage TansSide;
+        private System.Windows.Forms.CheckBox TilGreb;
+        private System.Windows.Forms.ComboBox TransBox;
+        private System.Windows.Forms.Label labelT1;
+        private System.Windows.Forms.Label labelT3;
+        private System.Windows.Forms.Label labelT4;
+        private System.Windows.Forms.Label labelT2;
+        private System.Windows.Forms.Label labelT5;
+        private System.Windows.Forms.Label labelT6;
+        private System.Windows.Forms.Label labelT7;
+        private System.Windows.Forms.ComboBox SkalatypeT;
+        private System.Windows.Forms.ComboBox ToneartT;
     }
 }
 

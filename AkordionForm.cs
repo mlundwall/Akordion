@@ -9,7 +9,7 @@
 namespace Akordion
 {
     public partial class Akordion : Form
-    {//                             0    1      2    3      4    5    6      7    8      9    10     11       
+    {
 
         public Akordion()
         {
@@ -18,7 +18,7 @@ namespace Akordion
 
         private void Akordion_Load(object sender, System.EventArgs e)
         {
-            new SpilledåseHoved(this, label1, label2, label3, label4, label5, label6, label7, Toneart, Skalatype, Lyde, Akord1, Akord2, Akord3, Akord4, Akord5, paralelltoneart, Nodebillede, Resultatliste);
+            new SpilledåseHoved(this, label1, label2, label3, label4, label5, label6, label7, Toneart, Skalatype, Lyde, Akord1, Akord2, Akord3, Akord4, Akord5, paralelltoneartlabel, Nodebillede, Resultatliste);
             new SpilledåseTrans(this, labelT1, labelT2, labelT3, labelT4, labelT5, labelT6, labelT7, ToneartT, SkalatypeT, Lyde, TransBox, TilGreb);
         }
     } // Slut på Akordion class
