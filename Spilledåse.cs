@@ -377,9 +377,6 @@ namespace Akordion
             TransBox = pTransBox;
             TilGreb = pTilGreb;
 
-            ToneArt.SelectedIndex = 0;
-            SkalaType.SelectedIndex = 0;
-
             TransBox.Items.Add("C - Lige over");
             TransBox.Items.Add("Cis");
             TransBox.Items.Add("D");
@@ -396,23 +393,19 @@ namespace Akordion
 
             TransBox.SelectedIndexChanged += new EventHandler(TransBox_SelectedIndexChanged);
             TilGreb.CheckedChanged += new EventHandler(TilGreb_CheckedChanged);
+
+            ToneArt.SelectedIndex = 0;
+            SkalaType.SelectedIndex = 0;
+            TransBox.SelectedIndex = 0;
         }
 
         protected override void Visskala(int tpos, int skalatype, ref Label[] labels)
         {
-            int Es;
-            int bB;
-
-            if (TilGreb.Checked) { Es = 3; bB = 10; } 
-            else { Es = 12 - 3; bB = 12 - 2; };
-            if (ToneArt.SelectedIndex<0)
-                ToneArt.SelectedIndex=0;
-            switch (TransBox.SelectedIndex)
-            {
-                case (1): tpos = (ToneArt.SelectedIndex + Es) % halvtoner; break;// Sopraksax Es
-                case (2): tpos = (ToneArt.SelectedIndex + bB) % halvtoner; break;// Klarinet  bB
-                default: tpos = ToneArt.SelectedIndex; break;  // Lige over
-            };
+ 
+            if (TilGreb.Checked)
+                tpos = (tpos + TransBox.SelectedIndex) % halvtoner;
+            else
+                tpos = 12 - (tpos + TransBox.SelectedIndex) % halvtoner;
             base.Visskala(tpos, skalatype, ref labels);
         }
         protected void TransBox_SelectedIndexChanged(object sender, EventArgs e)
