@@ -20,6 +20,9 @@ namespace Akordion
 
         protected readonly String[] toneS = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
         protected readonly String[] toneB = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "bB", "H" };
+        protected readonly String[] trans = { "C - Lige over", "Cis", "D", "Es  - Sopransax", "E", "F", "Fis", "G", "Gis", "A", "bB - Klarinet", "H" };
+        protected readonly String RessourcePos = "\\..\\..\\Resources\\";
+        protected readonly String[] NbilledeNavn = { "C-dur.png", "Des-dur.png", "D-dur.png", "Es-dur.png", "E-dur.png", "F-dur.png", "Fis-dur.png", "G-dur.png", "As-dur.png", "A-dur.png", "Hes-dur.png", "H-Dur.png", "C-dur.png" };
         protected readonly byte[] Dur = { 2, 2, 1, 2, 2, 2, 1 };
         protected readonly byte[] Mol = { 2, 1, 2, 2, 1, 2, 2 };
         protected readonly byte halvtoner = 12;
@@ -260,25 +263,11 @@ namespace Akordion
 
         protected void PutBillede(int t)
         {
-            string s = System.Reflection.Assembly.GetExecutingAssembly().Location;            
-            s = System.IO.Path.GetDirectoryName(s) + "\\..\\..\\Resources\\";
-            switch (t)
-            {
-                case 0: { Nodebillede.Image= Image.FromFile(s + "C-dur.png"); break; }
-                case 1: { Nodebillede.Image = Image.FromFile(s + "Des-dur.png"); break; }
-                case 2: { Nodebillede.Image = Image.FromFile(s + "D-dur.png"); break; }
-                case 3: { Nodebillede.Image = Image.FromFile(s + "Es-dur.png"); break; }
-                case 4: { Nodebillede.Image = Image.FromFile(s + "E-dur.png"); break; }
-                case 5: { Nodebillede.Image = Image.FromFile(s + "F-dur.png"); break; }
-                case 6: { Nodebillede.Image = Image.FromFile(s + "Fis-dur.png"); break; }
-                case 7: { Nodebillede.Image = Image.FromFile(s + "G-dur.png"); break; }
-                case 8: { Nodebillede.Image = Image.FromFile(s + "As-dur.png"); break; }
-                case 9: { Nodebillede.Image = Image.FromFile(s + "A-dur.png"); break; }
-                case 10: { Nodebillede.Image = Image.FromFile(s + "Hes-dur.png"); break; }
-                case 11: { Nodebillede.Image = Image.FromFile(s + "H-Dur.png"); break; }
-                default: { Nodebillede.Image = Image.FromFile(s + "C-dur.png"); break; }
-            }
+            string s = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            s = System.IO.Path.GetDirectoryName(s) + RessourcePos;
+            Nodebillede.Image = Image.FromFile(s + NbilledeNavn[t]);
         }
+
         protected override void Visskala(int tpos, int skalatype, ref Label[] labels)
         {
             base.Visskala(tpos, skalatype, ref labels);
@@ -376,19 +365,8 @@ namespace Akordion
         {
             TransBox = pTransBox;
             TilGreb = pTilGreb;
-
-            TransBox.Items.Add("C - Lige over");
-            TransBox.Items.Add("Cis");
-            TransBox.Items.Add("D");
-            TransBox.Items.Add("Es  - Sopransax");
-            TransBox.Items.Add("E");
-            TransBox.Items.Add("F");
-            TransBox.Items.Add("Fis");
-            TransBox.Items.Add("G");
-            TransBox.Items.Add("Gis");
-            TransBox.Items.Add("A");
-            TransBox.Items.Add("bB - Klarinet");
-            TransBox.Items.Add("H");
+            for (int i=0;i<halvtoner;i++)
+                TransBox.Items.Add(trans[i]);
             TransBox.SelectedIndex = 3;
 
             TransBox.SelectedIndexChanged += new EventHandler(TransBox_SelectedIndexChanged);
