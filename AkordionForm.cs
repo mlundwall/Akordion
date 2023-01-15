@@ -2,8 +2,7 @@
 
 //Done: Billeder af tonearternes kryds/b-er indsættes i "Nodebillede"
 //Done: Icon indsættes
-//Todo: Tonefølge bør være stigende
-//Todo: Tonerækker skal pakkes i objekter
+//Done: Tonerækker skal pakkes i objekter
 //Todo: Flere kommentarer
 
 namespace Akordion
@@ -19,6 +18,7 @@ namespace Akordion
         private void Akordion_Load(object sender, System.EventArgs e)
         {
             new SpilledåseHoved(this, label1, label2, label3, label4, label5, label6, label7, Toneart, Skalatype, Lyde, Akord1, Akord2, Akord3, Akord4, Akord5, paralelltoneartlabel, Nodebillede, Resultatliste);
+            SpilledåseHoved.RessourcePos = "\\..\\..\\Resources\\";
             new SpilledåseTrans(this, labelT1, labelT2, labelT3, labelT4, labelT5, labelT6, labelT7, ToneartT, SkalatypeT, Lyde, TransBox, TilGreb);
         }
     } // Slut på Akordion class

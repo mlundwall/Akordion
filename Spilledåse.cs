@@ -1,6 +1,5 @@
-//Todo: Hvorfor bliver ToneArt.Selectedindex = -1 ?
 //Todo: Få toner til at spille i korrekt højde (stigende)
-//Todo: Pak spilledåse ind i formen
+//Todo: Sæt hints
 using System;
 using System.Linq;
 using System.Drawing;
@@ -21,7 +20,6 @@ namespace Akordion
         protected readonly String[] toneS = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
         protected readonly String[] toneB = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "bB", "H" };
         protected readonly String[] trans = { "C - Lige over", "Cis", "D", "Es  - Sopransax", "E", "F", "Fis", "G", "Gis", "A", "bB - Klarinet", "H" };
-        protected readonly String RessourcePos = "\\..\\..\\Resources\\";
         protected readonly String[] NbilledeNavn = { "C-dur.png", "Des-dur.png", "D-dur.png", "Es-dur.png", "E-dur.png", "F-dur.png", "Fis-dur.png", "G-dur.png", "As-dur.png", "A-dur.png", "Hes-dur.png", "H-Dur.png", "C-dur.png" };
         protected readonly byte[] Dur = { 2, 2, 1, 2, 2, 2, 1 };
         protected readonly byte[] Mol = { 2, 1, 2, 2, 1, 2, 2 };
@@ -52,6 +50,9 @@ namespace Akordion
             // Tonelister fyldes
             for (int i = 0; i < halvtoner; i++)
                 ToneArt.Items.Add(toneS[i]);
+
+            for (int j = 0; j < heltoner; j++)
+                NodeLabel[j].Click += new System.EventHandler(Spiltone);
 
             ToneArt.SelectedIndexChanged += new EventHandler(ToneArt_SelectedIndexChanged);
             SkalaType.SelectedIndexChanged += new EventHandler(Skalatype_SelectedIndexChanged);
@@ -129,10 +130,8 @@ namespace Akordion
             LavToneart(tpos, skalatype, out skala, out kryds, out toneart, out sparalelltoneart);
 
             for (int j = 0; j < heltoner; j++)
-            {
                 labels[j].Text = skala[j];
-                labels[j].Click += new System.EventHandler(Spiltone);
-            }
+
             if (Lyde.Checked)
                 Spilskala();
         }
@@ -212,6 +211,7 @@ namespace Akordion
 
     class SpilledåseHoved : SpilledåseRod
     { // Start SpilledåseHoved class
+        public static String RessourcePos = "\\..\\..\\Resources\\";
 
         Label paralellToneart;
         ListBox Resultatliste;
@@ -351,6 +351,7 @@ namespace Akordion
 
     class SpilledåseTrans : SpilledåseRod
     { // Start SpilledåseTrans class
+
         ComboBox TransBox;
         CheckBox TilGreb;
 
