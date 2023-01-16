@@ -82,10 +82,10 @@
             this.TansSide.Controls.Add(this.SkalatypeT);
             this.TansSide.Controls.Add(this.ToneartT);
             this.TansSide.Controls.Add(this.labelT1);
-            this.TansSide.Location = new System.Drawing.Point(4, 25);
+            this.TansSide.Location = new System.Drawing.Point(4, 22);
             this.TansSide.Name = "TansSide";
             this.TansSide.Padding = new System.Windows.Forms.Padding(3);
-            this.TansSide.Size = new System.Drawing.Size(456, 181);
+            this.TansSide.Size = new System.Drawing.Size(456, 184);
             this.TansSide.TabIndex = 1;
             this.TansSide.Text = "Transponering";
             this.TansSide.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             this.TilGreb.CheckState = System.Windows.Forms.CheckState.Checked;
             this.TilGreb.Location = new System.Drawing.Point(279, 21);
             this.TilGreb.Name = "TilGreb";
-            this.TilGreb.Size = new System.Drawing.Size(72, 20);
+            this.TilGreb.Size = new System.Drawing.Size(61, 17);
             this.TilGreb.TabIndex = 54;
             this.TilGreb.Text = "Til greb";
             this.TilGreb.UseVisualStyleBackColor = true;
@@ -107,7 +107,7 @@
             this.TransBox.FormattingEnabled = true;
             this.TransBox.Location = new System.Drawing.Point(144, 19);
             this.TransBox.Name = "TransBox";
-            this.TransBox.Size = new System.Drawing.Size(102, 24);
+            this.TransBox.Size = new System.Drawing.Size(102, 21);
             this.TransBox.TabIndex = 53;
             this.TransBox.Text = "C - Lige over";
             // 
@@ -187,7 +187,7 @@
             "Mol"});
             this.SkalatypeT.Location = new System.Drawing.Point(62, 19);
             this.SkalatypeT.Name = "SkalatypeT";
-            this.SkalatypeT.Size = new System.Drawing.Size(42, 24);
+            this.SkalatypeT.Size = new System.Drawing.Size(42, 21);
             this.SkalatypeT.TabIndex = 46;
             this.SkalatypeT.Text = "Dur";
             // 
@@ -196,7 +196,7 @@
             this.ToneartT.FormattingEnabled = true;
             this.ToneartT.Location = new System.Drawing.Point(15, 19);
             this.ToneartT.Name = "ToneartT";
-            this.ToneartT.Size = new System.Drawing.Size(43, 24);
+            this.ToneartT.Size = new System.Drawing.Size(43, 21);
             this.ToneartT.TabIndex = 45;
             this.ToneartT.Text = "C";
             // 
@@ -234,10 +234,10 @@
             this.BasisSide.Controls.Add(this.Skalatype);
             this.BasisSide.Controls.Add(this.Toneart);
             this.BasisSide.Controls.Add(this.label1);
-            this.BasisSide.Location = new System.Drawing.Point(4, 25);
+            this.BasisSide.Location = new System.Drawing.Point(4, 22);
             this.BasisSide.Name = "BasisSide";
             this.BasisSide.Padding = new System.Windows.Forms.Padding(3);
-            this.BasisSide.Size = new System.Drawing.Size(456, 181);
+            this.BasisSide.Size = new System.Drawing.Size(456, 184);
             this.BasisSide.TabIndex = 0;
             this.BasisSide.Text = "Basis";
             this.BasisSide.UseVisualStyleBackColor = true;
@@ -247,7 +247,7 @@
             this.Lyde.AutoSize = true;
             this.Lyde.Location = new System.Drawing.Point(154, 21);
             this.Lyde.Name = "Lyde";
-            this.Lyde.Size = new System.Drawing.Size(48, 20);
+            this.Lyde.Size = new System.Drawing.Size(43, 17);
             this.Lyde.TabIndex = 53;
             this.Lyde.Text = "Lyd";
             this.Lyde.UseVisualStyleBackColor = true;
@@ -257,7 +257,7 @@
             this.resultatlistelabel.AutoSize = true;
             this.resultatlistelabel.Location = new System.Drawing.Point(332, 95);
             this.resultatlistelabel.Name = "resultatlistelabel";
-            this.resultatlistelabel.Size = new System.Drawing.Size(72, 16);
+            this.resultatlistelabel.Size = new System.Drawing.Size(61, 13);
             this.resultatlistelabel.TabIndex = 52;
             this.resultatlistelabel.Text = "I tonearten ";
             // 
@@ -266,17 +266,16 @@
             this.tonelistelabel.AutoSize = true;
             this.tonelistelabel.Location = new System.Drawing.Point(12, 94);
             this.tonelistelabel.Name = "tonelistelabel";
-            this.tonelistelabel.Size = new System.Drawing.Size(63, 16);
+            this.tonelistelabel.Size = new System.Drawing.Size(50, 13);
             this.tonelistelabel.TabIndex = 51;
             this.tonelistelabel.Text = "Toneliste";
             // 
             // Resultatliste
             // 
             this.Resultatliste.FormattingEnabled = true;
-            this.Resultatliste.ItemHeight = 16;
             this.Resultatliste.Location = new System.Drawing.Point(330, 115);
             this.Resultatliste.Name = "Resultatliste";
-            this.Resultatliste.Size = new System.Drawing.Size(117, 52);
+            this.Resultatliste.Size = new System.Drawing.Size(117, 43);
             this.Resultatliste.TabIndex = 50;
             // 
             // Akord5
@@ -284,7 +283,7 @@
             this.Akord5.FormattingEnabled = true;
             this.Akord5.Location = new System.Drawing.Point(218, 117);
             this.Akord5.Name = "Akord5";
-            this.Akord5.Size = new System.Drawing.Size(43, 24);
+            this.Akord5.Size = new System.Drawing.Size(43, 21);
             this.Akord5.TabIndex = 49;
             this.Akord5.Text = "G";
             // 
@@ -293,7 +292,7 @@
             this.Akord4.FormattingEnabled = true;
             this.Akord4.Location = new System.Drawing.Point(167, 117);
             this.Akord4.Name = "Akord4";
-            this.Akord4.Size = new System.Drawing.Size(43, 24);
+            this.Akord4.Size = new System.Drawing.Size(43, 21);
             this.Akord4.TabIndex = 48;
             this.Akord4.Text = "G";
             // 
@@ -302,7 +301,7 @@
             this.Akord3.FormattingEnabled = true;
             this.Akord3.Location = new System.Drawing.Point(116, 117);
             this.Akord3.Name = "Akord3";
-            this.Akord3.Size = new System.Drawing.Size(43, 24);
+            this.Akord3.Size = new System.Drawing.Size(43, 21);
             this.Akord3.TabIndex = 47;
             this.Akord3.Text = "G";
             // 
@@ -311,7 +310,7 @@
             this.Akord2.FormattingEnabled = true;
             this.Akord2.Location = new System.Drawing.Point(66, 117);
             this.Akord2.Name = "Akord2";
-            this.Akord2.Size = new System.Drawing.Size(43, 24);
+            this.Akord2.Size = new System.Drawing.Size(43, 21);
             this.Akord2.TabIndex = 46;
             this.Akord2.Text = "E";
             // 
@@ -320,7 +319,7 @@
             this.Akord1.FormattingEnabled = true;
             this.Akord1.Location = new System.Drawing.Point(15, 117);
             this.Akord1.Name = "Akord1";
-            this.Akord1.Size = new System.Drawing.Size(43, 24);
+            this.Akord1.Size = new System.Drawing.Size(43, 21);
             this.Akord1.TabIndex = 45;
             this.Akord1.Text = "C";
             // 
@@ -341,7 +340,7 @@
             this.paralelltoneartlabel.AutoSize = true;
             this.paralelltoneartlabel.Location = new System.Drawing.Point(13, 43);
             this.paralelltoneartlabel.Name = "paralelltoneartlabel";
-            this.paralelltoneartlabel.Size = new System.Drawing.Size(100, 16);
+            this.paralelltoneartlabel.Size = new System.Drawing.Size(80, 13);
             this.paralelltoneartlabel.TabIndex = 43;
             this.paralelltoneartlabel.Text = "Paralleltoneart: ";
             // 
@@ -421,7 +420,7 @@
             "Mol"});
             this.Skalatype.Location = new System.Drawing.Point(62, 19);
             this.Skalatype.Name = "Skalatype";
-            this.Skalatype.Size = new System.Drawing.Size(42, 24);
+            this.Skalatype.Size = new System.Drawing.Size(42, 21);
             this.Skalatype.TabIndex = 36;
             this.Skalatype.Text = "Dur";
             // 
@@ -430,7 +429,7 @@
             this.Toneart.FormattingEnabled = true;
             this.Toneart.Location = new System.Drawing.Point(15, 19);
             this.Toneart.Name = "Toneart";
-            this.Toneart.Size = new System.Drawing.Size(43, 24);
+            this.Toneart.Size = new System.Drawing.Size(43, 21);
             this.Toneart.TabIndex = 35;
             this.Toneart.Text = "C";
             // 

@@ -17,6 +17,8 @@ namespace Akordion
         [System.Runtime.InteropServices.DllImport("kernel32.dll", SetLastError = true)]
         static extern bool Beep(uint dwFreq, uint dwDuration);
 
+        public static String RessourcePos = @"\..\..\Resources\";
+
         protected readonly String[] toneS = { "C", "Cis", "D", "Dis", "E", "F", "Fis", "G", "Gis", "A", "Ais", "H" };
         protected readonly String[] toneB = { "C", "Des", "D", "Es", "E", "F", "Ges", "G", "As", "A", "bB", "H" };
         protected readonly String[] trans = { "C - Lige over", "Cis", "D", "Es  - Sopransax", "E", "F", "Fis", "G", "Gis", "A", "bB - Klarinet", "H" };
@@ -111,7 +113,7 @@ namespace Akordion
 
             for (int j = 0, t = tpos; j < heltoner; j++)
             {
-                skala[j] = Tone[t];
+                skala[j] = Tone[t]; // Fejl her -1 / 12
                 t += tonalitet[j];
                 t %= halvtoner;
             }
@@ -177,9 +179,12 @@ namespace Akordion
             for (int t = 0; t < halvtoner; t++)
                 if (s == toneS[t] || s == toneB[t])
                     tpos = t;
-            // Log10 440 = 2,64355 - Log10 880 = 2,9445 - Interval (dif/12 = 0.02508583)
-            int hz = Convert.ToInt32(Math.Round(Math.Pow(10, 2.64355 + (0.02508583 * tpos))));
-            Console.Beep(hz, 300);
+            if (Lyde.Checked)
+            {
+                // Log10 440 = 2,64355 - Log10 880 = 2,9445 - Interval (dif/12 = 0.02508583)
+                int hz = Convert.ToInt32(Math.Round(Math.Pow(10, 2.64355 + (0.02508583 * tpos))));
+                Console.Beep(hz, 300);
+            }
         }
 
         protected virtual void Spilskala()
@@ -189,18 +194,14 @@ namespace Akordion
         }
         private void Spiltone(object sender, EventArgs e)
         {
-            if (Lyde.Checked)
-            {
-                Label l;
-                l = (Label)sender;
-                Spil(l.Text);
-            }
+            Label l;
+            l = (Label)sender;
+            Spil(l.Text);
         }
 
         private void Lyde_CheckedChanged(object sender, EventArgs e)
         {
-            if (Lyde.Checked)
-                Spilskala();
+            Spilskala();
         }
 
     } // Slut på SpilledåseRod class
@@ -211,8 +212,6 @@ namespace Akordion
 
     class SpilledåseHoved : SpilledåseRod
     { // Start SpilledåseHoved class
-        public static String RessourcePos = "\\..\\..\\Resources\\";
-
         Label paralellToneart;
         ListBox Resultatliste;
         PictureBox Nodebillede;
@@ -272,7 +271,7 @@ namespace Akordion
         {
             base.Visskala(tpos, skalatype, ref labels);
             paralellToneart.Text = sparalelltoneart;
-            PutBillede((ToneArt.SelectedIndex+3*SkalaType.SelectedIndex) % halvtoner);
+            PutBillede((ToneArt.SelectedIndex + 3 * SkalaType.SelectedIndex) % halvtoner);
         }
 
         private void Akord_SelectedIndexChanged(object sender, EventArgs e)
@@ -345,9 +344,9 @@ namespace Akordion
 
     } // Slut SpilledåseHoved class
 
-        /*************************
-        *          TRANS         *
-        *************************/
+    /*************************
+    *          TRANS         *
+    *************************/
 
     class SpilledåseTrans : SpilledåseRod
     { // Start SpilledåseTrans class
@@ -355,7 +354,7 @@ namespace Akordion
         ComboBox TransBox;
         CheckBox TilGreb;
 
-        public SpilledåseTrans(Form pparentForm, 
+        public SpilledåseTrans(Form pparentForm,
             Label pL1, Label pL2, Label pL3, Label pL4, Label pL5, Label pL6, Label pL7,
             ComboBox pToneArt,
             ComboBox pSkalatype,
@@ -366,7 +365,7 @@ namespace Akordion
         {
             TransBox = pTransBox;
             TilGreb = pTilGreb;
-            for (int i=0;i<halvtoner;i++)
+            for (int i = 0; i < halvtoner; i++)
                 TransBox.Items.Add(trans[i]);
             TransBox.SelectedIndex = 3;
 
@@ -380,11 +379,11 @@ namespace Akordion
 
         protected override void Visskala(int tpos, int skalatype, ref Label[] labels)
         {
- 
+
             if (TilGreb.Checked)
                 tpos = (tpos + TransBox.SelectedIndex) % halvtoner;
             else
-                tpos = 12 - (tpos + TransBox.SelectedIndex) % halvtoner;
+                tpos = 12 - ((tpos + TransBox.SelectedIndex) % halvtoner);
             base.Visskala(tpos, skalatype, ref labels);
         }
         protected void TransBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -394,9 +393,9 @@ namespace Akordion
 
         private void TilGreb_CheckedChanged(object sender, EventArgs e)
         {
-            if (TilGreb.Checked) 
-                TilGreb.Text = "Til greb"; 
-            else 
+            if (TilGreb.Checked)
+                TilGreb.Text = "Til greb";
+            else
                 TilGreb.Text = "Til noder";
             Visskala(ToneArt.SelectedIndex, SkalaType.SelectedIndex, ref NodeLabel);
         }
