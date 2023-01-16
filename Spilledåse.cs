@@ -1,5 +1,6 @@
 //Todo: Få toner til at spille i korrekt højde (stigende)
 //Todo: Sæt hints
+//Todo: Fejl ved "// Fejl her -1 / 12"
 using System;
 using System.Linq;
 using System.Drawing;
@@ -130,9 +131,15 @@ namespace Akordion
             String[] skala = new string[heltoner];
 
             LavToneart(tpos, skalatype, out skala, out kryds, out toneart, out sparalelltoneart);
-
+            
+            int oktav = 0;
             for (int j = 0; j < heltoner; j++)
+            {
                 labels[j].Text = skala[j];
+                labels[j].Tag = oktav;
+                if ((skala[j]=="H") || skala[j]=="Ais" || skala[j]=="bB")
+                    oktav=12;
+            }
 
             if (Lyde.Checked)
                 Spilskala();
@@ -173,16 +180,16 @@ namespace Akordion
             }
             return (match);
         }
-        private void Spil(String s)
+        private void Spil(Label l)
         {
             int tpos = 0;
             for (int t = 0; t < halvtoner; t++)
-                if (s == toneS[t] || s == toneB[t])
+                if (l.Text == toneS[t] || l.Text == toneB[t])
                     tpos = t;
             if (Lyde.Checked)
             {
                 // Log10 440 = 2,64355 - Log10 880 = 2,9445 - Interval (dif/12 = 0.02508583)
-                int hz = Convert.ToInt32(Math.Round(Math.Pow(10, 2.64355 + (0.02508583 * tpos))));
+                int hz = Convert.ToInt32(Math.Round(Math.Pow(10, 2.64355 + (0.02508583 * (tpos+(int)l.Tag)))));
                 Console.Beep(hz, 300);
             }
         }
@@ -190,13 +197,13 @@ namespace Akordion
         protected virtual void Spilskala()
         {
             for (int i = 0; i < heltoner; i++)
-                Spil(NodeLabel[i].Text);
+                Spil(NodeLabel[i]);
         }
         private void Spiltone(object sender, EventArgs e)
         {
             Label l;
             l = (Label)sender;
-            Spil(l.Text);
+            Spil(l);
         }
 
         private void Lyde_CheckedChanged(object sender, EventArgs e)
