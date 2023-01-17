@@ -131,15 +131,9 @@ namespace Akordion
             String[] skala = new string[heltoner];
 
             LavToneart(tpos, skalatype, out skala, out kryds, out toneart, out sparalelltoneart);
-            
-            int oktav = 0;
+
             for (int j = 0; j < heltoner; j++)
-            {
                 labels[j].Text = skala[j];
-                labels[j].Tag = oktav;
-                if ((skala[j]=="H") || skala[j]=="Ais" || skala[j]=="bB")
-                    oktav=12;
-            }
 
             if (Lyde.Checked)
                 Spilskala();
@@ -180,7 +174,7 @@ namespace Akordion
             }
             return (match);
         }
-        private void Spil(Label l)
+        private void Spil(Label l, int oktav)
         {
             int tpos = 0;
             for (int t = 0; t < halvtoner; t++)
@@ -189,21 +183,57 @@ namespace Akordion
             if (Lyde.Checked)
             {
                 // Log10 440 = 2,64355 - Log10 880 = 2,9445 - Interval (dif/12 = 0.02508583)
-                int hz = Convert.ToInt32(Math.Round(Math.Pow(10, 2.64355 + (0.02508583 * (tpos+(int)l.Tag)))));
+                int hz =
+                    Convert.ToInt32(
+                        Math.Round(
+                            Math.Pow(
+                                10,
+                                2.64355 +
+                                (0.02508583 * (tpos + (12 * oktav))))));
                 Console.Beep(hz, 300);
             }
         }
 
+        private int tonePos(string s)
+        {
+            int i;
+            for (i = 0; (s == toneS[i]) || (s == toneB[i]) ; i++)
+                ;
+            return (i);
+
+        }
+
+        private int Interval(String s1, String s2)
+        {
+            if (tonePos(s1) - tonePos(s2) <= 2)
+                return(2);
+            else
+            {
+                return(10 - (tonePos(s2) - tonePos(s1)));
+            }
+        }
+        
         protected virtual void Spilskala()
         {
+            int oktav = 0;
+            string gemtone = NodeLabel[0].Text;
+
             for (int i = 0; i < heltoner; i++)
-                Spil(NodeLabel[i]);
+            {
+                Spil(NodeLabel[i], oktav);
+                if (i > 0)
+                {
+                    if (Interval(gemtone, NodeLabel[i].Text) > 2)
+                        oktav = 1;
+                    gemtone = NodeLabel[i].Text;
+                }
+            }
         }
         private void Spiltone(object sender, EventArgs e)
         {
             Label l;
             l = (Label)sender;
-            Spil(l);
+            Spil(l,0);
         }
 
         private void Lyde_CheckedChanged(object sender, EventArgs e)

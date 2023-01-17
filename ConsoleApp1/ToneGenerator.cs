@@ -20,13 +20,14 @@
                 lavtone((double)hz, toneS[tpos]);
             }
 
-            player.LoadCompleted += new AsyncCompletedEventHandler(Player_LoadCompleted);
+            // player.LoadCompleted += new AsyncCompletedEventHandler(Player_LoadCompleted);
             for (int tpos = 0; tpos < halvtoner; tpos++)
             {
 
                 player.SoundLocation = ResPos + toneS[tpos] + ".wav";
                 // Load the .wav file.
-                player.LoadAsync();
+                //   player.LoadAsync();
+                player.Play();
             }
         }
 
