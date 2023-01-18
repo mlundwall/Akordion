@@ -30,6 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Akordion));
             this.TansSide = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.TilGreb = new System.Windows.Forms.CheckBox();
             this.TransBox = new System.Windows.Forms.ComboBox();
             this.labelT5 = new System.Windows.Forms.Label();
@@ -63,6 +70,8 @@
             this.Toneart = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Tabsider = new System.Windows.Forms.TabControl();
+            this.l1Label = new System.Windows.Forms.Label();
+            this.l2Label = new System.Windows.Forms.Label();
             this.TansSide.SuspendLayout();
             this.BasisSide.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Nodebillede)).BeginInit();
@@ -71,6 +80,15 @@
             // 
             // TansSide
             // 
+            this.TansSide.Controls.Add(this.l2Label);
+            this.TansSide.Controls.Add(this.l1Label);
+            this.TansSide.Controls.Add(this.label8);
+            this.TansSide.Controls.Add(this.label9);
+            this.TansSide.Controls.Add(this.label10);
+            this.TansSide.Controls.Add(this.label11);
+            this.TansSide.Controls.Add(this.label12);
+            this.TansSide.Controls.Add(this.label13);
+            this.TansSide.Controls.Add(this.label14);
             this.TansSide.Controls.Add(this.TilGreb);
             this.TansSide.Controls.Add(this.TransBox);
             this.TansSide.Controls.Add(this.labelT5);
@@ -90,6 +108,90 @@
             this.TansSide.Text = "Transponering";
             this.TansSide.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label8.Location = new System.Drawing.Point(172, 61);
+            this.label8.Margin = new System.Windows.Forms.Padding(0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(18, 18);
+            this.label8.TabIndex = 61;
+            this.label8.Text = "G";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label9.Location = new System.Drawing.Point(210, 61);
+            this.label9.Margin = new System.Windows.Forms.Padding(0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 18);
+            this.label9.TabIndex = 60;
+            this.label9.Text = "A";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label10.Location = new System.Drawing.Point(249, 61);
+            this.label10.Margin = new System.Windows.Forms.Padding(0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(18, 18);
+            this.label10.TabIndex = 59;
+            this.label10.Text = "H";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label11.Location = new System.Drawing.Point(95, 61);
+            this.label11.Margin = new System.Windows.Forms.Padding(0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(18, 18);
+            this.label11.TabIndex = 58;
+            this.label11.Text = "E";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label12.Location = new System.Drawing.Point(133, 61);
+            this.label12.Margin = new System.Windows.Forms.Padding(0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(18, 18);
+            this.label12.TabIndex = 57;
+            this.label12.Text = "F";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label13.Location = new System.Drawing.Point(57, 61);
+            this.label13.Margin = new System.Windows.Forms.Padding(0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(18, 18);
+            this.label13.TabIndex = 56;
+            this.label13.Text = "D";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label14.Location = new System.Drawing.Point(19, 61);
+            this.label14.Margin = new System.Windows.Forms.Padding(0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(18, 18);
+            this.label14.TabIndex = 55;
+            this.label14.Text = "C";
+            // 
             // TilGreb
             // 
             this.TilGreb.AutoSize = true;
@@ -101,6 +203,7 @@
             this.TilGreb.TabIndex = 54;
             this.TilGreb.Text = "Til greb";
             this.TilGreb.UseVisualStyleBackColor = true;
+            this.TilGreb.CheckedChanged += new System.EventHandler(this.TilGreb_CheckedChanged);
             // 
             // TransBox
             // 
@@ -116,7 +219,7 @@
             this.labelT5.AutoSize = true;
             this.labelT5.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelT5.ForeColor = System.Drawing.Color.Crimson;
-            this.labelT5.Location = new System.Drawing.Point(172, 65);
+            this.labelT5.Location = new System.Drawing.Point(172, 85);
             this.labelT5.Margin = new System.Windows.Forms.Padding(0);
             this.labelT5.Name = "labelT5";
             this.labelT5.Size = new System.Drawing.Size(18, 18);
@@ -127,7 +230,7 @@
             // 
             this.labelT6.AutoSize = true;
             this.labelT6.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelT6.Location = new System.Drawing.Point(210, 65);
+            this.labelT6.Location = new System.Drawing.Point(210, 85);
             this.labelT6.Margin = new System.Windows.Forms.Padding(0);
             this.labelT6.Name = "labelT6";
             this.labelT6.Size = new System.Drawing.Size(18, 18);
@@ -138,7 +241,7 @@
             // 
             this.labelT7.AutoSize = true;
             this.labelT7.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelT7.Location = new System.Drawing.Point(249, 65);
+            this.labelT7.Location = new System.Drawing.Point(249, 85);
             this.labelT7.Margin = new System.Windows.Forms.Padding(0);
             this.labelT7.Name = "labelT7";
             this.labelT7.Size = new System.Drawing.Size(18, 18);
@@ -149,7 +252,7 @@
             // 
             this.labelT3.AutoSize = true;
             this.labelT3.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelT3.Location = new System.Drawing.Point(95, 65);
+            this.labelT3.Location = new System.Drawing.Point(95, 85);
             this.labelT3.Margin = new System.Windows.Forms.Padding(0);
             this.labelT3.Name = "labelT3";
             this.labelT3.Size = new System.Drawing.Size(18, 18);
@@ -161,7 +264,7 @@
             this.labelT4.AutoSize = true;
             this.labelT4.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelT4.ForeColor = System.Drawing.Color.Crimson;
-            this.labelT4.Location = new System.Drawing.Point(133, 65);
+            this.labelT4.Location = new System.Drawing.Point(133, 85);
             this.labelT4.Margin = new System.Windows.Forms.Padding(0);
             this.labelT4.Name = "labelT4";
             this.labelT4.Size = new System.Drawing.Size(18, 18);
@@ -172,7 +275,7 @@
             // 
             this.labelT2.AutoSize = true;
             this.labelT2.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelT2.Location = new System.Drawing.Point(57, 65);
+            this.labelT2.Location = new System.Drawing.Point(57, 85);
             this.labelT2.Margin = new System.Windows.Forms.Padding(0);
             this.labelT2.Name = "labelT2";
             this.labelT2.Size = new System.Drawing.Size(18, 18);
@@ -205,7 +308,7 @@
             this.labelT1.AutoSize = true;
             this.labelT1.Font = new System.Drawing.Font("Courier New", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelT1.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.labelT1.Location = new System.Drawing.Point(19, 65);
+            this.labelT1.Location = new System.Drawing.Point(19, 85);
             this.labelT1.Margin = new System.Windows.Forms.Padding(0);
             this.labelT1.Name = "labelT1";
             this.labelT1.Size = new System.Drawing.Size(18, 18);
@@ -456,6 +559,24 @@
             this.Tabsider.Size = new System.Drawing.Size(464, 210);
             this.Tabsider.TabIndex = 34;
             // 
+            // l1Label
+            // 
+            this.l1Label.AutoSize = true;
+            this.l1Label.Location = new System.Drawing.Point(296, 61);
+            this.l1Label.Name = "l1Label";
+            this.l1Label.Size = new System.Drawing.Size(30, 13);
+            this.l1Label.TabIndex = 63;
+            this.l1Label.Text = "Greb";
+            // 
+            // l2Label
+            // 
+            this.l2Label.AutoSize = true;
+            this.l2Label.Location = new System.Drawing.Point(296, 88);
+            this.l2Label.Name = "l2Label";
+            this.l2Label.Size = new System.Drawing.Size(65, 13);
+            this.l2Label.TabIndex = 64;
+            this.l2Label.Text = "Spiller tonen";
+            // 
             // Akordion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -513,6 +634,15 @@
         private System.Windows.Forms.Label labelT7;
         private System.Windows.Forms.ComboBox SkalatypeT;
         private System.Windows.Forms.ComboBox ToneartT;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label l2Label;
+        private System.Windows.Forms.Label l1Label;
     }
 }
 

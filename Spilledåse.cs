@@ -1,6 +1,6 @@
-//Todo: Få toner til at spille i korrekt højde (stigende)
 //Todo: Sæt hints
-//Todo: Fejl ved "// Fejl her -1 / 12"
+//Done: Fejl ved "fejl her"
+//Done: Få toner til at spille i korrekt højde (stigende)
 using System;
 using System.Linq;
 using System.Drawing;
@@ -10,8 +10,8 @@ using System.Collections.Generic;
 namespace Akordion
 {
     /*************************
-    *            ROD         *
-    **************************/
+	*            ROD         *
+	**************************/
 
     class SpilledåseRod
     {
@@ -63,8 +63,8 @@ namespace Akordion
 
         protected void LavToneart
         /*
-           Laver skala ud fra om det skal være dur eller mol og hvilket havltone-trin skalaen skal starte på
-        */
+		   Laver skala ud fra om det skal være dur eller mol og hvilket havltone-trin skalaen skal starte på
+		*/
         (
             int tpos,                       // Starttone 0-11 = C-H
             in int skalatype,               // 0 Dur eller 1 Mol
@@ -114,7 +114,7 @@ namespace Akordion
 
             for (int j = 0, t = tpos; j < heltoner; j++)
             {
-                skala[j] = Tone[t]; // Fejl her -1 / 12
+                skala[j] = Tone[t]; // Der var fejl her -1 / 12
                 t += tonalitet[j];
                 t %= halvtoner;
             }
@@ -197,43 +197,30 @@ namespace Akordion
         private int tonePos(string s)
         {
             int i;
-            for (i = 0; (s == toneS[i]) || (s == toneB[i]) ; i++)
+            for (i = 0; (s != toneS[i]) && (s != toneB[i]); i++)
                 ;
             return (i);
 
         }
 
-        private int Interval(String s1, String s2)
-        {
-            if (tonePos(s1) - tonePos(s2) <= 2)
-                return(2);
-            else
-            {
-                return(10 - (tonePos(s2) - tonePos(s1)));
-            }
-        }
-        
         protected virtual void Spilskala()
         {
             int oktav = 0;
-            string gemtone = NodeLabel[0].Text;
 
             for (int i = 0; i < heltoner; i++)
             {
                 Spil(NodeLabel[i], oktav);
-                if (i > 0)
-                {
-                    if (Interval(gemtone, NodeLabel[i].Text) > 2)
+                // Går op i næste oktav hvis skalaen swapper rundt
+                if ((i + 1 < heltoner))
+                    if (tonePos(NodeLabel[i + 1].Text) - tonePos(NodeLabel[i].Text) < 0)
                         oktav = 1;
-                    gemtone = NodeLabel[i].Text;
-                }
             }
         }
         private void Spiltone(object sender, EventArgs e)
         {
             Label l;
             l = (Label)sender;
-            Spil(l,0);
+            Spil(l, 0);
         }
 
         private void Lyde_CheckedChanged(object sender, EventArgs e)
@@ -244,8 +231,8 @@ namespace Akordion
     } // Slut på SpilledåseRod class
 
     /*************************
-    *          HOVED         *
-    *************************/
+	*          HOVED         *
+	*************************/
 
     class SpilledåseHoved : SpilledåseRod
     { // Start SpilledåseHoved class
@@ -382,8 +369,8 @@ namespace Akordion
     } // Slut SpilledåseHoved class
 
     /*************************
-    *          TRANS         *
-    *************************/
+	*          TRANS         *
+	*************************/
 
     class SpilledåseTrans : SpilledåseRod
     { // Start SpilledåseTrans class
@@ -420,7 +407,7 @@ namespace Akordion
             if (TilGreb.Checked)
                 tpos = (tpos + TransBox.SelectedIndex) % halvtoner;
             else
-                tpos = 12 - ((tpos + TransBox.SelectedIndex) % halvtoner);
+                tpos = ((halvtoner - (tpos + TransBox.SelectedIndex)) % halvtoner);
             base.Visskala(tpos, skalatype, ref labels);
         }
         protected void TransBox_SelectedIndexChanged(object sender, EventArgs e)
