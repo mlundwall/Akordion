@@ -57,6 +57,7 @@ namespace Akordion
             SætTip(SkalaType, "Dur eller mol");
 
             Lyde = pLyde;
+            Lyde.CheckedChanged -= new EventHandler(Lyde_CheckedChanged);
             Lyde.CheckedChanged += new EventHandler(Lyde_CheckedChanged);
             SætTip(Lyde, "Slå lyd fra på skalaer og toner");
 
@@ -136,14 +137,24 @@ namespace Akordion
             bool kryds;
             String toneart;
             String[] skala = new string[heltoner];
-
             LavToneart(tpos, skalatype, out skala, out kryds, out toneart, out sparalelltoneart);
 
-            for (int j = 0; j < heltoner; j++)
-                labels[j].Text = skala[j];
+            // Tildeler nodetekst til labels
+            for (int i = 0; i < heltoner; i++)
+                labels[i].Text = skala[i];
 
-            if (Lyde.Checked)
-                Spilskala();
+            // Sætter oktav-tags ind på labels
+            int oktav = 0;
+            for (int i = 0; i < heltoner; i++)
+            {
+                labels[i].Tag = oktav;
+                // Går en oktav op hvis skalaen swapper rundt
+                if ((i + 1 < heltoner))
+                    if (tonePos(labels[i + 1].Text) - tonePos(labels[i].Text) < 0)
+                        oktav = 1;
+            }
+
+            Spilskala();
         }
 
         protected virtual void ToneArt_SelectedIndexChanged(object sender, EventArgs e)
@@ -184,12 +195,12 @@ namespace Akordion
             }
             return (match);
         }
-        private void Spil(Label l, int oktav)
+
+        private void Spil(Label l)
         {
-            int tpos = 0;
-            for (int t = 0; t < halvtoner; t++)
-                if (l.Text == toneS[t] || l.Text == toneB[t])
-                    tpos = t;
+            int oktav = (int)l.Tag;
+            int tpos = tonePos(l.Text);
+
             if (Lyde.Checked)
             {
                 // Log10 440 = 2,64355 - Log10 880 = 2,9445 - Interval (dif/12 = 0.02508583)
@@ -207,33 +218,31 @@ namespace Akordion
         private int tonePos(string s)
         {
             int i;
-            for (i = 0; (s != toneS[i]) && (s != toneB[i]); i++)
-                ;
-            return (i);
-
-        }
-
-        protected virtual void Spilskala()
-        {
-            int oktav = 0;
-            for (int i = 0; i < heltoner; i++)
+            if (s == "-")
+                return (0);
+            else
             {
-                Spil(NodeLabel[i], oktav);
-                // Går en oktav op hvis skalaen swapper rundt
-                if ((i + 1 < heltoner))
-                    if (tonePos(NodeLabel[i + 1].Text) - tonePos(NodeLabel[i].Text) < 0)
-                        oktav = 1;
+                for (i = 0; (s != toneS[i]) && (s != toneB[i]); i++)
+                    ;
+                return (i);
             }
+
         }
+
+        protected void Spilskala()
+        {
+            for (int i = 0; i < heltoner; i++)
+                Spil(NodeLabel[i]);
+        }
+
         private void Spiltone(object sender, EventArgs e)
         {
-            Spil((Label)sender, 0);
+            Spil((Label)sender);
         }
 
-        private void Lyde_CheckedChanged(object sender, EventArgs e)
+        protected void Lyde_CheckedChanged(object sender, EventArgs e)
         {
-            if (Lyde.Checked)
-                Spilskala();
+           // Spilskala();
         }
 
         protected void SætTip(Control c, string tip)
@@ -324,6 +333,7 @@ namespace Akordion
             base.Visskala(tpos, skalatype, ref labels);
             paralellToneart.Text = sparalelltoneart;
             PutBillede((ToneArt.SelectedIndex + 3 * SkalaType.SelectedIndex) % halvtoner);
+            parentForm.Update();
         }
 
         private void Akord_SelectedIndexChanged(object sender, EventArgs e)
@@ -389,12 +399,6 @@ namespace Akordion
             }
         }
 
-        protected override void Spilskala()
-        {
-            parentForm.Update();
-            base.Spilskala();
-        }
-
     } // Slut SpilledåseHoved class
 
     /*************************
@@ -436,13 +440,13 @@ namespace Akordion
 
         protected override void Visskala(int tpos, int skalatype, ref Label[] labels)
         {
-
             if (TilGreb.Checked)
                 tpos = (tpos + TransBox.SelectedIndex) % halvtoner;
             else
                 tpos = ((halvtoner - (tpos + TransBox.SelectedIndex)) % halvtoner);
             base.Visskala(tpos, skalatype, ref labels);
         }
+
         protected void TransBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Visskala(ToneArt.SelectedIndex, SkalaType.SelectedIndex, ref NodeLabel);
